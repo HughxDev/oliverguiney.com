@@ -1,0 +1,21 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+
+</head><body><dom-module id="og-footer">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        text-align: center;
+      }
+
+      h2 {
+        font-family: var(--heading-font);
+        font-weight: 500;
+      }
+    </style>
+    <p>© 2016–[[currentYear]]</p>
+  </template>
+
+  <script>Polymer({is:"og-footer",hostAttributes:{role:"contentinfo"},properties:{currentYear:{value:function(){return(new Date).getFullYear()}}}});</script>
+</dom-module>
+</body></html>
