@@ -1,0 +1,39 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="og-site">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <style is="custom-style">
+      /* Will be prevented from affecting local DOM of Polymer elements */
+      * {
+        box-sizing: border-box;
+      }
+
+      /* Use the :root selector to define custom properties and mixins */
+      /* at the document level  */
+      :root {
+        --heading-font: "TT Lakes", sans-serif;
+      }
+    </style>
+    <h2>Oliver Guiney’s [[prop1]]</h2>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'og-site',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'Portfolio',
+        },
+      },
+
+    });
+  </script>
+</dom-module>
