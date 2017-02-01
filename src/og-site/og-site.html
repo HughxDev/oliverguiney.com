@@ -13,6 +13,62 @@
     <og-header></og-header>
     <main>
       <og-portfolio></og-portfolio>
+      <og-about id="about-me">
+        <style scoped>
+          og-about {
+            /*padding-left: 200px;*/
+            display: block;
+            overflow: auto;
+            /*max-width: 80%;*/
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 6rem;
+          }
+
+          img {
+            /*float: left;*/
+            width: 200px;
+            border-radius: 25px;
+            /* border: 8px solid whitesmoke; */
+            /*margin-left: -200px;*/
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 20px rgba(0,0,0,1);
+            border: 8px solid whitesmoke;
+
+
+          }
+
+          @media (min-width: 40em) {
+            img {
+              margin-bottom: 1.75rem;
+            }
+          }
+
+          h2 {
+            /*text-align: left;*/
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 39rem;
+            margin-top: 0;
+            margin-top: .5rem;
+          }
+
+          p {
+            max-width: 39rem;
+            margin-left: auto;
+            margin-right: auto;
+          }
+        </style>
+        <img src="/src/images/avatars/linkedin-avatar.jpg" />
+        <h2>About Me</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis accusamus sint veniam repellendus! Recusandae ipsam aperiam quaerat tempore neque sed at expedita adipisci beatae consequuntur, nisi doloribus hic, deserunt voluptate.</p>
+        <p>Totam fuga, quae cumque doloribus dolorum blanditiis libero ex odit deleniti perferendis corporis at ipsam officia natus dolorem possimus culpa aliquid, sit veritatis ducimus esse recusandae laborum ullam aperiam! Eos!</p>
+        <p>Dolor enim, quasi omnis. Alias nihil, quis quaerat fugiat. Dolores aut rerum eum iusto saepe est atque iste, odio animi cupiditate sed, nemo architecto quae. Porro, modi tempore. Quas, omnis.</p>
+      </og-about>
     </main>
     <og-footer></og-footer>
   </template>

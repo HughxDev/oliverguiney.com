@@ -2,11 +2,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=yes">
 
-    <title>og</title>
+    <title>Oliver Guiney, Concept Artist</title>
     <meta name="description" content="og description">
 
     
     <link rel="manifest" href="/manifest.json">
+
+    
 
     
 
@@ -47,6 +49,23 @@
       /* at the document level  */
       :root {
         --heading-font: "TT Lakes";
+        --global-spacing: 2rem;
+        --off-white: whitesmoke;
+      }
+
+      body {
+        padding: 0;
+        margin: 0 var(--global-spacing);
+        font-family: sans-serif;
+        background-image: url('src/images/patterns/noisy_net.png');
+        color: var(--off-white);
+      }
+
+      @media (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi) {
+        body {
+          background-image: url('src/images/patterns/noisy_net_@2X.png'); 
+        }
       }
     </style>
 
@@ -89,31 +108,134 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
       :host {
         display: block;
         text-align: center;
-        margin: 2rem auto;
+        margin: var(--global-spacing) auto;
+        font-size: 1.25rem;
       }
 
-      .name {
-        /*font-size: */
-        font-size: 4rem;
+      /*.__name {
+        font-size: 2.5rem;
         line-height: 1;
-        font-family: var(--heading-font);
         font-weight: 500;
       }
 
-      .name, .title {
-        margin: 0;
+      @media (min-width: 30em) {
+        .__name {
+          font-size: 4rem;
+        }
+      }*/
+
+      .__name, .__title {
+        margin-top: 0;
+        margin-bottom: 0;
       }
 
-      .title {
+      .__child + .__child {
+        margin-top: 1rem;
+      }
+
+      .__name + .__child {
         margin-top: .5rem;
-        font-size: 1.25rem;
+      }
+
+      a {
+        color: #28aadc;
       }
     </style>
-    <h1 class="name">Oliver Guiney</h1>
-    <p class="title">Concept Artist</p>
+    <h1 class="__name __child">Oliver Guiney</h1>
+    <p class="__title __child">Concept Artist</p>
+    <nav class="__nav __child">
+      
+      <a href="#about-me">About Me</a>
+    </nav>
   </template>
 
   <script>Polymer({is:"og-header",hostAttributes:{role:"banner"}});</script>
+</dom-module>
+<dom-module id="og-portfolio-piece" assetpath="src/og-portfolio-piece/">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        margin-bottom: calc( var(--global-spacing) * .75 );
+        /*box-shadow: 0 2px 2px rgba(255,255,255,0.125)*/
+        /*border: .5rem solid var(--off-white);*/
+
+        position: relative;
+        /*float: left;*/
+        padding-bottom: calc( var(--h) / var(--w) * 100% );
+        width: 100%;
+        /*text-align: center;*/
+      }
+      
+      :host([x="2000"]) { --w: 2000; }
+      :host([x="2042"]) { --w: 2042; }
+      :host([x="2100"]) { --w: 2100; }
+      :host([x="2826"]) { --w: 2826; }
+      :host([x="4224"]) { --w: 4224; }
+
+      :host([y="1080"]) { --h: 1080; }
+      :host([y="1160"]) { --h: 1160; }
+      :host([y="1527"]) { --h: 1527; }
+      :host([y="2160"]) { --h: 2160; }
+
+      .card__front,
+      .card__back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .card__front,
+      .card__back {
+        -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+        -webkit-transition: -webkit-transform 0.3s;
+                transition: transform 0.3s;
+      }
+
+      .card__back {
+        padding: var(--global-spacing);
+        background-color: #1e1e1e;
+        -webkit-transform: rotateY(-180deg);
+                transform: rotateY(-180deg);
+      }
+
+      .card__back > :first-child {
+        margin-top: 0;
+      }
+
+      .card__back > :last-child {
+        margin-bottom: 0;
+      }
+
+      :host([flipped]) .card__front {
+        -webkit-transform: rotateY(-180deg);
+                transform: rotateY(-180deg);
+      }
+
+      :host([flipped]) .card__back {
+        -webkit-transform: rotateY(0);
+                transform: rotateY(0);
+      }
+
+      img {
+        border: .5rem solid var(--off-white);
+      }
+    </style>
+    <div class="card__front">
+      
+      <img class="piece__image" id="{{piece.filenameId}}" srcset="{{getSrcset(piece)}}">
+    </div>
+    <div class="card__back">
+      
+      <p class="card__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, explicabo! Quidem amet laborum dignissimos quia, repudiandae cum totam perferendis velit voluptatum aspernatur vel animi ab, unde odit quos magnam, eveniet!</p>
+    </div>
+  </template>
+
+  <script>Polymer({is:"og-portfolio-piece",hostAttributes:{role:"article"},properties:{x:{type:Number,value:1920,reflectToAttribute:!0},y:{type:Number,value:1080,reflectToAttribute:!0},flipped:{type:Boolean,value:!1,reflectToAttribute:!0},piece:{type:Object},directory:{type:String,value:"src/images/"}},attached:function(){var e=this;e.addEventListener("click",function(){e.flipped=!e.flipped})},getSrcset:function(e){for(var t="",i=e.resolutions.length-1;i>=0;i--)t+=this.directory+e.filenameId+"/"+e.filenameId+e.resolutions[i].filenameSuffix.replace(",","%2C")+"."+e.resolutions[i].types[0]+" "+e.resolutions[i].width+"w",0!==i&&(t+=", ");return t}});</script>
 </dom-module>
 <dom-module id="og-portfolio" assetpath="src/og-portfolio/">
   <template>
@@ -122,14 +244,14 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
         display: block;
       }
     </style>
-    <template is="dom-repeat" items="{{pieces}}" as="piece">
-      <article>
-        <img srcset="{{getSrcset(piece)}}">
-      </article>
+    <template id="pieces-repeater" is="dom-repeat" items="{{pieces}}" as="piece">
+      <og-portfolio-piece id="{{piece.filenameId}}" x$="{{piece.resolutions.0.width}}" y$="{{piece.resolutions.0.height}}" directory="{{directory}}" piece="{{piece}}"></og-portfolio-piece>
+      
     </template>
+    <div class="card" data-width="2000" y="1080"></div>
   </template>
 
-  <script>Polymer({is:"og-portfolio",hostAttributes:{role:"article"},properties:{directory:{type:String,value:"src/images/"},pieces:{type:Array,value:function(){return[{filenameId:"hydroponic",resolutions:[{width:"2000",height:"1080",filenameSuffix:"",types:["jpg","png"]},{width:"1000",height:"540",filenameSuffix:"@0,5x",types:["jpg"]},{width:"500",height:"270",filenameSuffix:"@0,25x",types:["jpg"]}],title:"Hydroponic Artificial",date:"2016-MM-DD"},{filenameId:"uncharted",resolutions:[{width:"2042",height:"1080",filenameSuffix:"",types:["jpg","png"]},{width:"1021",height:"540",filenameSuffix:"@0,5x",types:["jpg"]},{width:"511",height:"270",filenameSuffix:"@0,25x",types:["jpg"]}]},{filenameId:"robbery",resolutions:[{width:"2100",height:"1160",filenameSuffix:"",types:["jpg","png"]},{width:"1050",height:"580",filenameSuffix:"@0,5x",types:["jpg"]},{width:"525",height:"290",filenameSuffix:"@0,25x",types:["jpg"]}]},{filenameId:"crackhouse",resolutions:[{width:"2826",height:"1527",filenameSuffix:"",types:["jpg","png"]},{width:"1413",height:"764",filenameSuffix:"@0,5x",types:["jpg"]},{width:"707",height:"382",filenameSuffix:"@0,25x",types:["jpg"]}]},{filenameId:"shark",resolutions:[{width:"4224",height:"2160",filenameSuffix:"",types:["jpg","png"]},{width:"2112",height:"1080",filenameSuffix:"@0,5x",types:["jpg"]},{width:"1056",height:"540",filenameSuffix:"@0,25x",types:["jpg"]}]}]}}},getSrc:function(){},getSrcset:function(e){for(var i="",t=e.resolutions.length-1;t>=0;t--)i+=this.directory+e.filenameId+"/"+e.filenameId+e.resolutions[t].filenameSuffix.replace(",","%2C")+"."+e.resolutions[t].types[0]+" "+e.resolutions[t].width+"w",0!==t&&(i+=", ");return i}});</script>
+  <script>Polymer({is:"og-portfolio",hostAttributes:{role:"article"},properties:{directory:{type:String,value:"src/images/"},pieces:{type:Array,value:function(){return[{filenameId:"hydroponic",resolutions:[{width:"2000",height:"1080",filenameSuffix:"",types:["jpg","png"]},{width:"1000",height:"540",filenameSuffix:"@0,5x",types:["jpg"]},{width:"500",height:"270",filenameSuffix:"@0,25x",types:["jpg"]}],title:"Hydroponic Artificial",date:"2016-MM-DD"},{filenameId:"uncharted",resolutions:[{width:"2042",height:"1080",filenameSuffix:"",types:["jpg","png"]},{width:"1021",height:"540",filenameSuffix:"@0,5x",types:["jpg"]},{width:"511",height:"270",filenameSuffix:"@0,25x",types:["jpg"]}]},{filenameId:"robbery",resolutions:[{width:"2100",height:"1160",filenameSuffix:"",types:["jpg","png"]},{width:"1050",height:"580",filenameSuffix:"@0,5x",types:["jpg"]},{width:"525",height:"290",filenameSuffix:"@0,25x",types:["jpg"]}]},{filenameId:"crackhouse",resolutions:[{width:"2826",height:"1527",filenameSuffix:"",types:["jpg","png"]},{width:"1413",height:"764",filenameSuffix:"@0,5x",types:["jpg"]},{width:"707",height:"382",filenameSuffix:"@0,25x",types:["jpg"]}]},{filenameId:"shark",resolutions:[{width:"4224",height:"2160",filenameSuffix:"",types:["jpg","png"]},{width:"2112",height:"1080",filenameSuffix:"@0,5x",types:["jpg"]},{width:"1056",height:"540",filenameSuffix:"@0,25x",types:["jpg"]}]}]}}}});</script>
 </dom-module>
 <dom-module id="og-footer" assetpath="src/og-footer/">
   <template>
@@ -137,6 +259,8 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
       :host {
         display: block;
         text-align: center;
+        /*margin: var(--global-spacing) auto;*/
+        margin: 6rem auto var(--global-spacing);
       }
 
       h2 {
@@ -159,6 +283,62 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
     <og-header></og-header>
     <main>
       <og-portfolio></og-portfolio>
+      <og-about id="about-me">
+        <style scoped="">
+          og-about {
+            /*padding-left: 200px;*/
+            display: block;
+            overflow: auto;
+            /*max-width: 80%;*/
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 6rem;
+          }
+
+          img {
+            /*float: left;*/
+            width: 200px;
+            border-radius: 25px;
+            /* border: 8px solid whitesmoke; */
+            /*margin-left: -200px;*/
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 20px rgba(0,0,0,1);
+            border: 8px solid whitesmoke;
+
+
+          }
+
+          @media (min-width: 40em) {
+            img {
+              margin-bottom: 1.75rem;
+            }
+          }
+
+          h2 {
+            /*text-align: left;*/
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 39rem;
+            margin-top: 0;
+            margin-top: .5rem;
+          }
+
+          p {
+            max-width: 39rem;
+            margin-left: auto;
+            margin-right: auto;
+          }
+        </style>
+        <img src="/src/images/avatars/linkedin-avatar.jpg">
+        <h2>About Me</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis accusamus sint veniam repellendus! Recusandae ipsam aperiam quaerat tempore neque sed at expedita adipisci beatae consequuntur, nisi doloribus hic, deserunt voluptate.</p>
+        <p>Totam fuga, quae cumque doloribus dolorum blanditiis libero ex odit deleniti perferendis corporis at ipsam officia natus dolorem possimus culpa aliquid, sit veritatis ducimus esse recusandae laborum ullam aperiam! Eos!</p>
+        <p>Dolor enim, quasi omnis. Alias nihil, quis quaerat fugiat. Dolores aut rerum eum iusto saepe est atque iste, odio animi cupiditate sed, nemo architecto quae. Porro, modi tempore. Quas, omnis.</p>
+      </og-about>
     </main>
     <og-footer></og-footer>
   </template>
@@ -176,18 +356,52 @@ e.attachedCallback&&e.attachedCallback())}function c(e){d(e),g(e,function(e){d(e
           img {
             max-width: 100%;
           }
+
+          p {
+            max-width: 39em;
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          h1, h2, h3, h4, h5, h6 {
+            text-align: center;
+            font-family: var(--heading-font);
+            font-weight: 500;
+            line-height: 1;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+          }
+
+          @media (min-width: 50em) {
+            h1, h2, h3, h4, h5, h6 {
+              margin-top: 2rem;
+              margin-bottom: 2rem;
+            }
+          }
+
+          h1 {
+            font-size: 2.5rem;
+          }
+          @media (min-width: 40em) {
+            h1 {
+              font-size: 4rem;
+            }
+          }
+
+          h2 {
+            font-size: 2.25rem;
+          }
+          @media (min-width: 40em) {
+            h2 {
+              font-size: 3.5rem;
+              line-height: .6;
+              padding-top: .5rem;
+              margin-bottom: 1.5rem;
+            }
+          }
         </style>
       </template>
     </dom-module>
-
-    <style>
-      body {
-        padding: 0;
-        margin: 0;
-
-        font-family: sans-serif;
-      }
-    </style>
 
     <og-site></og-site>
   

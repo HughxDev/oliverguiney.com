@@ -1,0 +1,165 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="og-portfolio-piece">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        margin-bottom: calc( var(--global-spacing) * .75 );
+        /*box-shadow: 0 2px 2px rgba(255,255,255,0.125)*/
+        /*border: .5rem solid var(--off-white);*/
+
+        position: relative;
+        /*float: left;*/
+        padding-bottom: calc( var(--h) / var(--w) * 100% );
+        width: 100%;
+        /*text-align: center;*/
+      }
+      
+      :host([x="2000"]) { --w: 2000; }
+      :host([x="2042"]) { --w: 2042; }
+      :host([x="2100"]) { --w: 2100; }
+      :host([x="2826"]) { --w: 2826; }
+      :host([x="4224"]) { --w: 4224; }
+
+      :host([y="1080"]) { --h: 1080; }
+      :host([y="1160"]) { --h: 1160; }
+      :host([y="1527"]) { --h: 1527; }
+      :host([y="2160"]) { --h: 2160; }
+
+      .card__front,
+      .card__back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .card__front,
+      .card__back {
+        -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+        -webkit-transition: -webkit-transform 0.3s;
+                transition: transform 0.3s;
+      }
+
+      .card__back {
+        padding: var(--global-spacing);
+        background-color: #1e1e1e;
+        -webkit-transform: rotateY(-180deg);
+                transform: rotateY(-180deg);
+      }
+
+      .card__back > :first-child {
+        margin-top: 0;
+      }
+
+      .card__back > :last-child {
+        margin-bottom: 0;
+      }
+
+      :host([flipped]) .card__front {
+        -webkit-transform: rotateY(-180deg);
+                transform: rotateY(-180deg);
+      }
+
+      :host([flipped]) .card__back {
+        -webkit-transform: rotateY(0);
+                transform: rotateY(0);
+      }
+
+      img {
+        border: .5rem solid var(--off-white);
+      }
+    </style>
+    <div class="card__front">
+      <!-- <content select="img, .piece__image"></content> -->
+      <img class="piece__image" id="{{piece.filenameId}}" srcset="{{getSrcset(piece)}}" />
+    </div>
+    <div class="card__back">
+      <!-- <content select="p, .card__text"></content> -->
+      <p class="card__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, explicabo! Quidem amet laborum dignissimos quia, repudiandae cum totam perferendis velit voluptatum aspernatur vel animi ab, unde odit quos magnam, eveniet!</p>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'og-portfolio-piece',
+
+      hostAttributes: {
+        role: 'article'
+        // class: 'piece card effect__click'
+      },
+
+      properties: {
+        x: {
+          type: Number,
+          value: 1920,
+          reflectToAttribute: true
+        },
+        y: {
+          type: Number,
+          value: 1080,
+          reflectToAttribute: true
+        },
+        // effect: {
+        //   type: String,
+        //   value: 'click'
+        //   // reflectToAttribute: true
+        // },
+        flipped: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true
+        },
+        piece: {
+          type: Object
+        },
+        directory: {
+          type: String,
+          value: 'src/images/'
+        }
+      },
+
+      attached: function ogPortfolioPieceAttached() {
+        var portfolioPiece = this;
+
+        portfolioPiece.addEventListener( "click", function() {
+          portfolioPiece.flipped = !portfolioPiece.flipped;
+        });
+      },
+
+      getSrcset: function ogPortfolioGetSrcset( piece ) {
+        /*
+          {
+            "width": "2000",
+            "height": "1080",
+            "filename-suffix": "",
+            "types": [ "jpg", "png" ]
+          }
+        */
+        // hydroponic-artificial.jpg 2000w
+        // return piece.filenameId + '.jpg';
+        // return piece[0];
+        // return piece.filenameId + '.' + resolution.types[0] + ' ' + resolution.width + 'w';
+        var srcset = '';
+        // var ;
+        var i = piece.resolutions.length - 1;
+
+        for ( ; i >= 0; i--) {
+          srcset += this.directory + piece.filenameId + '/' + piece.filenameId + piece.resolutions[i].filenameSuffix.replace( ',', '%2C' ) + '.' + piece.resolutions[i].types[0] + ' ' + piece.resolutions[i].width + 'w';
+        
+          if ( i !== 0 ) {
+            srcset += ', ';
+          }
+        }
+
+        return srcset;
+      }
+
+    });
+  </script>
+</dom-module>

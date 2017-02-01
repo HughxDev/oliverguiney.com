@@ -1,4 +1,5 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../og-portfolio-piece/og-portfolio-piece.html" />
 
 <dom-module id="og-portfolio">
   <template>
@@ -7,11 +8,17 @@
         display: block;
       }
     </style>
-    <template is="dom-repeat" items="{{pieces}}" as="piece">
-      <article>
-        <img srcset="{{getSrcset(piece)}}" />
-      </article>
+    <template id="pieces-repeater" is="dom-repeat" items="{{pieces}}" as="piece">
+      <og-portfolio-piece
+        id="{{piece.filenameId}}"
+        x$="{{piece.resolutions.0.width}}"
+        y$="{{piece.resolutions.0.height}}"
+        directory="{{directory}}"
+        piece="{{piece}}"
+      ></og-portfolio-piece>
+      <!-- <og-portfolio-piece piece="{{piece}}"></og-portfolio-piece> -->
     </template>
+    <div class="card" data-width="2000" y="1080"></div>
   </template>
 
   <script>
@@ -159,35 +166,16 @@
         }
       },
 
-      getSrc: function ogPortfolioGetSrc() {},
-
-      getSrcset: function ogPortfolioGetSrcset( piece ) {
-        /*
-          {
-            "width": "2000",
-            "height": "1080",
-            "filename-suffix": "",
-            "types": [ "jpg", "png" ]
-          }
-        */
-        // hydroponic-artificial.jpg 2000w
-        // return piece.filenameId + '.jpg';
-        // return piece[0];
-        // return piece.filenameId + '.' + resolution.types[0] + ' ' + resolution.width + 'w';
-        var srcset = '';
-        // var ;
-        var i = piece.resolutions.length - 1;
-
-        for ( ; i >= 0; i--) {
-          srcset += this.directory + piece.filenameId + '/' + piece.filenameId + piece.resolutions[i].filenameSuffix.replace( ',', '%2C' ) + '.' + piece.resolutions[i].types[0] + ' ' + piece.resolutions[i].width + 'w';
+      // attached: function ogPortfolioAttached() {
         
-          if ( i !== 0 ) {
-            srcset += ', ';
-          }
-        }
+      // },
 
-        return srcset;
-      }
+      // getSrc: function ogPortfolioGetSrc() {},
+
+      // arraySelector: function () {
+      //   var resolution = this.$.piecesRepeater.itemForElement(e.target);
+      //   this.$.selector.select(item);
+      // }
     });
   </script>
 </dom-module>

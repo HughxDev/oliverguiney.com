@@ -29,7 +29,7 @@
 
 
 /* eslint-disable quotes, comma-spacing */
-var PrecacheConfig = [["/bower_components/polymer/polymer-micro.html","c8afdb92849d162268e7cc58eff5cd57"],["/bower_components/polymer/polymer-mini.html","33af9817ee3946c225d038f5a04d276a"],["/bower_components/polymer/polymer.html","186cfd0bba3b39fd262e69dc7bcc699a"],["/bower_components/webcomponentsjs/webcomponents-lite.js","ea1b320f1cc7094f02a4b410c0763a6f"],["/index.html","b1f069c472730777d5be5a9b9369a235"],["/src/og-footer/og-footer.html","a088ed8f738d7adedc63015fe9989ab1"],["/src/og-header/og-header.html","65ea85c92b310ae1120563bfef64a714"],["/src/og-portfolio/og-portfolio.html","098518805f6a961c8fdafc853e2ba626"],["/src/og-site/og-site.html","62c175f50b3c0f4b803e61bc5ec1b3da"]];
+var PrecacheConfig = [["/bower_components/polymer/polymer-micro.html","c8afdb92849d162268e7cc58eff5cd57"],["/bower_components/polymer/polymer-mini.html","33af9817ee3946c225d038f5a04d276a"],["/bower_components/polymer/polymer.html","186cfd0bba3b39fd262e69dc7bcc699a"],["/bower_components/webcomponentsjs/webcomponents-lite.js","ea1b320f1cc7094f02a4b410c0763a6f"],["/index.html","025d7619f21c7501ef51e7826a884db5"],["/src/og-footer/og-footer.html","635af834493c69983cecba2fcbb848c3"],["/src/og-header/og-header.html","d5af3c57a77f7b50be7f89f9c1c435e4"],["/src/og-portfolio-piece/og-portfolio-piece.html","06485b9629ecbfb067a54fc421ea1255"],["/src/og-portfolio/og-portfolio.html","95535f0803fbff6882bc595352537f43"],["/src/og-site/og-site.html","e26228b7394570d7860952a9301e8309"]];
 /* eslint-enable quotes, comma-spacing */
 var CacheNamePrefix = 'sw-precache-v1--' + (self.registration ? self.registration.scope : '') + '-';
 

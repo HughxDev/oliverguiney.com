@@ -4,13 +4,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>og</title>
+    <title>Oliver Guiney, Concept Artist</title>
     <meta name="description" content="og description">
 
     <!-- See https://goo.gl/OOhYW5 -->
     <link rel="manifest" href="/manifest.json">
 
     <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <!-- <script>
+      /* this script must run before Polymer is imported */
+      window.Polymer = {
+        dom: 'shadow',
+        lazyRegister: true
+      };
+    </script> -->
 
     <!-- <link rel="import" href="/styles/fonts.html" />
     <style include="fonts"></style> -->
@@ -50,6 +58,23 @@
       /* at the document level  */
       :root {
         --heading-font: "TT Lakes";
+        --global-spacing: 2rem;
+        --off-white: whitesmoke;
+      }
+
+      body {
+        padding: 0;
+        margin: 0 var(--global-spacing);
+        font-family: sans-serif;
+        background-image: url('src/images/patterns/noisy_net.png');
+        color: var(--off-white);
+      }
+
+      @media (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi) {
+        body {
+          background-image: url('src/images/patterns/noisy_net_@2X.png'); 
+        }
       }
     </style>
 
@@ -63,18 +88,52 @@
           img {
             max-width: 100%;
           }
+
+          p {
+            max-width: 39em;
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          h1, h2, h3, h4, h5, h6 {
+            text-align: center;
+            font-family: var(--heading-font);
+            font-weight: 500;
+            line-height: 1;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+          }
+
+          @media (min-width: 50em) {
+            h1, h2, h3, h4, h5, h6 {
+              margin-top: 2rem;
+              margin-bottom: 2rem;
+            }
+          }
+
+          h1 {
+            font-size: 2.5rem;
+          }
+          @media (min-width: 40em) {
+            h1 {
+              font-size: 4rem;
+            }
+          }
+
+          h2 {
+            font-size: 2.25rem;
+          }
+          @media (min-width: 40em) {
+            h2 {
+              font-size: 3.5rem;
+              line-height: .6;
+              padding-top: .5rem;
+              margin-bottom: 1.5rem;
+            }
+          }
         </style>
       </template>
     </dom-module>
-
-    <style>
-      body {
-        padding: 0;
-        margin: 0;
-
-        font-family: sans-serif;
-      }
-    </style>
 
     <link rel="import" href="src/og-site/og-site.html">
   </head>
