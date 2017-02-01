@@ -1,25 +1,20 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../og-header/og-header.html" />
+<link rel="import" href="../og-portfolio/og-portfolio.html" />
+<link rel="import" href="../og-footer/og-footer.html" />
 
 <dom-module id="og-site">
   <template>
-    <style>
+    <style include="shared-styles">
       :host {
         display: block;
       }
     </style>
-    <style is="custom-style">
-      /* Will be prevented from affecting local DOM of Polymer elements */
-      * {
-        box-sizing: border-box;
-      }
-
-      /* Use the :root selector to define custom properties and mixins */
-      /* at the document level  */
-      :root {
-        --heading-font: "TT Lakes", sans-serif;
-      }
-    </style>
-    <h2>Oliver Guiney’s [[prop1]]</h2>
+    <og-header></og-header>
+    <main>
+      <og-portfolio></og-portfolio>
+    </main>
+    <og-footer></og-footer>
   </template>
 
   <script>
@@ -27,12 +22,7 @@
 
       is: 'og-site',
 
-      properties: {
-        prop1: {
-          type: String,
-          value: 'Portfolio',
-        },
-      },
+      properties: {},
 
     });
   </script>

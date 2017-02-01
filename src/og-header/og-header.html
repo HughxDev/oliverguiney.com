@@ -1,0 +1,46 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="og-header">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        text-align: center;
+        margin: 2rem auto;
+      }
+
+      .name {
+        /*font-size: */
+        font-size: 4rem;
+        line-height: 1;
+        font-family: var(--heading-font);
+        font-weight: 500;
+      }
+
+      .name, .title {
+        margin: 0;
+      }
+
+      .title {
+        margin-top: .5rem;
+        font-size: 1.25rem;
+      }
+    </style>
+    <h1 class="name">Oliver Guiney</h1>
+    <p class="title">Concept Artist</p>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'og-header',
+
+      hostAttributes: {
+        role: 'banner'
+      }
+
+      // properties: {},
+
+    });
+  </script>
+</dom-module>
