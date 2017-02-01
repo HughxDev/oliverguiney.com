@@ -83,7 +83,7 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
 
 
 
-<dom-module id="og-header" assetpath="../../../../src/og-header/">
+<dom-module id="og-header" assetpath="src/og-header/">
   <template>
     <style include="shared-styles">
       :host {
@@ -115,7 +115,7 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
 
   <script>Polymer({is:"og-header",hostAttributes:{role:"banner"}});</script>
 </dom-module>
-<dom-module id="og-portfolio" assetpath="../../../../src/og-portfolio/">
+<dom-module id="og-portfolio" assetpath="src/og-portfolio/">
   <template>
     <style include="shared-styles">
       :host {
@@ -131,7 +131,7 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
 
   <script>Polymer({is:"og-portfolio",hostAttributes:{role:"article"},properties:{directory:{type:String,value:"src/images/"},pieces:{type:Array,value:function(){return[{filenameId:"hydroponic",resolutions:[{width:"2000",height:"1080",filenameSuffix:"",types:["jpg","png"]},{width:"1000",height:"540",filenameSuffix:"@0,5x",types:["jpg"]},{width:"500",height:"270",filenameSuffix:"@0,25x",types:["jpg"]}],title:"Hydroponic Artificial",date:"2016-MM-DD"},{filenameId:"uncharted",resolutions:[{width:"2042",height:"1080",filenameSuffix:"",types:["jpg","png"]},{width:"1021",height:"540",filenameSuffix:"@0,5x",types:["jpg"]},{width:"511",height:"270",filenameSuffix:"@0,25x",types:["jpg"]}]},{filenameId:"robbery",resolutions:[{width:"2100",height:"1160",filenameSuffix:"",types:["jpg","png"]},{width:"1050",height:"580",filenameSuffix:"@0,5x",types:["jpg"]},{width:"525",height:"290",filenameSuffix:"@0,25x",types:["jpg"]}]},{filenameId:"crackhouse",resolutions:[{width:"2826",height:"1527",filenameSuffix:"",types:["jpg","png"]},{width:"1413",height:"764",filenameSuffix:"@0,5x",types:["jpg"]},{width:"707",height:"382",filenameSuffix:"@0,25x",types:["jpg"]}]},{filenameId:"shark",resolutions:[{width:"4224",height:"2160",filenameSuffix:"",types:["jpg","png"]},{width:"2112",height:"1080",filenameSuffix:"@0,5x",types:["jpg"]},{width:"1056",height:"540",filenameSuffix:"@0,25x",types:["jpg"]}]}]}}},getSrc:function(){},getSrcset:function(e){for(var i="",t=e.resolutions.length-1;t>=0;t--)i+=this.directory+e.filenameId+"/"+e.filenameId+e.resolutions[t].filenameSuffix.replace(",","%2C")+"."+e.resolutions[t].types[0]+" "+e.resolutions[t].width+"w",0!==t&&(i+=", ");return i}});</script>
 </dom-module>
-<dom-module id="og-footer" assetpath="../../../../src/og-footer/">
+<dom-module id="og-footer" assetpath="src/og-footer/">
   <template>
     <style include="shared-styles">
       :host {
@@ -149,7 +149,7 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
 
   <script>Polymer({is:"og-footer",hostAttributes:{role:"contentinfo"},properties:{currentYear:{value:function(){return(new Date).getFullYear()}}}});</script>
 </dom-module>
-<dom-module id="og-site" assetpath="../../../../src/og-site/">
+<dom-module id="og-site" assetpath="src/og-site/">
   <template>
     <style include="shared-styles">
       :host {
