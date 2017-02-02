@@ -38,12 +38,17 @@
       a {
         color: #28aadc;
       }
+
+      .email-address {
+        text-transform: uppercase;
+      }
     </style>
     <h1 class="__name __child">Oliver Guiney</h1>
     <p class="__title __child">Concept Artist</p>
+    <p class="__child"><a class="email-address" href="mailto:oliver.guiney@gmail.com">oliver.guiney@gmail.com</a></p>
     <nav class="__nav __child">
       <!-- <a>Work</a> -->
-      <a href="#about-me">About Me</a>
+      <a href="#about">About Me</a>
     </nav>
   </template>
 
@@ -53,7 +58,8 @@
       is: 'og-header',
 
       hostAttributes: {
-        role: 'banner'
+        role: 'banner',
+        id: 'top'
       }
 
       // properties: {},

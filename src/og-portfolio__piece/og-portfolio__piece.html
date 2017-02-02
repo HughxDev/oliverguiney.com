@@ -1,6 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<dom-module id="og-portfolio-piece">
+<dom-module id="og-portfolio__piece">
   <template>
     <style include="shared-styles">
       :host {
@@ -46,6 +46,7 @@
       }
 
       .card__back {
+        box-shadow: var(--global-shadow);
         padding: var(--global-spacing);
         background-color: #1e1e1e;
         -webkit-transform: rotateY(-180deg);
@@ -71,12 +72,21 @@
       }
 
       img {
-        border: .5rem solid var(--off-white);
+        /*border: .5rem solid var(--off-white);*/
+        /*border: .25rem solid var(--frame-color);*/
+        max-width: 100%;
+        box-shadow: var(--global-shadow);
       }
+
+      /*@media (min-width: 40em) {
+        img {
+          border: .5rem solid var(--frame-color);
+        }
+      }*/
     </style>
     <div class="card__front">
       <!-- <content select="img, .piece__image"></content> -->
-      <img class="piece__image" id="{{piece.filenameId}}" srcset="{{getSrcset(piece)}}" />
+      <img class="piece__image" id="[[piece.filenameId]]" srcset="[[getSrcset(piece)]]" />
     </div>
     <div class="card__back">
       <!-- <content select="p, .card__text"></content> -->
@@ -87,7 +97,7 @@
   <script>
     Polymer({
 
-      is: 'og-portfolio-piece',
+      is: 'og-portfolio__piece',
 
       hostAttributes: {
         role: 'article'

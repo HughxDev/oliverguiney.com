@@ -1,5 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html" />
-<link rel="import" href="../og-portfolio-piece/og-portfolio-piece.html" />
+<link rel="import" href="../og-portfolio__piece/og-portfolio__piece.html" />
 
 <dom-module id="og-portfolio">
   <template>
@@ -7,16 +7,21 @@
       :host {
         display: block;
       }
+
+      p {
+        text-align: center;
+      }
     </style>
-    <template id="pieces-repeater" is="dom-repeat" items="{{pieces}}" as="piece">
-      <og-portfolio-piece
-        id="{{piece.filenameId}}"
-        x$="{{piece.resolutions.0.width}}"
-        y$="{{piece.resolutions.0.height}}"
-        directory="{{directory}}"
-        piece="{{piece}}"
-      ></og-portfolio-piece>
-      <!-- <og-portfolio-piece piece="{{piece}}"></og-portfolio-piece> -->
+    <h2 class="visuallyhidden">Work</h2>
+    <p>Click or tap on a piece to see process details.</p>
+    <template id="pieces-repeater" is="dom-repeat" items="[[pieces]]" as="piece">
+      <og-portfolio__piece
+        id="[[piece.filenameId]]"
+        x$="[[piece.resolutions.0.width]]"
+        y$="[[piece.resolutions.0.height]]"
+        directory="[[directory]]"
+        piece="[[piece]]"
+      ></og-portfolio__piece>
     </template>
     <div class="card" data-width="2000" y="1080"></div>
   </template>
@@ -27,7 +32,8 @@
       is: 'og-portfolio',
 
       hostAttributes: {
-        role: 'article'
+        role: 'article',
+        id: 'portfolio'
       },
 
       properties: {
@@ -41,6 +47,7 @@
             return [
               // plant lab
               {
+                "title": "Think Vertically",
                 "filenameId": "hydroponic",
                 "resolutions": [
                   {
@@ -67,6 +74,7 @@
               },
               // uncharted
               {
+                "title": "Wrathful Deity",
                 "filenameId": "uncharted",
                 "resolutions": [
                   {
