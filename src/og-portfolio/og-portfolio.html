@@ -20,10 +20,21 @@
         x$="[[piece.resolutions.0.width]]"
         y$="[[piece.resolutions.0.height]]"
         directory="[[directory]]"
+        filename-prefix="[[filenamePrefix]]"
         piece="[[piece]]"
       ></og-portfolio__piece>
     </template>
-    <div class="card" data-width="2000" y="1080"></div>
+    <!-- 
+    <img usemap="#image-maps-2017-02-03-044944" alt="" />
+    <map name="image-maps-2017-02-03-044944">
+      <area
+        id="balinese"
+        alt="Based on a confluence of Balinese stone masks and statues"
+        shape="rect"
+        coords="194,921,1637,987"
+      />
+    </map>
+    -->
   </template>
 
   <script>
@@ -40,6 +51,10 @@
         directory: {
           type: String,
           value: 'src/images/'
+        },
+        filenamePrefix: {
+          type: String,
+          value: 'oliver-guiney'
         },
         pieces: {
           type: Array,
@@ -95,6 +110,21 @@
                     "filenameSuffix": "@0,25x",
                     "types": [ "jpg" ]
                   }
+                ],
+                "process": [
+                  {
+                    "filenameId": "process-01",
+                    "title": "",
+                    "text": "",
+                    "areas": [
+                      {
+                        "id": "balinese",
+                        "alt": "Based on a confluence of Balinese stone masks and statues",
+                        "shape": "rect",
+                        "coords": "194,921,1637,987"
+                      }
+                    ]
+                  },
                 ]
               },
               // car chase
