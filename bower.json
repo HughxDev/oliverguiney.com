@@ -3,7 +3,8 @@
   "description": "Oliver Guiney’s Illustration Portfolio",
   "main": "index.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.4.0"
+    "polymer": "Polymer/polymer#^1.4.0",
+    "simple-carousel": "polymer-simple-carousel#^1.1.0"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",

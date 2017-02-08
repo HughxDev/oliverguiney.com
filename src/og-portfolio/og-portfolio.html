@@ -1,5 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html" />
 <link rel="import" href="../og-portfolio__piece/og-portfolio__piece.html" />
+<link rel="import" href="../og-portfolio__process/og-portfolio__process.html" />
+<link rel="import" href="../og-portfolio__slide/og-portfolio__slide.html" />
 
 <dom-module id="og-portfolio">
   <template>
@@ -14,27 +16,87 @@
     </style>
     <h2 class="visuallyhidden">Work</h2>
     <p>Click or tap on a piece to see process details.</p>
-    <template id="pieces-repeater" is="dom-repeat" items="[[pieces]]" as="piece">
-      <og-portfolio__piece
-        id="[[piece.filenameId]]"
-        x$="[[piece.resolutions.0.width]]"
-        y$="[[piece.resolutions.0.height]]"
-        directory="[[directory]]"
-        filename-prefix="[[filenamePrefix]]"
-        piece="[[piece]]"
-      ></og-portfolio__piece>
-    </template>
-    <!-- 
-    <img usemap="#image-maps-2017-02-03-044944" alt="" />
-    <map name="image-maps-2017-02-03-044944">
-      <area
-        id="balinese"
-        alt="Based on a confluence of Balinese stone masks and statues"
-        shape="rect"
-        coords="194,921,1637,987"
-      />
-    </map>
-    -->
+    <og-portfolio__piece
+      id="wrathful-deity"
+      directory="[[directory]]"
+      filename-prefix="[[filenamePrefix]]"
+      title-of-work="Wrathful Deity"
+      short-description="In a mountainous region, a man with a pistol approaches the opening of a massive stone temple shaped like a fanged god’s head."
+      filename-id="wrathful-deity"
+      date="2016-MM-DD"
+      resolutions='[
+        {
+          "width": "2000",
+          "height": "1080",
+          "filenameSuffix": "",
+          "types": [ "jpg", "png" ]
+        },
+        {
+          "width": "1000",
+          "height": "540",
+          "filenameSuffix": "@0,5x",
+          "types": [ "jpg" ]
+        },
+        {
+          "width": "500",
+          "height": "270",
+          "filenameSuffix": "@0,25x",
+          "types": [ "jpg" ]
+        }
+      ]'>
+      <og-portfolio__process>
+        <og-portfolio__slide title-of-work="Diety Head" filename-id="process-01">
+          <p>Based on a confluence of Balinese stone masks and statues</p>
+        </og-portfolio__slide>
+        <og-portfolio__slide title-of-work="Pillar Design" filename-id="process-02">
+          <dl>
+            <dt>Brick Shingles</dt>
+            <dd>Konark Sun Temple</dd>
+            <dt>Base Relief</dt>
+            <dd>Masroor rock cut temple, India</dd>
+            <dt>Tree carving in middle</dt>
+            <dd>Prambanan, Indonesia</dd>
+          </dl>
+        </og-portfolio__slide>
+        <og-portfolio__slide title-of-work="Thumbnails 1" filename-id="process-03">
+          <ul>
+            <li>Initially did 200 abstract thumbnails to explore shapes in space</li>
+            <li>Setting up sheets of 25 with various sizes and restrictions</li>
+            <li>Spending usually only a minute tops for each thumb</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide title-of-work="Thumbnails 2" filename-id="process-04">
+          <ul>
+            <li>Narrowing in on the thumbnails I liked, and working them up</li>
+            <li>I didn’t use any of these thumbs DIRECTLY, but I took elements from each one, mostly 1, 5 and 8</li>
+            <li>Looking back, I’d try to do more of the problem solving in this phase, as I ran into problems later</li>
+            <li>Part of what makes art exciting is to learn from those failures and figure out problems as you go</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide title-of-work="Research" filename-id="process-05">
+          <ul>
+            <li>[Collage of temple images]</li>
+            <li>[Collage of Indonesian jungle images]</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide title-of-work="Research" filename-id="process-06"></og-portfolio__slide>
+        <og-portfolio__slide title-of-work="Character" filename-id="process-07"></og-portfolio__slide>
+        <og-portfolio__slide title-of-work="3D Assets - Temple: Z-Brush" filename-id="process-08"></og-portfolio__slide>
+        <og-portfolio__slide title-of-work="Render" filename-id="process-10">
+          <ul>
+            <li>I decided to use vue to render the scene because of the options it gives in the atmosphere editor and also because it has a large library of 3D plants that I can drop in and get free lighting out of</li>
+            <li>I want to push the 3D as far as possible before I get into photoshop</li>
+            <li>Back cliff wall downloaded from badkings, although vue is great for mountains as well</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide title-of-work="Compositing" filename-id="process-11">
+          <ul>
+            <li>I like to knock in all my textures with crunchy detail at first</li>
+            <li>Then I can lovingly overpaint and finesse each element into a cohesive whole</li>
+          </ul>
+        </og-portfolio__slide>
+      </og-portfolio__process>
+    </og-portfolio__piece>
   </template>
 
   <script>
@@ -56,6 +118,9 @@
           type: String,
           value: 'oliver-guiney'
         },
+        filenameId: {
+          type: String
+        },
         pieces: {
           type: Array,
           value: function () {
@@ -64,6 +129,7 @@
               {
                 "title": "Think Vertically",
                 "filenameId": "hydroponic",
+                "shortDescription": "A woman in a white lab coat tending to a futuristic machine in a lab with a lot of plant overgrowth.",
                 "resolutions": [
                   {
                     "width": "2000",
@@ -84,51 +150,12 @@
                     "types": [ "jpg" ]
                   }
                 ],
-                "title": "Hydroponic Artificial",
                 "date": "2016-MM-DD"
               },
               // uncharted
-              {
-                "title": "Wrathful Deity",
-                "filenameId": "uncharted",
-                "resolutions": [
-                  {
-                    "width": "2042",
-                    "height": "1080",
-                    "filenameSuffix": "",
-                    "types": [ "jpg", "png" ]
-                  },
-                  {
-                    "width": "1021",
-                    "height": "540",
-                    "filenameSuffix": "@0,5x",
-                    "types": [ "jpg" ]
-                  },
-                  {
-                    "width": "511",
-                    "height": "270",
-                    "filenameSuffix": "@0,25x",
-                    "types": [ "jpg" ]
-                  }
-                ],
-                "process": [
-                  {
-                    "filenameId": "process-01",
-                    "title": "",
-                    "text": "",
-                    "areas": [
-                      {
-                        "id": "balinese",
-                        "alt": "Based on a confluence of Balinese stone masks and statues",
-                        "shape": "rect",
-                        "coords": "194,921,1637,987"
-                      }
-                    ]
-                  },
-                ]
-              },
               // car chase
               {
+                "title": "New York State of Mind",
                 "filenameId": "robbery",
                 "resolutions": [
                   {
@@ -153,6 +180,7 @@
               },
               // dead guy
               {
+                "title": "Sledge Hammer",
                 "filenameId": "crackhouse",
                 "resolutions": [
                   {
@@ -177,6 +205,7 @@
               },
               // guy behind car
               {
+                "title": "The Shark",
                 "filenameId": "shark",
                 "resolutions": [
                   {
@@ -201,6 +230,17 @@
               }
             ];
           }
+        }
+      },
+
+      created: function ogPortfolioCreated() {
+
+      },
+
+      ready: function ogPortfolioReady() {
+        if ( this.hasOwnProperty( 'resolutions' ) && !!this.resolutions.length ) {
+          this.x = this.resolutions[0].width;
+          this.y = this.resolutions[0].height;
         }
       },
 
