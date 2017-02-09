@@ -1,10 +1,12 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/simple-carousel/simple-carousel.html">
 
 <dom-module id="og-portfolio__piece">
   <template>
     <style include="shared-styles">
       :host {
+        /*--w: 1920;
+        --h: 1080;*/
+
         display: block;
 
         margin-bottom: calc( var(--global-spacing) * .75 );
@@ -13,11 +15,12 @@
 
         position: relative;
         /*float: left;*/
+
         padding-bottom: calc( var(--h) / var(--w) * 100% );
         width: 100%;
         /*text-align: center;*/
       }
-      
+
       :host([x="2000"]) { --w: 2000; }
       :host([x="2042"]) { --w: 2042; }
       :host([x="2100"]) { --w: 2100; }
@@ -148,7 +151,7 @@
       >
         <span class="card__close-icon" aria-hidden="true">&times;</span>
       </a>
-      <content select="og-portfolio__process"></content>
+      <content select="og-portfolio__process, simple-carousel"></content>
     </div>
   </template>
 
@@ -164,12 +167,12 @@
       properties: {
         x: {
           type: Number,
-          value: 1920,
+          // value: 1920,
           reflectToAttribute: true
         },
         y: {
           type: Number,
-          value: 1080,
+          // value: 1080,
           reflectToAttribute: true
         },
         flipped: {
@@ -211,10 +214,19 @@
         portfolioPiece.flipped = !portfolioPiece.flipped;
       },
 
+      // created: function ogPortfolioPieceCreated() {},
+
       ready: function ogPortfolioPieceReady() {
         var portfolioPiece = this;
         
-        portfolioPiece.$.image.srcset = portfolioPiece.getSrcset();
+        // portfolioPiece.$.image.srcset = portfolioPiece.getSrcset();
+
+        if ( portfolioPiece.hasOwnProperty( 'resolutions' ) && !!portfolioPiece.resolutions.length ) {
+          portfolioPiece.x = portfolioPiece.resolutions[0].width;
+          portfolioPiece.y = portfolioPiece.resolutions[0].height;
+
+          portfolioPiece.$.image.srcset = portfolioPiece.getSrcset();
+        }
       },
 
       attached: function ogPortfolioPieceAttached() {

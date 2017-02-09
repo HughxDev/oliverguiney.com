@@ -6,14 +6,14 @@
       :host {
         display: block;
 
-        float: left;
+        /*float: left;*/
       }
     </style>
     <!-- <img src$="{{filenamePrepend}}-{{filenameId}}.{{types.0}}" /> -->
     <img id="image" aria-labelledby$="[[portfolioPieceFilenameId]]-[[filenameId]]-description" />
-    <div id$="[[portfolioPieceFilenameId]]-[[filenameId]]-description">
+    <div id$="[[portfolioPieceFilenameId]]-[[filenameId]]-description" class="visuallyhidden">
       <h5>[[titleOfWork]]</h5>
-      <content select="*"></content>
+      <content></content>
     </div>
   </template>
 

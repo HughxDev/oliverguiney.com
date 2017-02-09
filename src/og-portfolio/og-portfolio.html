@@ -2,6 +2,7 @@
 <link rel="import" href="../og-portfolio__piece/og-portfolio__piece.html" />
 <link rel="import" href="../og-portfolio__process/og-portfolio__process.html" />
 <link rel="import" href="../og-portfolio__slide/og-portfolio__slide.html" />
+<link rel="import" href="../../bower_components/simple-carousel/simple-carousel.html">
 
 <dom-module id="og-portfolio">
   <template>
@@ -15,7 +16,22 @@
       }
     </style>
     <h2 class="visuallyhidden">Work</h2>
-    <p>Click or tap on a piece to see process details.</p>
+    <p>Select a piece to view process details.</p>
+    
+    <!-- Think Vertically -->
+    <og-portfolio__piece
+      id="think-vertically"
+      directory="[[directory]]"
+      filename-prefix="[[filenamePrefix]]"
+      title-of-work="Think Vertically"
+      filename-id="hydroponic"
+      short-description="A woman in a white lab coat tending to a futuristic machine in a lab with a lot of plant overgrowth."
+      resolutions='[ { "width": "2000", "height": "1080", "filenameSuffix": "", "types": [ "jpg", "png" ] }, { "width": "1000", "height": "540", "filenameSuffix": "@0,5x", "types": [ "jpg" ] }, { "width": "500", "height": "270", "filenameSuffix": "@0,25x", "types": [ "jpg" ] } ]'>
+          
+    </og-portfolio__piece>
+    <!-- /Think Vertically -->
+
+    <!-- Wrathful Deity -->
     <og-portfolio__piece
       id="wrathful-deity"
       directory="[[directory]]"
@@ -23,80 +39,105 @@
       title-of-work="Wrathful Deity"
       short-description="In a mountainous region, a man with a pistol approaches the opening of a massive stone temple shaped like a fanged god’s head."
       filename-id="wrathful-deity"
-      date="2016-MM-DD"
-      resolutions='[
-        {
-          "width": "2000",
-          "height": "1080",
-          "filenameSuffix": "",
-          "types": [ "jpg", "png" ]
-        },
-        {
-          "width": "1000",
-          "height": "540",
-          "filenameSuffix": "@0,5x",
-          "types": [ "jpg" ]
-        },
-        {
-          "width": "500",
-          "height": "270",
-          "filenameSuffix": "@0,25x",
-          "types": [ "jpg" ]
-        }
-      ]'>
+      resolutions='[{ "width": "2000", "height": "1080", "filenameSuffix": "", "types": [ "jpg", "png" ] }, { "width": "1000", "height": "540", "filenameSuffix": "@0,5x", "types": [ "jpg" ] }, { "width": "500", "height": "270", "filenameSuffix": "@0,25x", "types": [ "jpg" ] }]'>
       <og-portfolio__process>
-        <og-portfolio__slide title-of-work="Diety Head" filename-id="process-01">
-          <p>Based on a confluence of Balinese stone masks and statues</p>
-        </og-portfolio__slide>
-        <og-portfolio__slide title-of-work="Pillar Design" filename-id="process-02">
-          <dl>
-            <dt>Brick Shingles</dt>
-            <dd>Konark Sun Temple</dd>
-            <dt>Base Relief</dt>
-            <dd>Masroor rock cut temple, India</dd>
-            <dt>Tree carving in middle</dt>
-            <dd>Prambanan, Indonesia</dd>
-          </dl>
-        </og-portfolio__slide>
-        <og-portfolio__slide title-of-work="Thumbnails 1" filename-id="process-03">
-          <ul>
-            <li>Initially did 200 abstract thumbnails to explore shapes in space</li>
-            <li>Setting up sheets of 25 with various sizes and restrictions</li>
-            <li>Spending usually only a minute tops for each thumb</li>
-          </ul>
-        </og-portfolio__slide>
-        <og-portfolio__slide title-of-work="Thumbnails 2" filename-id="process-04">
-          <ul>
-            <li>Narrowing in on the thumbnails I liked, and working them up</li>
-            <li>I didn’t use any of these thumbs DIRECTLY, but I took elements from each one, mostly 1, 5 and 8</li>
-            <li>Looking back, I’d try to do more of the problem solving in this phase, as I ran into problems later</li>
-            <li>Part of what makes art exciting is to learn from those failures and figure out problems as you go</li>
-          </ul>
-        </og-portfolio__slide>
-        <og-portfolio__slide title-of-work="Research" filename-id="process-05">
-          <ul>
-            <li>[Collage of temple images]</li>
-            <li>[Collage of Indonesian jungle images]</li>
-          </ul>
-        </og-portfolio__slide>
-        <og-portfolio__slide title-of-work="Research" filename-id="process-06"></og-portfolio__slide>
-        <og-portfolio__slide title-of-work="Character" filename-id="process-07"></og-portfolio__slide>
-        <og-portfolio__slide title-of-work="3D Assets - Temple: Z-Brush" filename-id="process-08"></og-portfolio__slide>
-        <og-portfolio__slide title-of-work="Render" filename-id="process-10">
-          <ul>
-            <li>I decided to use vue to render the scene because of the options it gives in the atmosphere editor and also because it has a large library of 3D plants that I can drop in and get free lighting out of</li>
-            <li>I want to push the 3D as far as possible before I get into photoshop</li>
-            <li>Back cliff wall downloaded from badkings, although vue is great for mountains as well</li>
-          </ul>
-        </og-portfolio__slide>
-        <og-portfolio__slide title-of-work="Compositing" filename-id="process-11">
-          <ul>
-            <li>I like to knock in all my textures with crunchy detail at first</li>
-            <li>Then I can lovingly overpaint and finesse each element into a cohesive whole</li>
-          </ul>
-        </og-portfolio__slide>
+        <simple-carousel>
+          <og-portfolio__slide data-carousel-slide title-of-work="Diety Head" filename-id="process-01">
+            <p>Based on a confluence of Balinese stone masks and statues</p>
+          </og-portfolio__slide>
+          <og-portfolio__slide data-carousel-slide title-of-work="Pillar Design" filename-id="process-02">
+            <dl>
+              <dt>Brick Shingles</dt>
+              <dd>Konark Sun Temple</dd>
+              <dt>Base Relief</dt>
+              <dd>Masroor rock cut temple, India</dd>
+              <dt>Tree carving in middle</dt>
+              <dd>Prambanan, Indonesia</dd>
+            </dl>
+          </og-portfolio__slide>
+          <og-portfolio__slide data-carousel-slide title-of-work="Thumbnails 1" filename-id="process-03">
+            <ul>
+              <li>Initially did 200 abstract thumbnails to explore shapes in space</li>
+              <li>Setting up sheets of 25 with various sizes and restrictions</li>
+              <li>Spending usually only a minute tops for each thumb</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide data-carousel-slide title-of-work="Thumbnails 2" filename-id="process-04">
+            <ul>
+              <li>Narrowing in on the thumbnails I liked, and working them up</li>
+              <li>I didn’t use any of these thumbs DIRECTLY, but I took elements from each one, mostly 1, 5 and 8</li>
+              <li>Looking back, I’d try to do more of the problem solving in this phase, as I ran into problems later</li>
+              <li>Part of what makes art exciting is to learn from those failures and figure out problems as you go</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide data-carousel-slide title-of-work="Research" filename-id="process-05">
+            <ol>
+              <li>Right side: [Collage of temple reference images]</li>
+              <li>Left side: [Collage of lighting/mood reference images (mostly mountainous skylines)]</li>
+            </ol>
+          </og-portfolio__slide>
+          <og-portfolio__slide data-carousel-slide title-of-work="Research" filename-id="process-06">
+            <ol>
+              <li>Right side: [Collage of deity head reference images]</li>
+              <li>Left side: [Collage of Indonesian jungle reference images]</li>
+            </ol>
+          </og-portfolio__slide>
+          <og-portfolio__slide data-carousel-slide title-of-work="Character" filename-id="process-07">
+            <dl>
+              <dt>Daz 3D</dt>
+              <dd>
+                <ul>
+                  <li>Getting the pose believable based on <abbr title="reference">ref</abbr></li>
+                </ul>
+              </dd>
+              <dt>Marvelous Designer</dt>
+              <dd>
+                <ul>
+                  <li>Shirt based on an actual shirt I own</li>
+                  <li>Pants downloaded from fearless makers</li>
+                </ul>
+              </dd>
+              <dt>Keyshot</dt>
+              <dd>
+                <ul>
+                  <li><abbr title="High-dynamic-range imaging">HDRI</abbr> for lighting</li>
+                  <li>Modo for boots/hair/gear</li>
+                  <li>Advanced materials to plug in textures</li>
+                </ul>
+              </dd>
+            </dl>
+          </og-portfolio__slide>
+          <og-portfolio__slide data-carousel-slide title-of-work="3D Assets - Temple: Z-Brush" filename-id="process-08">
+            <ul>
+              <li>Started with a base sculpt of a monster head from badkings</li>
+              <li>My friend Peter Schwaegerle helped me with oversculpts to more closely resemble the source ref</li>
+              <li>Using displace brush + custom alpha to crudely block in filigree relief to get approximate lighting from 3D</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide data-carousel-slide title-of-work="3D Modeling: Modo" filename-id="process-09">
+            <ul>
+              <li>Modo is my goto for 3D because it’s fast and relatively easy to use</li>
+              <li>I blocked out the temple based on the thumbnails I liked, exploring space and plugging in zbrush assets</li>
+              <li>Test render to figure out lighting/<abbr title="composition">comp</abbr></li>
+          </og-portfolio__slide>
+          <og-portfolio__slide data-carousel-slide title-of-work="Render" filename-id="process-10">
+            <ul>
+              <li>I decided to use vue to render the scene because of the options it gives in the atmosphere editor and also because it has a large library of 3D plants that I can drop in and get free lighting out of</li>
+              <li>I want to push the 3D as far as possible before I get into photoshop</li>
+              <li>Back cliff wall downloaded from badkings, although vue is great for mountains as well</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide data-carousel-slide title-of-work="Compositing" filename-id="process-11">
+            <ul>
+              <li>I like to knock in all my textures with crunchy detail at first</li>
+              <li>Then I can lovingly overpaint and finesse each element into a cohesive whole</li>
+            </ul>
+          </og-portfolio__slide>
+        </simple-carousel>
       </og-portfolio__process>
     </og-portfolio__piece>
+    <!-- /Wrathful Deity -->
+
   </template>
 
   <script>
@@ -126,32 +167,7 @@
           value: function () {
             return [
               // plant lab
-              {
-                "title": "Think Vertically",
-                "filenameId": "hydroponic",
-                "shortDescription": "A woman in a white lab coat tending to a futuristic machine in a lab with a lot of plant overgrowth.",
-                "resolutions": [
-                  {
-                    "width": "2000",
-                    "height": "1080",
-                    "filenameSuffix": "",
-                    "types": [ "jpg", "png" ]
-                  },
-                  {
-                    "width": "1000",
-                    "height": "540",
-                    "filenameSuffix": "@0,5x",
-                    "types": [ "jpg" ]
-                  },
-                  {
-                    "width": "500",
-                    "height": "270",
-                    "filenameSuffix": "@0,25x",
-                    "types": [ "jpg" ]
-                  }
-                ],
-                "date": "2016-MM-DD"
-              },
+              
               // uncharted
               // car chase
               {
@@ -238,14 +254,30 @@
       },
 
       ready: function ogPortfolioReady() {
-        if ( this.hasOwnProperty( 'resolutions' ) && !!this.resolutions.length ) {
-          this.x = this.resolutions[0].width;
-          this.y = this.resolutions[0].height;
-        }
+        // this.$['wrathful-deity'].resolutions = [
+        //   {
+        //     "width": "2000",
+        //     "height": "1080",
+        //     "filenameSuffix": "",
+        //     "types": [ "jpg", "png" ]
+        //   },
+        //   {
+        //     "width": "1000",
+        //     "height": "540",
+        //     "filenameSuffix": "@0,5x",
+        //     "types": [ "jpg" ]
+        //   },
+        //   {
+        //     "width": "500",
+        //     "height": "270",
+        //     "filenameSuffix": "@0,25x",
+        //     "types": [ "jpg" ]
+        //   }
+        // ];
       },
 
       // attached: function ogPortfolioAttached() {
-        
+      //   console.log( this.$['wrathful-deity'] );
       // },
 
       // getSrc: function ogPortfolioGetSrc() {},

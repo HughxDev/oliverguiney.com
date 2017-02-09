@@ -6,13 +6,11 @@
     <style include="shared-styles">
       :host {
         display: block;
-
-        overflow: hidden;
       }
     </style>
     
     <h4 class="visuallyhidden">Process</h4>
-    <content select="og-portfolio__slide"></content>
+    <content></content>
   </template>
 
   <script>
@@ -25,7 +23,11 @@
         id: 'process'
       },
 
-      properties: {}
+      properties: {},
+
+      attached: function () {
+        // $(this).slick();
+      }
     });
   </script>
 </dom-module>
