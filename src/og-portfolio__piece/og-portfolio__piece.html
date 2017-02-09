@@ -4,19 +4,23 @@
   <template>
     <style include="shared-styles">
       :host {
+        /*--w: 1920;
+        --h: 1080;*/
+
         display: block;
 
         margin-bottom: calc( var(--global-spacing) * .75 );
         /*box-shadow: 0 2px 2px rgba(255,255,255,0.125)*/
         /*border: .5rem solid var(--off-white);*/
 
-        /*position: relative;*/
+        position: relative;
         /*float: left;*/
+
         padding-bottom: calc( var(--h) / var(--w) * 100% );
         width: 100%;
         /*text-align: center;*/
       }
-      
+
       :host([x="2000"]) { --w: 2000; }
       :host([x="2042"]) { --w: 2042; }
       :host([x="2100"]) { --w: 2100; }
@@ -28,14 +32,24 @@
       :host([y="1527"]) { --h: 1527; }
       :host([y="2160"]) { --h: 2160; }
 
-/*      .card__front,
+      :host([flipped]) .card__front {
+        -webkit-transform: rotateY(-180deg);
+        transform: rotateY(-180deg);
+      }
+
+      :host([flipped]) .card__back {
+        -webkit-transform: rotateY(0);
+        transform: rotateY(0);
+      }
+
+      .card__front,
       .card__back {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-      }*/
+      }
 
       .card__front,
       .card__back {
@@ -45,7 +59,13 @@
                 transition: transform 0.3s;
       }
 
+      .card__front {
+        z-index: 2;
+        cursor: pointer;
+      }
+
       .card__back {
+        z-index: 1;
         box-shadow: var(--global-shadow);
         /*padding: var(--global-spacing);*/
         background-color: #1e1e1e;
@@ -61,17 +81,7 @@
         margin-bottom: 0;
       }
 
-      :host([flipped]) .card__front {
-        -webkit-transform: rotateY(-180deg);
-                transform: rotateY(-180deg);
-      }
-
-      :host([flipped]) .card__back {
-        -webkit-transform: rotateY(0);
-                transform: rotateY(0);
-      }
-
-      img {
+      .card__image {
         /*border: .5rem solid var(--off-white);*/
         /*border: .25rem solid var(--frame-color);*/
         max-width: 100%;
@@ -83,34 +93,65 @@
           border: .5rem solid var(--frame-color);
         }
       }*/
+
+      .card__close {
+        border: 0;
+        background: none;
+        font-size: 3rem;
+        color: var(--white);
+        padding: 0;
+        margin: 0;
+        line-height: 0.7ex;
+        width: 1.2ex;
+        height: 1ex;
+        display: block;
+        overflow: hidden;
+        /*outline: none;*/
+        text-align: center;
+        cursor: pointer;
+        z-index: 2;
+        position: absolute;
+        right: calc( var(--global-spacing) / 2 );
+        top: calc( var(--global-spacing) / 2 );
+        opacity: 0;
+      }
+
+      :host([flipped]) .card__close {
+        opacity: 0.5;
+        transition: opacity 0.25s ease;
+      }
+
+      .card__close:focus,
+      .card__close:hover {
+        opacity: 1;
+      }
+
+      /*.card__close:focus {
+
+      }*/
     </style>
-    <div id="piece" class="card__front">
+    <div class="card__front">
+      <h3 class="visuallyhidden">[[titleOfWork]]</h3>
       <!-- <content select="img, .piece__image"></content> -->
-      <img class="piece__image" id="[[piece.filenameId]]" srcset="[[getSrcset(piece)]]" />
+      <img
+        class="card__image"
+        id="image"
+        alt="[[shortDescription]]"
+      />
     </div>
-    <div id="process" class="card__back">
+    <div class="card__back">
       <!-- <content select="p, .card__text"></content> -->
       <!-- <p class="card__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, explicabo! Quidem amet laborum dignissimos quia, repudiandae cum totam perferendis velit voluptatum aspernatur vel animi ab, unde odit quos magnam, eveniet!</p> -->
-      <template
-        id="process-repeater"
-        is="dom-repeat"
-        items="[[piece.process]]"
-        as="slide"
+      <a
+        class="card__close"
+        title="Close"
+        aria-label="Close"
+        role="button"
+        tabindex="0"
       >
-        <map name="map">
-          <template id="map" is="dom-repeat" items="[[slide.areas]]" as="area">
-            <area
-              id="[[area.id]]"
-              href="https://google.com"
-              alt="[[area.alt]]"
-              shape="[[area.shape]]"
-              coords="[[area.coords]]"
-            />
-          </template>
-        </map>
-        <img usemap="#map" src="[[directory]][[piece.filenameId]]/[[filenamePrefix]]-[[piece.filenameId]]-[[slide.filenameId]].jpg" alt=" " />
-      </template>
-
+        <span class="card__close-icon" aria-hidden="true">&times;</span>
+      </a>
+      <content select="og-portfolio__process, simple-carousel"></content>
     </div>
   </template>
 
@@ -126,12 +167,12 @@
       properties: {
         x: {
           type: Number,
-          value: 1920,
+          // value: 1920,
           reflectToAttribute: true
         },
         y: {
           type: Number,
-          value: 1080,
+          // value: 1080,
           reflectToAttribute: true
         },
         flipped: {
@@ -143,45 +184,116 @@
           type: Object
         },
         directory: {
-          type: String,
-          value: ''
+          type: String
         },
         filenamePrefix: {
-          type: String,
-          value: ''
+          type: String
+        },
+        filenameId: {
+          type: String
+        },
+        titleOfWork: {
+          type: String
+        },
+        shortDescription: {
+          type: String
+        },
+        resolutions: {
+          type: Array,
+          value: [],
+          reflectToAttribute: false
+        },
+        date: {
+          type: String
+        }
+      },
+
+      flip: function ogPortfolioPieceFlip() {
+        var portfolioPiece = this;
+
+        portfolioPiece.flipped = !portfolioPiece.flipped;
+      },
+
+      // created: function ogPortfolioPieceCreated() {},
+
+      ready: function ogPortfolioPieceReady() {
+        var portfolioPiece = this;
+        
+        // portfolioPiece.$.image.srcset = portfolioPiece.getSrcset();
+
+        if ( portfolioPiece.hasOwnProperty( 'resolutions' ) && !!portfolioPiece.resolutions.length ) {
+          portfolioPiece.x = portfolioPiece.resolutions[0].width;
+          portfolioPiece.y = portfolioPiece.resolutions[0].height;
+
+          portfolioPiece.$.image.srcset = portfolioPiece.getSrcset();
         }
       },
 
       attached: function ogPortfolioPieceAttached() {
         var portfolioPiece = this;
 
-        portfolioPiece.addEventListener( "click", function() {
-          portfolioPiece.flipped = !portfolioPiece.flipped;
+        portfolioPiece.addEventListener( "click", function( event ) {
+          var className = event.target.className;
+
+          // console.log( 'event.target', event.target );
+          // console.log( 'event.currentTarget', event.currentTarget );
+
+          if ( event.target !== event.currentTarget ) {
+            // console.log( 'className', className );
+
+            if (
+              ( className.match( 'card__image' ) !== null )
+              || ( className.match( 'card__front' ) !== null )
+            ) {
+              // console.log( 'card__image or card__front clicked' );
+              portfolioPiece.flip();
+            }
+
+            if ( className.match( 'card__back' ) !== null ) {
+              // console.log( 'card__back clicked' );
+            }
+
+            if (
+              ( className.match( 'card__close' ) !== null )
+              || ( className.match( 'card__close-icon' ) !== null )
+            ) {
+              // console.log( 'card__close or card__close-icon clicked' );
+              portfolioPiece.flip();
+            }
+          } else {
+            portfolioPiece.flip();
+          }
+
+          event.stopPropagation();
         });
       },
 
-      getSrcset: function ogPortfolioGetSrcset( piece ) {
+      getSrcset: function ogPortfolioGetSrcset() {
         var portfolioPiece = this;
         var srcset = '';
-        var i = piece.resolutions.length - 1;
+        var i;
 
-        for ( ; i >= 0; i--) {
-          srcset += portfolioPiece.directory
-            + piece.filenameId
-            + '/'
-            + portfolioPiece.filenamePrefix
-            + '-'
-            + piece.filenameId
-            + piece.resolutions[i].filenameSuffix.replace( ',', '%2C' )
-            + '.'
-            + piece.resolutions[i].types[0]
-            + ' '
-            + piece.resolutions[i].width
-            + 'w'
-          ;
-        
-          if ( i !== 0 ) {
-            srcset += ', ';
+        if ( portfolioPiece.hasOwnProperty( 'resolutions' ) && !!portfolioPiece.resolutions.length ) {
+          i = portfolioPiece.resolutions.length - 1;
+
+          for ( ; i >= 0; i--) {
+            srcset += portfolioPiece.directory
+              + portfolioPiece.filenameId
+              + '/'
+              + portfolioPiece.filenamePrefix
+              + '-'
+              + portfolioPiece.filenameId
+              + portfolioPiece.resolutions[i].filenameSuffix.replace( ',', '%2C' )
+              + '.'
+              + portfolioPiece.resolutions[i].types[0]
+              + ' '
+              + portfolioPiece.resolutions[i].width
+              + 'w'
+            ;
+          
+            if ( i !== 0 ) {
+              srcset += ', ';
+            }
           }
         }
 

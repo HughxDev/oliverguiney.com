@@ -1,0 +1,106 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+
+<dom-module id="og-portfolio__slide">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        /*float: left;*/
+      }
+    </style>
+    <!-- <img src$="{{filenamePrepend}}-{{filenameId}}.{{types.0}}" /> -->
+    <img id="image" aria-labelledby$="[[portfolioPieceFilenameId]]-[[filenameId]]-description" />
+    <div id$="[[portfolioPieceFilenameId]]-[[filenameId]]-description" class="visuallyhidden">
+      <h5>[[titleOfWork]]</h5>
+      <content></content>
+    </div>
+  </template>
+
+  <script>
+    /**
+     * Get the closest matching element up the DOM tree.
+     * @private
+     * @param  {Element} elem     Starting element
+     * @param  {String}  selector Selector to match against
+     * @return {Boolean|Element}  Returns null if not match found
+     */
+    var getClosest = function ( elem, selector ) {
+
+      // Element.matches() polyfill
+      if (!Element.prototype.matches) {
+          Element.prototype.matches =
+              Element.prototype.matchesSelector ||
+              Element.prototype.mozMatchesSelector ||
+              Element.prototype.msMatchesSelector ||
+              Element.prototype.oMatchesSelector ||
+              Element.prototype.webkitMatchesSelector ||
+              function(s) {
+                  var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+                      i = matches.length;
+                  while (--i >= 0 && matches.item(i) !== this) {}
+                  return i > -1;
+              };
+      }
+
+      // Get closest match
+      for ( ; elem && elem !== document; elem = elem.parentNode ) {
+          if ( elem.matches( selector ) ) return elem;
+      }
+
+      return null;
+    };
+
+    Polymer({
+
+      is: 'og-portfolio__slide',
+
+      hostAttributes: {
+        role: 'group',
+        id: 'process'
+      },
+
+      properties: {
+        hostFilenameId: {
+          type: String
+        },
+        filenameId: {
+          type: String
+        },
+        filenamePrefix: {
+          type: String,
+          value: 'oliver-guiney'
+        },
+        filenameSuffix: {
+          type: String,
+          value: ''
+        },
+        filenamePrepend: {
+          type: String,
+          value: '',
+          reflectToAttribute: true
+        },
+        types: {
+          type: Array,
+          value: [ 'jpg' ]
+        },
+        directory: {
+          type: String,
+          value: 'src/images/'
+        },
+        titleOfWork: {
+          type: String
+        }
+      },
+
+      attached: function () {
+        
+        var portfolioPiece = getClosest( this, 'og-portfolio__piece' );
+
+        this.portfolioPieceFilenameId = portfolioPiece.filenameId;
+
+        this.$.image.src = this.directory + this.portfolioPieceFilenameId + '/' + this.filenamePrefix + '-' + this.portfolioPieceFilenameId + '-' + this.filenameId + '.' + this.types[0];
+      }
+    });
+  </script>
+</dom-module>

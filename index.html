@@ -60,8 +60,11 @@
         --heading-font: "TT Lakes";
         --global-spacing: 2rem;
         --off-white: whitesmoke;
+        --white: var(--off-white);
         --frame-color: black;
         --global-shadow: 0 0 20px rgba(0,0,0,0.75);
+        /*--w: 1920;
+        --h: 1080;*/
       }
 
       body {
@@ -149,7 +152,10 @@
       </template>
     </dom-module>
 
-    <link rel="import" href="src/og-site/og-site.html">
+    <!-- <script src="bower_components/jquery/dist/jquery.min.js"></script> -->
+    <!-- <script src="bower_components/slick-carousel/slick/slick.js"></script> -->
+  
+    <link rel="import" href="src/og-site/og-site.html" />
   </head>
   <body>
     <og-site></og-site>
