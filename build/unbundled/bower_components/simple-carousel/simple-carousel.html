@@ -52,6 +52,7 @@
       button:hover,
       button:focus {
         opacity: 1;
+        outline: var(--a11y-outline-style);
       }
 
       #prevBtn {
@@ -74,12 +75,12 @@
       <content select="carousel-slide, [carousel-slide], [data-carousel-slide]"></content>
     </div>
 
-    <button id="prevBtn" on-click="previous">❮</button>
-    <button id="nextBtn" on-click="next">❯</button>
+    <button id="prevBtn" on-click="previous" on-keyup="keyboardAdvancePrevious">❮</button>
+    <button id="nextBtn" on-click="next" on-keyup="keyboardAdvanceNext">❯</button>
 
 
   </template>
 
-  <script>Polymer({is:"simple-carousel",behaviors:[AnimationBehavior],properties:{selected:{type:Object,observer:"_selectedChanged"},infiniteLoop:{type:Boolean,value:!1},auto:{type:Boolean,value:!1},transitionTime:{type:Number,value:3e3},transitionDuration:{type:Number,value:500},showControls:{type:String,value:!0},transitionStyle:{type:String,value:"ease"}},ready:function(){this._autoStart(),"false"==this.showControls&&(this.$.prevBtn.style.display="none",this.$.nextBtn.style.display="none")},_autoStart:function(){if(this.auto){var e=this;this.intervalHander&&clearInterval(this.intervalHander),this.intervalHander=setInterval(function(){e.next()},this.transitionTime)}},attached:function(){this.selected=this.queryEffectiveChildren("carousel-slide, [carousel-slide], [data-carousel-slide]")},_selectedChanged:function(e,t){t&&t.removeAttribute("selected"),e&&e.setAttribute("selected",""),this.infiniteLoop||(this.$.prevBtn.disabled=!e.previousElementSibling,this.$.nextBtn.disabled=!e.nextElementSibling)},previous:function(){var e=this.selected.previousElementSibling;if(this._autoStart(),this.infiniteLoop&&!e){var t=this.queryAllEffectiveChildren("carousel-slide, [carousel-slide], [data-carousel-slide]");e=t[t.length-1]}e&&this._translateAnimation(e,-1)},next:function(){var e=this.selected.nextElementSibling;this._autoStart(),this.infiniteLoop&&!e&&(e=this.queryEffectiveChildren("carousel-slide, [carousel-slide], [data-carousel-slide]")),e&&this._translateAnimation(e,1)},stop:function(){clearInterval(this.intervalHander)},start:function(){this.infiniteLoop=!0,this._autoStart()}});</script>
+  <script>Polymer({is:"simple-carousel",behaviors:[AnimationBehavior],properties:{selected:{type:Object,observer:"_selectedChanged"},infiniteLoop:{type:Boolean,value:!1},auto:{type:Boolean,value:!1},transitionTime:{type:Number,value:3e3},transitionDuration:{type:Number,value:500},showControls:{type:String,value:!0},transitionStyle:{type:String,value:"ease"}},ready:function(){this._autoStart(),"false"==this.showControls&&(this.$.prevBtn.style.display="none",this.$.nextBtn.style.display="none")},_autoStart:function(){if(this.auto){var e=this;this.intervalHander&&clearInterval(this.intervalHander),this.intervalHander=setInterval(function(){e.next()},this.transitionTime)}},attached:function(){this.selected=this.queryEffectiveChildren("carousel-slide, [carousel-slide], [data-carousel-slide]")},_selectedChanged:function(e,t){t&&t.removeAttribute("selected"),e&&e.setAttribute("selected",""),this.infiniteLoop||(this.$.prevBtn.disabled=!e.previousElementSibling,this.$.nextBtn.disabled=!e.nextElementSibling)},keyboardAdvancePrevious:function(e){32!==e.which&&13!==e.which||this.previous()},keyboardAdvanceNext:function(e){32!==e.which&&13!==e.which||this.next()},previous:function(){var e=this.selected.previousElementSibling;if(this._autoStart(),this.infiniteLoop&&!e){var t=this.queryAllEffectiveChildren("carousel-slide, [carousel-slide], [data-carousel-slide]");e=t[t.length-1]}e&&this._translateAnimation(e,-1)},next:function(){var e=this.selected.nextElementSibling;this._autoStart(),this.infiniteLoop&&!e&&(e=this.queryEffectiveChildren("carousel-slide, [carousel-slide], [data-carousel-slide]")),e&&this._translateAnimation(e,1)},stop:function(){clearInterval(this.intervalHander)},start:function(){this.infiniteLoop=!0,this._autoStart()}});</script>
 </dom-module>
 </body></html>

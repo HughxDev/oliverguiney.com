@@ -15,7 +15,7 @@
     <!-- <script>
       /* this script must run before Polymer is imported */
       window.Polymer = {
-        dom: 'shadow',
+        dom: 'shady',
         lazyRegister: true
       };
     </script> -->
@@ -65,6 +65,7 @@
         --global-shadow: 0 0 20px rgba(0,0,0,0.75);
         /*--w: 1920;
         --h: 1080;*/
+        --a11y-outline-style: thin dotted;
       }
 
       body {
@@ -83,78 +84,7 @@
       }
     </style>
 
-    <dom-module id="shared-styles">
-      <template>
-        <style>
-          * {
-            box-sizing: border-box;
-          }
-
-          img {
-            max-width: 100%;
-          }
-
-          p {
-            max-width: 39em;
-            margin-left: auto;
-            margin-right: auto;
-          }
-
-          h1, h2, h3, h4, h5, h6 {
-            text-align: center;
-            font-family: var(--heading-font);
-            font-weight: 500;
-            line-height: 1;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-          }
-
-          @media (min-width: 50em) {
-            h1, h2, h3, h4, h5, h6 {
-              margin-top: 2rem;
-              margin-bottom: 2rem;
-            }
-          }
-
-          h1 {
-            font-size: 2.5rem;
-          }
-          @media (min-width: 40em) {
-            h1 {
-              font-size: 4rem;
-            }
-          }
-
-          h2 {
-            font-size: 2.25rem;
-          }
-          @media (min-width: 40em) {
-            h2 {
-              font-size: 3.5rem;
-              line-height: .6;
-              padding-top: .5rem;
-              margin-bottom: 1.5rem;
-            }
-          }
-
-          a:hover, a:focus {
-            text-decoration: none;
-          }
-
-          .visuallyhidden { 
-            position: absolute; 
-            overflow: hidden; 
-            clip: rect(0 0 0 0); 
-            height: 1px; width: 1px; 
-            margin: -1px; padding: 0; border: 0; 
-          }
-        </style>
-      </template>
-    </dom-module>
-
-    <!-- <script src="bower_components/jquery/dist/jquery.min.js"></script> -->
-    <!-- <script src="bower_components/slick-carousel/slick/slick.js"></script> -->
-  
+    <link rel="import" href="src/shared-styles/shared-styles.html" />  
     <link rel="import" href="src/og-site/og-site.html" />
   </head>
   <body>

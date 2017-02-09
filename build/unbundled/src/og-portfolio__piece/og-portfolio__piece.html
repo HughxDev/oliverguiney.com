@@ -1,4 +1,5 @@
 <html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../shared-styles/shared-styles.html">
 
 </head><body><dom-module id="og-portfolio__piece">
   <template>
@@ -130,20 +131,20 @@
 
       }*/
     </style>
-    <div class="card__front">
+    <div id="front" class="card__front" role="button" tabindex="0" title="Reveal Process slides" aria-label="Reveal Process slides">
       <h3 class="visuallyhidden">[[titleOfWork]]</h3>
       
       <img class="card__image" id="image" alt="[[shortDescription]]">
     </div>
-    <div class="card__back">
+    <div id="back" class="card__back">
       
       
-      <a class="card__close" title="Close" aria-label="Close" role="button" tabindex="0">
+      <a id="close" class="card__close" title="Hide Process slides" aria-label="Hide Process slides" role="button" tabindex="0">
         <span class="card__close-icon" aria-hidden="true">×</span>
       </a>
       <content select="og-portfolio__process, simple-carousel"></content>
     </div>
   </template>
 
-  <script>Polymer({is:"og-portfolio__piece",hostAttributes:{role:"article"},properties:{x:{type:Number,reflectToAttribute:!0},y:{type:Number,reflectToAttribute:!0},flipped:{type:Boolean,value:!1,reflectToAttribute:!0},piece:{type:Object},directory:{type:String},filenamePrefix:{type:String},filenameId:{type:String},titleOfWork:{type:String},shortDescription:{type:String},resolutions:{type:Array,value:[],reflectToAttribute:!1},date:{type:String}},flip:function(){var e=this;e.flipped=!e.flipped},ready:function(){var e=this;e.hasOwnProperty("resolutions")&&e.resolutions.length&&(e.x=e.resolutions[0].width,e.y=e.resolutions[0].height,e.$.image.srcset=e.getSrcset())},attached:function(){var e=this;e.addEventListener("click",function(t){var r=t.target.className;t.target!==t.currentTarget?(null===r.match("card__image")&&null===r.match("card__front")||e.flip(),null!==r.match("card__back"),null===r.match("card__close")&&null===r.match("card__close-icon")||e.flip()):e.flip(),t.stopPropagation()})},getSrcset:function(){var e,t=this,r="";if(t.hasOwnProperty("resolutions")&&t.resolutions.length)for(e=t.resolutions.length-1;e>=0;e--)r+=t.directory+t.filenameId+"/"+t.filenamePrefix+"-"+t.filenameId+t.resolutions[e].filenameSuffix.replace(",","%2C")+"."+t.resolutions[e].types[0]+" "+t.resolutions[e].width+"w",0!==e&&(r+=", ");return r}});</script>
+  <script>Polymer({is:"og-portfolio__piece",hostAttributes:{role:"article"},properties:{x:{type:Number,reflectToAttribute:!0},y:{type:Number,reflectToAttribute:!0},flipped:{type:Boolean,value:!1,reflectToAttribute:!0},piece:{type:Object},directory:{type:String},filenamePrefix:{type:String},filenameId:{type:String},titleOfWork:{type:String},shortDescription:{type:String},resolutions:{type:Array,value:[],reflectToAttribute:!1},date:{type:String}},flip:function(){var e=this;e.flipped=!e.flipped,e.flipped?e.$.close.focus():e.$.front.focus()},_handleFlipActivate:function(e){var t=this,i=e.target.className;if("keydown"===e.type||"keyup"===e.type){if(32!==e.which&&13!==e.which)return;e.preventDefault()}e.target!==e.currentTarget?(null===i.match("card__image")&&null===i.match("card__front")||t.flip(),null!==i.match("card__back"),null===i.match("card__close")&&null===i.match("card__close-icon")||t.flip()):t.flip(),e.stopPropagation()},ready:function(){var e=this;e.hasOwnProperty("resolutions")&&e.resolutions.length&&(e.x=e.resolutions[0].width,e.y=e.resolutions[0].height,e.$.image.srcset=e.getSrcset())},attached:function(){var e=this;e.addEventListener("click",e._handleFlipActivate),e.addEventListener("keydown",e._handleFlipActivate)},getSrcset:function(){var e,t=this,i="";if(t.hasOwnProperty("resolutions")&&t.resolutions.length)for(e=t.resolutions.length-1;e>=0;e--)i+=t.directory+t.filenameId+"/"+t.filenamePrefix+"-"+t.filenameId+t.resolutions[e].filenameSuffix.replace(",","%2C")+"."+t.resolutions[e].types[0]+" "+t.resolutions[e].width+"w",0!==e&&(i+=", ");return i}});</script>
 </dom-module></body></html>

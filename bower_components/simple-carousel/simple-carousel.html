@@ -58,6 +58,7 @@ Simple carousel component for Polymer 1.0
       button:hover,
       button:focus {
         opacity: 1;
+        outline: var(--a11y-outline-style);
       }
 
       #prevBtn {
@@ -80,8 +81,8 @@ Simple carousel component for Polymer 1.0
       <content select="carousel-slide, [carousel-slide], [data-carousel-slide]"></content>
     </div>
 
-    <button id="prevBtn" on-click="previous">❮</button>
-    <button id="nextBtn" on-click="next">❯</button>
+    <button id="prevBtn" on-click="previous" on-keyup="keyboardAdvancePrevious">❮</button>
+    <button id="nextBtn" on-click="next" on-keyup="keyboardAdvanceNext">❯</button>
 
 
   </template>
@@ -171,6 +172,17 @@ Simple carousel component for Polymer 1.0
           }
 
       },
+      keyboardAdvancePrevious: function ( event ) {
+        if ( ( event.which === 32 ) || ( event.which === 13 ) ) {
+          this.previous();
+        }
+      },
+      keyboardAdvanceNext: function ( event ) {
+        if ( ( event.which === 32 ) || ( event.which === 13 ) ) {
+          this.next();
+        }
+      },
+
       /**
        * Shows the previous carousel element.
        */

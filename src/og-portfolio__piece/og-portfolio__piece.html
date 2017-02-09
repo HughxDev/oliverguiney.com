@@ -1,4 +1,5 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../shared-styles/shared-styles.html" />
 
 <dom-module id="og-portfolio__piece">
   <template>
@@ -130,7 +131,7 @@
 
       }*/
     </style>
-    <div class="card__front">
+    <div id="front" class="card__front" role="button" tabindex="0" title="Reveal Process slides" aria-label="Reveal Process slides">
       <h3 class="visuallyhidden">[[titleOfWork]]</h3>
       <!-- <content select="img, .piece__image"></content> -->
       <img
@@ -139,13 +140,14 @@
         alt="[[shortDescription]]"
       />
     </div>
-    <div class="card__back">
+    <div id="back" class="card__back">
       <!-- <content select="p, .card__text"></content> -->
       <!-- <p class="card__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, explicabo! Quidem amet laborum dignissimos quia, repudiandae cum totam perferendis velit voluptatum aspernatur vel animi ab, unde odit quos magnam, eveniet!</p> -->
       <a
+        id="close"
         class="card__close"
-        title="Close"
-        aria-label="Close"
+        title="Hide Process slides"
+        aria-label="Hide Process slides"
         role="button"
         tabindex="0"
       >
@@ -212,6 +214,60 @@
         var portfolioPiece = this;
 
         portfolioPiece.flipped = !portfolioPiece.flipped;
+
+        if ( portfolioPiece.flipped ) {
+          portfolioPiece.$.close.focus();
+        // }
+        } else {
+          portfolioPiece.$.front.focus();
+        }
+      },
+
+      _handleFlipActivate: function ogPortfolioPieceHandleFlipActivate( event ) {
+        var portfolioPiece = this;
+        var className = event.target.className;
+
+        // console.log( 'event.target', event.target );
+        // console.log( 'event.currentTarget', event.currentTarget );
+
+        if ( ( event.type === 'keydown' ) || ( event.type === 'keyup' ) ) {
+          // Spacebar = 32, Enter/Return = 13
+          if ( ( event.which === 32 ) || ( event.which === 13 ) ) {
+            // Spacebar sometimes scrolls down the page
+            event.preventDefault();
+          } else {
+            // If any other key was pressed ignore it
+            return;
+          }
+        }
+
+        if ( event.target !== event.currentTarget ) {
+          // console.log( 'className', className );
+
+          if (
+            ( className.match( 'card__image' ) !== null )
+            || ( className.match( 'card__front' ) !== null )
+          ) {
+            // console.log( 'card__image or card__front clicked' );
+            portfolioPiece.flip();
+          }
+
+          if ( className.match( 'card__back' ) !== null ) {
+            // console.log( 'card__back clicked' );
+          }
+
+          if (
+            ( className.match( 'card__close' ) !== null )
+            || ( className.match( 'card__close-icon' ) !== null )
+          ) {
+            // console.log( 'card__close or card__close-icon clicked' );
+            portfolioPiece.flip();
+          }
+        } else {
+          portfolioPiece.flip();
+        }
+
+        event.stopPropagation();
       },
 
       // created: function ogPortfolioPieceCreated() {},
@@ -232,40 +288,8 @@
       attached: function ogPortfolioPieceAttached() {
         var portfolioPiece = this;
 
-        portfolioPiece.addEventListener( "click", function( event ) {
-          var className = event.target.className;
-
-          // console.log( 'event.target', event.target );
-          // console.log( 'event.currentTarget', event.currentTarget );
-
-          if ( event.target !== event.currentTarget ) {
-            // console.log( 'className', className );
-
-            if (
-              ( className.match( 'card__image' ) !== null )
-              || ( className.match( 'card__front' ) !== null )
-            ) {
-              // console.log( 'card__image or card__front clicked' );
-              portfolioPiece.flip();
-            }
-
-            if ( className.match( 'card__back' ) !== null ) {
-              // console.log( 'card__back clicked' );
-            }
-
-            if (
-              ( className.match( 'card__close' ) !== null )
-              || ( className.match( 'card__close-icon' ) !== null )
-            ) {
-              // console.log( 'card__close or card__close-icon clicked' );
-              portfolioPiece.flip();
-            }
-          } else {
-            portfolioPiece.flip();
-          }
-
-          event.stopPropagation();
-        });
+        portfolioPiece.addEventListener( "click", portfolioPiece._handleFlipActivate );
+        portfolioPiece.addEventListener( "keydown", portfolioPiece._handleFlipActivate );
       },
 
       getSrcset: function ogPortfolioGetSrcset() {
