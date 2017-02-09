@@ -1,0 +1,60 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../shared-styles/shared-styles.html">
+
+</head><body><dom-module id="og-about">
+  <template>
+    <style include="shared-styles">
+      :host {
+        /*padding-left: 200px;*/
+        display: block;
+        overflow: auto;
+        /*max-width: 80%;*/
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 6rem;
+      }
+
+      img {
+        /*float: left;*/
+        width: 200px;
+        /*border-radius: 25px;*/
+        /* border: 8px solid whitesmoke; */
+        /*margin-left: -200px;*/
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--global-shadow);
+        /*border: 4px solid var(--frame-color);*/
+      }
+
+      @media (min-width: 40em) {
+        img {
+          margin-bottom: 1.75rem;
+        }
+      }
+
+      h2 {
+        /*text-align: left;*/
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 39rem;
+        margin-top: 0;
+        margin-top: .5rem;
+      }
+
+      p {
+        max-width: 39rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+    <img src="../images/avatars/linkedin-avatar.jpg">
+    <h2>About</h2>
+    <p>I am a concept designer with 3 years of freelance experience doing artwork for movies, videogames, and advertisement. I specialize in environment design, and also have experience doing matte painting, and character design. I love exploring different workflows and technologies to get faster results with my work.</p>
+  </template>
+
+  <script>Polymer({is:"og-about",hostAttributes:{role:"region",id:"about"},properties:{},attached:function(){}});</script>
+</dom-module>
+</body></html>

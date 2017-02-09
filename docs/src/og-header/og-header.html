@@ -1,0 +1,58 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../shared-styles/shared-styles.html">
+
+</head><body><dom-module id="og-header">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        text-align: center;
+        margin: var(--global-spacing) auto;
+        font-size: 1.25rem;
+      }
+
+      /*.__name {
+        font-size: 2.5rem;
+        line-height: 1;
+        font-weight: 500;
+      }
+
+      @media (min-width: 30em) {
+        .__name {
+          font-size: 4rem;
+        }
+      }*/
+
+      .__name, .__title {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .__child + .__child {
+        margin-top: 1rem;
+      }
+
+      .__name + .__child {
+        margin-top: .5rem;
+      }
+
+      a {
+        color: #28aadc;
+      }
+
+      .email-address {
+        text-transform: uppercase;
+      }
+    </style>
+    <h1 class="__name __child">Oliver Guiney</h1>
+    <p class="__title __child">Concept Artist</p>
+    <p class="__child"><a class="email-address" href="mailto:oliver.guiney@gmail.com">oliver.guiney@gmail.com</a></p>
+    <nav class="__nav __child">
+      
+      <a href="#about">About</a>
+    </nav>
+  </template>
+
+  <script>Polymer({is:"og-header",hostAttributes:{role:"banner",id:"top"}});</script>
+</dom-module>
+</body></html>
