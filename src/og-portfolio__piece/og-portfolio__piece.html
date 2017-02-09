@@ -224,8 +224,10 @@
         if ( ( event.type === 'keydown' ) || ( event.type === 'keyup' ) ) {
           // Spacebar = 32, Enter/Return = 13
           if ( ( event.which === 32 ) || ( event.which === 13 ) ) {
+            // Spacebar sometimes scrolls down the page
             event.preventDefault();
           } else {
+            // If any other key was pressed ignore it
             return;
           }
         }
