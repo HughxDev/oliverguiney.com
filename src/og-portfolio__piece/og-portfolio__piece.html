@@ -1,4 +1,5 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../shared-styles/shared-styles.html" />
 
 <dom-module id="og-portfolio__piece">
   <template>
@@ -130,7 +131,7 @@
 
       }*/
     </style>
-    <div class="card__front" role="button" tabindex="0" title="Reveal Process slides" aria-label="Reveal Process slides">
+    <div id="front" class="card__front" role="button" tabindex="0" title="Reveal Process slides" aria-label="Reveal Process slides">
       <h3 class="visuallyhidden">[[titleOfWork]]</h3>
       <!-- <content select="img, .piece__image"></content> -->
       <img
@@ -139,10 +140,11 @@
         alt="[[shortDescription]]"
       />
     </div>
-    <div class="card__back">
+    <div id="back" class="card__back">
       <!-- <content select="p, .card__text"></content> -->
       <!-- <p class="card__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, explicabo! Quidem amet laborum dignissimos quia, repudiandae cum totam perferendis velit voluptatum aspernatur vel animi ab, unde odit quos magnam, eveniet!</p> -->
       <a
+        id="close"
         class="card__close"
         title="Hide Process slides"
         aria-label="Hide Process slides"
@@ -212,6 +214,13 @@
         var portfolioPiece = this;
 
         portfolioPiece.flipped = !portfolioPiece.flipped;
+
+        if ( portfolioPiece.flipped ) {
+          portfolioPiece.$.close.focus();
+        // }
+        } else {
+          portfolioPiece.$.front.focus();
+        }
       },
 
       _handleFlipActivate: function ogPortfolioPieceHandleFlipActivate( event ) {
