@@ -27,11 +27,13 @@
       :host([x="2100"]) { --w: 2100; }
       :host([x="2826"]) { --w: 2826; }
       :host([x="4224"]) { --w: 4224; }
+      :host([x="2468"]) { --w: 2468; }
 
       :host([y="1080"]) { --h: 1080; }
       :host([y="1160"]) { --h: 1160; }
       :host([y="1527"]) { --h: 1527; }
       :host([y="2160"]) { --h: 2160; }
+      :host([y="1196"]) { --h: 1196; }
 
       :host([flipped]) .card__front {
         -webkit-transform: rotateY(-180deg);
@@ -130,6 +132,9 @@
       /*.card__close:focus {
 
       }*/
+      :host(.non-keyboard) :focus {
+        outline: none !important;
+      }
     </style>
     <div id="front" class="card__front" role="button" tabindex="0" title="Reveal Process slides" aria-label="Reveal Process slides">
       <h3 class="visuallyhidden">[[titleOfWork]]</h3>
@@ -146,5 +151,5 @@
     </div>
   </template>
 
-  <script>Polymer({is:"og-portfolio__piece",hostAttributes:{role:"article"},properties:{x:{type:Number,reflectToAttribute:!0},y:{type:Number,reflectToAttribute:!0},flipped:{type:Boolean,value:!1,reflectToAttribute:!0},piece:{type:Object},directory:{type:String},filenamePrefix:{type:String},filenameId:{type:String},titleOfWork:{type:String},shortDescription:{type:String},resolutions:{type:Array,value:[],reflectToAttribute:!1},date:{type:String}},flip:function(){var e=this;e.flipped=!e.flipped,e.flipped?e.$.close.focus():e.$.front.focus()},_handleFlipActivate:function(e){var t=this,i=e.target.className;if("keydown"===e.type||"keyup"===e.type){if(32!==e.which&&13!==e.which)return;e.preventDefault()}e.target!==e.currentTarget?(null===i.match("card__image")&&null===i.match("card__front")||t.flip(),null!==i.match("card__back"),null===i.match("card__close")&&null===i.match("card__close-icon")||t.flip()):t.flip(),e.stopPropagation()},ready:function(){var e=this;e.hasOwnProperty("resolutions")&&e.resolutions.length&&(e.x=e.resolutions[0].width,e.y=e.resolutions[0].height,e.$.image.srcset=e.getSrcset())},attached:function(){var e=this;e.addEventListener("click",e._handleFlipActivate),e.addEventListener("keydown",e._handleFlipActivate)},getSrcset:function(){var e,t=this,i="";if(t.hasOwnProperty("resolutions")&&t.resolutions.length)for(e=t.resolutions.length-1;e>=0;e--)i+=t.directory+t.filenameId+"/"+t.filenamePrefix+"-"+t.filenameId+t.resolutions[e].filenameSuffix.replace(",","%2C")+"."+t.resolutions[e].types[0]+" "+t.resolutions[e].width+"w",0!==e&&(i+=", ");return i}});</script>
+  <script>Polymer({is:"og-portfolio__piece",hostAttributes:{role:"article"},properties:{x:{type:Number,reflectToAttribute:!0},y:{type:Number,reflectToAttribute:!0},flipped:{type:Boolean,value:!1,reflectToAttribute:!0},piece:{type:Object},directory:{type:String},filenamePrefix:{type:String},filenameId:{type:String},titleOfWork:{type:String},shortDescription:{type:String},resolutions:{type:Array,value:[],reflectToAttribute:!1},date:{type:String}},flip:function(){var e=this;e.flipped=!e.flipped,e.flipped?e.$.close.focus():e.$.front.focus()},_handleFlipActivate:function(e){var t=this,r=e.target.className,i=Polymer.dom(t);if("keydown"===e.type||"keyup"===e.type||"keypress"===e.type){if(i.classList.remove("non-keyboard"),32!==e.which&&13!==e.which)return;e.preventDefault()}else i.classList.add("non-keyboard");e.target!==e.currentTarget?(null===r.match("card__image")&&null===r.match("card__front")||t.flip(),null!==r.match("card__back"),null===r.match("card__close")&&null===r.match("card__close-icon")||t.flip()):t.flip(),e.stopPropagation()},ready:function(){var e=this;e.hasOwnProperty("resolutions")&&e.resolutions.length&&(e.x=e.resolutions[0].width,e.y=e.resolutions[0].height,e.$.image.srcset=e.getSrcset())},attached:function(){var e=this;e.addEventListener("click",e._handleFlipActivate),e.addEventListener("keydown",e._handleFlipActivate)},getSrcset:function(){var e,t=this,r="";if(t.hasOwnProperty("resolutions")&&t.resolutions.length)for(e=t.resolutions.length-1;e>=0;e--)r+=t.directory+t.filenameId+"/"+t.filenamePrefix+"-"+t.filenameId+t.resolutions[e].filenameSuffix.replace(",","%2C")+"."+t.resolutions[e].types[0]+" "+t.resolutions[e].width+"w",0!==e&&(r+=", ");return r}});</script>
 </dom-module></body></html>

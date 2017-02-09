@@ -1,4 +1,5 @@
 <html><head><link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../../src/shared-styles/shared-styles.html">
 <link rel="import" href="carousel-slide.html">
 <link rel="import" href="animation-behavior.html">
 
@@ -6,7 +7,7 @@
 
 </head><body><dom-module id="simple-carousel">
   <template>
-    <style>
+    <style include="shared-styles">
 
       :host {
         display: block;
@@ -52,7 +53,6 @@
       button:hover,
       button:focus {
         opacity: 1;
-        outline: var(--a11y-outline-style);
       }
 
       #prevBtn {
@@ -68,19 +68,21 @@
         cursor: default;
       }
 
-
+      :host(.non-keyboard) :focus {
+        outline: none !important;
+      }
     </style>
 
     <div>
       <content select="carousel-slide, [carousel-slide], [data-carousel-slide]"></content>
     </div>
 
-    <button id="prevBtn" on-click="previous" on-keyup="keyboardAdvancePrevious">❮</button>
-    <button id="nextBtn" on-click="next" on-keyup="keyboardAdvanceNext">❯</button>
+    <button id="prevBtn" on-click="previous" on-keyup="keyboardAdvancePrevious" tabindex="0">❮</button>
+    <button id="nextBtn" on-click="next" on-keyup="keyboardAdvanceNext" tabindex="0">❯</button>
 
 
   </template>
 
-  <script>Polymer({is:"simple-carousel",behaviors:[AnimationBehavior],properties:{selected:{type:Object,observer:"_selectedChanged"},infiniteLoop:{type:Boolean,value:!1},auto:{type:Boolean,value:!1},transitionTime:{type:Number,value:3e3},transitionDuration:{type:Number,value:500},showControls:{type:String,value:!0},transitionStyle:{type:String,value:"ease"}},ready:function(){this._autoStart(),"false"==this.showControls&&(this.$.prevBtn.style.display="none",this.$.nextBtn.style.display="none")},_autoStart:function(){if(this.auto){var e=this;this.intervalHander&&clearInterval(this.intervalHander),this.intervalHander=setInterval(function(){e.next()},this.transitionTime)}},attached:function(){this.selected=this.queryEffectiveChildren("carousel-slide, [carousel-slide], [data-carousel-slide]")},_selectedChanged:function(e,t){t&&t.removeAttribute("selected"),e&&e.setAttribute("selected",""),this.infiniteLoop||(this.$.prevBtn.disabled=!e.previousElementSibling,this.$.nextBtn.disabled=!e.nextElementSibling)},keyboardAdvancePrevious:function(e){32!==e.which&&13!==e.which||this.previous()},keyboardAdvanceNext:function(e){32!==e.which&&13!==e.which||this.next()},previous:function(){var e=this.selected.previousElementSibling;if(this._autoStart(),this.infiniteLoop&&!e){var t=this.queryAllEffectiveChildren("carousel-slide, [carousel-slide], [data-carousel-slide]");e=t[t.length-1]}e&&this._translateAnimation(e,-1)},next:function(){var e=this.selected.nextElementSibling;this._autoStart(),this.infiniteLoop&&!e&&(e=this.queryEffectiveChildren("carousel-slide, [carousel-slide], [data-carousel-slide]")),e&&this._translateAnimation(e,1)},stop:function(){clearInterval(this.intervalHander)},start:function(){this.infiniteLoop=!0,this._autoStart()}});</script>
+  <script>Polymer({is:"simple-carousel",behaviors:[AnimationBehavior],properties:{selected:{type:Object,observer:"_selectedChanged"},infiniteLoop:{type:Boolean,value:!1},auto:{type:Boolean,value:!1},transitionTime:{type:Number,value:3e3},transitionDuration:{type:Number,value:500},showControls:{type:String,value:!0},transitionStyle:{type:String,value:"ease"}},ready:function(){this._autoStart(),"false"==this.showControls&&(this.$.prevBtn.style.display="none",this.$.nextBtn.style.display="none")},_autoStart:function(){if(this.auto){var e=this;this.intervalHander&&clearInterval(this.intervalHander),this.intervalHander=setInterval(function(){e.next()},this.transitionTime)}},attached:function(){this.selected=this.queryEffectiveChildren("carousel-slide, [carousel-slide], [data-carousel-slide]")},_selectedChanged:function(e,t){t&&t.removeAttribute("selected"),e&&e.setAttribute("selected",""),this.infiniteLoop||(this.$.prevBtn.disabled=!e.previousElementSibling,this.$.nextBtn.disabled=!e.nextElementSibling)},keyboardAdvancePrevious:function(e){32!==e.which&&13!==e.which||this.previous(e)},keyboardAdvanceNext:function(e){32!==e.which&&13!==e.which||this.next(e)},previous:function(e){var t=Polymer.dom(this);console.log("host",t),"keyup"===e.type||"keydown"===e.type||"keypress"===e.type?t.classList.remove("non-keyboard"):t.classList.add("non-keyboard");var i=this.selected.previousElementSibling;if(this._autoStart(),this.infiniteLoop&&!i){var s=this.queryAllEffectiveChildren("carousel-slide, [carousel-slide], [data-carousel-slide]");i=s[s.length-1]}i&&this._translateAnimation(i,-1)},next:function(e){var t=Polymer.dom(this);console.log("host",t),"keyup"===e.type||"keydown"===e.type||"keypress"===e.type?t.classList.remove("non-keyboard"):t.classList.add("non-keyboard");var i=this.selected.nextElementSibling;this._autoStart(),this.infiniteLoop&&!i&&(i=this.queryEffectiveChildren("carousel-slide, [carousel-slide], [data-carousel-slide]")),i&&this._translateAnimation(i,1)},stop:function(){clearInterval(this.intervalHander)},start:function(){this.infiniteLoop=!0,this._autoStart()}});</script>
 </dom-module>
 </body></html>

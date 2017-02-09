@@ -88,6 +88,10 @@ e.attachedCallback&&e.attachedCallback())}function c(e){d(e),g(e,function(e){d(e
         outline: var(--a11y-outline-style);
       }
 
+      .non-keyboard :focus {
+        outline: none !important;
+      }
+
       img {
         max-width: 100%;
       }
@@ -261,11 +265,13 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
       :host([x="2100"]) { --w: 2100; }
       :host([x="2826"]) { --w: 2826; }
       :host([x="4224"]) { --w: 4224; }
+      :host([x="2468"]) { --w: 2468; }
 
       :host([y="1080"]) { --h: 1080; }
       :host([y="1160"]) { --h: 1160; }
       :host([y="1527"]) { --h: 1527; }
       :host([y="2160"]) { --h: 2160; }
+      :host([y="1196"]) { --h: 1196; }
 
       :host([flipped]) .card__front {
         -webkit-transform: rotateY(-180deg);
@@ -364,6 +370,9 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
       /*.card__close:focus {
 
       }*/
+      :host(.non-keyboard) :focus {
+        outline: none !important;
+      }
     </style>
     <div id="front" class="card__front" role="button" tabindex="0" title="Reveal Process slides" aria-label="Reveal Process slides">
       <h3 class="visuallyhidden">[[titleOfWork]]</h3>
@@ -380,7 +389,7 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
     </div>
   </template>
 
-  <script>Polymer({is:"og-portfolio__piece",hostAttributes:{role:"article"},properties:{x:{type:Number,reflectToAttribute:!0},y:{type:Number,reflectToAttribute:!0},flipped:{type:Boolean,value:!1,reflectToAttribute:!0},piece:{type:Object},directory:{type:String},filenamePrefix:{type:String},filenameId:{type:String},titleOfWork:{type:String},shortDescription:{type:String},resolutions:{type:Array,value:[],reflectToAttribute:!1},date:{type:String}},flip:function(){var e=this;e.flipped=!e.flipped,e.flipped?e.$.close.focus():e.$.front.focus()},_handleFlipActivate:function(e){var t=this,i=e.target.className;if("keydown"===e.type||"keyup"===e.type){if(32!==e.which&&13!==e.which)return;e.preventDefault()}e.target!==e.currentTarget?(null===i.match("card__image")&&null===i.match("card__front")||t.flip(),null!==i.match("card__back"),null===i.match("card__close")&&null===i.match("card__close-icon")||t.flip()):t.flip(),e.stopPropagation()},ready:function(){var e=this;e.hasOwnProperty("resolutions")&&e.resolutions.length&&(e.x=e.resolutions[0].width,e.y=e.resolutions[0].height,e.$.image.srcset=e.getSrcset())},attached:function(){var e=this;e.addEventListener("click",e._handleFlipActivate),e.addEventListener("keydown",e._handleFlipActivate)},getSrcset:function(){var e,t=this,i="";if(t.hasOwnProperty("resolutions")&&t.resolutions.length)for(e=t.resolutions.length-1;e>=0;e--)i+=t.directory+t.filenameId+"/"+t.filenamePrefix+"-"+t.filenameId+t.resolutions[e].filenameSuffix.replace(",","%2C")+"."+t.resolutions[e].types[0]+" "+t.resolutions[e].width+"w",0!==e&&(i+=", ");return i}});</script>
+  <script>Polymer({is:"og-portfolio__piece",hostAttributes:{role:"article"},properties:{x:{type:Number,reflectToAttribute:!0},y:{type:Number,reflectToAttribute:!0},flipped:{type:Boolean,value:!1,reflectToAttribute:!0},piece:{type:Object},directory:{type:String},filenamePrefix:{type:String},filenameId:{type:String},titleOfWork:{type:String},shortDescription:{type:String},resolutions:{type:Array,value:[],reflectToAttribute:!1},date:{type:String}},flip:function(){var e=this;e.flipped=!e.flipped,e.flipped?e.$.close.focus():e.$.front.focus()},_handleFlipActivate:function(e){var t=this,r=e.target.className,i=Polymer.dom(t);if("keydown"===e.type||"keyup"===e.type||"keypress"===e.type){if(i.classList.remove("non-keyboard"),32!==e.which&&13!==e.which)return;e.preventDefault()}else i.classList.add("non-keyboard");e.target!==e.currentTarget?(null===r.match("card__image")&&null===r.match("card__front")||t.flip(),null!==r.match("card__back"),null===r.match("card__close")&&null===r.match("card__close-icon")||t.flip()):t.flip(),e.stopPropagation()},ready:function(){var e=this;e.hasOwnProperty("resolutions")&&e.resolutions.length&&(e.x=e.resolutions[0].width,e.y=e.resolutions[0].height,e.$.image.srcset=e.getSrcset())},attached:function(){var e=this;e.addEventListener("click",e._handleFlipActivate),e.addEventListener("keydown",e._handleFlipActivate)},getSrcset:function(){var e,t=this,r="";if(t.hasOwnProperty("resolutions")&&t.resolutions.length)for(e=t.resolutions.length-1;e>=0;e--)r+=t.directory+t.filenameId+"/"+t.filenamePrefix+"-"+t.filenameId+t.resolutions[e].filenameSuffix.replace(",","%2C")+"."+t.resolutions[e].types[0]+" "+t.resolutions[e].width+"w",0!==e&&(r+=", ");return r}});</script>
 </dom-module><dom-module id="og-portfolio__process" assetpath="src/og-portfolio__process/">
   <template>
     <style include="shared-styles">
@@ -428,7 +437,7 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
 	<script>Polymer({is:"carousel-slide"});</script>
 </dom-module><script>AnimationBehavior={properties:{_transitionStyle:{type:String,computed:"_computeTransitionStyle(transitionStyle)"}},_computeTransitionStyle:function(t){switch(t){case"cubic":return"cubic-bezier(.1,.6,.1,1)";case"cubic-inverse":return"cubic-bezier(0, 0.2, 0.9, 0.4)";default:return t}},_translateAnimation:function(t,i){var e=this.selected;this._translateX(e,0),this._translateX(t,this.offsetWidth*i),this.selected=t,this._translateX(e,-this.offsetWidth*i,!0),this._translateX(t,0,!0)},_translateX:function(t,i,e){var n=this.transitionDuration/1e3;t.style.display="inline-block",t.style.transition=e?"transform "+n+"s "+this._transitionStyle:"",t.style.transform="translate3d("+i+"px, 0, 0)"}};</script><dom-module id="simple-carousel" assetpath="bower_components/simple-carousel/">
   <template>
-    <style>
+    <style include="shared-styles">
 
       :host {
         display: block;
@@ -474,7 +483,6 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
       button:hover,
       button:focus {
         opacity: 1;
-        outline: var(--a11y-outline-style);
       }
 
       #prevBtn {
@@ -490,20 +498,22 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
         cursor: default;
       }
 
-
+      :host(.non-keyboard) :focus {
+        outline: none !important;
+      }
     </style>
 
     <div>
       <content select="carousel-slide, [carousel-slide], [data-carousel-slide]"></content>
     </div>
 
-    <button id="prevBtn" on-click="previous" on-keyup="keyboardAdvancePrevious">❮</button>
-    <button id="nextBtn" on-click="next" on-keyup="keyboardAdvanceNext">❯</button>
+    <button id="prevBtn" on-click="previous" on-keyup="keyboardAdvancePrevious" tabindex="0">❮</button>
+    <button id="nextBtn" on-click="next" on-keyup="keyboardAdvanceNext" tabindex="0">❯</button>
 
 
   </template>
 
-  <script>Polymer({is:"simple-carousel",behaviors:[AnimationBehavior],properties:{selected:{type:Object,observer:"_selectedChanged"},infiniteLoop:{type:Boolean,value:!1},auto:{type:Boolean,value:!1},transitionTime:{type:Number,value:3e3},transitionDuration:{type:Number,value:500},showControls:{type:String,value:!0},transitionStyle:{type:String,value:"ease"}},ready:function(){this._autoStart(),"false"==this.showControls&&(this.$.prevBtn.style.display="none",this.$.nextBtn.style.display="none")},_autoStart:function(){if(this.auto){var e=this;this.intervalHander&&clearInterval(this.intervalHander),this.intervalHander=setInterval(function(){e.next()},this.transitionTime)}},attached:function(){this.selected=this.queryEffectiveChildren("carousel-slide, [carousel-slide], [data-carousel-slide]")},_selectedChanged:function(e,t){t&&t.removeAttribute("selected"),e&&e.setAttribute("selected",""),this.infiniteLoop||(this.$.prevBtn.disabled=!e.previousElementSibling,this.$.nextBtn.disabled=!e.nextElementSibling)},keyboardAdvancePrevious:function(e){32!==e.which&&13!==e.which||this.previous()},keyboardAdvanceNext:function(e){32!==e.which&&13!==e.which||this.next()},previous:function(){var e=this.selected.previousElementSibling;if(this._autoStart(),this.infiniteLoop&&!e){var t=this.queryAllEffectiveChildren("carousel-slide, [carousel-slide], [data-carousel-slide]");e=t[t.length-1]}e&&this._translateAnimation(e,-1)},next:function(){var e=this.selected.nextElementSibling;this._autoStart(),this.infiniteLoop&&!e&&(e=this.queryEffectiveChildren("carousel-slide, [carousel-slide], [data-carousel-slide]")),e&&this._translateAnimation(e,1)},stop:function(){clearInterval(this.intervalHander)},start:function(){this.infiniteLoop=!0,this._autoStart()}});</script>
+  <script>Polymer({is:"simple-carousel",behaviors:[AnimationBehavior],properties:{selected:{type:Object,observer:"_selectedChanged"},infiniteLoop:{type:Boolean,value:!1},auto:{type:Boolean,value:!1},transitionTime:{type:Number,value:3e3},transitionDuration:{type:Number,value:500},showControls:{type:String,value:!0},transitionStyle:{type:String,value:"ease"}},ready:function(){this._autoStart(),"false"==this.showControls&&(this.$.prevBtn.style.display="none",this.$.nextBtn.style.display="none")},_autoStart:function(){if(this.auto){var e=this;this.intervalHander&&clearInterval(this.intervalHander),this.intervalHander=setInterval(function(){e.next()},this.transitionTime)}},attached:function(){this.selected=this.queryEffectiveChildren("carousel-slide, [carousel-slide], [data-carousel-slide]")},_selectedChanged:function(e,t){t&&t.removeAttribute("selected"),e&&e.setAttribute("selected",""),this.infiniteLoop||(this.$.prevBtn.disabled=!e.previousElementSibling,this.$.nextBtn.disabled=!e.nextElementSibling)},keyboardAdvancePrevious:function(e){32!==e.which&&13!==e.which||this.previous(e)},keyboardAdvanceNext:function(e){32!==e.which&&13!==e.which||this.next(e)},previous:function(e){var t=Polymer.dom(this);console.log("host",t),"keyup"===e.type||"keydown"===e.type||"keypress"===e.type?t.classList.remove("non-keyboard"):t.classList.add("non-keyboard");var i=this.selected.previousElementSibling;if(this._autoStart(),this.infiniteLoop&&!i){var s=this.queryAllEffectiveChildren("carousel-slide, [carousel-slide], [data-carousel-slide]");i=s[s.length-1]}i&&this._translateAnimation(i,-1)},next:function(e){var t=Polymer.dom(this);console.log("host",t),"keyup"===e.type||"keydown"===e.type||"keypress"===e.type?t.classList.remove("non-keyboard"):t.classList.add("non-keyboard");var i=this.selected.nextElementSibling;this._autoStart(),this.infiniteLoop&&!i&&(i=this.queryEffectiveChildren("carousel-slide, [carousel-slide], [data-carousel-slide]")),i&&this._translateAnimation(i,1)},stop:function(){clearInterval(this.intervalHander)},start:function(){this.infiniteLoop=!0,this._autoStart()}});</script>
 </dom-module>
 <dom-module id="og-portfolio" assetpath="src/og-portfolio/">
   <template>
@@ -526,7 +536,7 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
     
 
     
-    <og-portfolio__piece id="wrathful-deity" directory="[[directory]]" filename-prefix="[[filenamePrefix]]" title-of-work="Wrathful Deity" short-description="In a mountainous region, a man with a pistol approaches the opening of a massive stone temple shaped like a fanged god’s head." filename-id="wrathful-deity" resolutions="[{ &quot;width&quot;: &quot;2000&quot;, &quot;height&quot;: &quot;1080&quot;, &quot;filenameSuffix&quot;: &quot;&quot;, &quot;types&quot;: [ &quot;jpg&quot;, &quot;png&quot; ] }, { &quot;width&quot;: &quot;1000&quot;, &quot;height&quot;: &quot;540&quot;, &quot;filenameSuffix&quot;: &quot;@0,5x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }, { &quot;width&quot;: &quot;500&quot;, &quot;height&quot;: &quot;270&quot;, &quot;filenameSuffix&quot;: &quot;@0,25x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }]">
+    <og-portfolio__piece id="wrathful-deity" directory="[[directory]]" filename-prefix="[[filenamePrefix]]" title-of-work="Wrathful Deit fdjlksfjwelfhsekjfhsldfjhslfjhdslfhjy" short-description="In a mountainous region, a man with a pistol approaches the opening of a massive stone temple shaped like a fanged god’s head." filename-id="wrathful-deity" resolutions="[{ &quot;width&quot;: &quot;2000&quot;, &quot;height&quot;: &quot;1080&quot;, &quot;filenameSuffix&quot;: &quot;&quot;, &quot;types&quot;: [ &quot;jpg&quot;, &quot;png&quot; ] }, { &quot;width&quot;: &quot;1000&quot;, &quot;height&quot;: &quot;540&quot;, &quot;filenameSuffix&quot;: &quot;@0,5x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }, { &quot;width&quot;: &quot;500&quot;, &quot;height&quot;: &quot;270&quot;, &quot;filenameSuffix&quot;: &quot;@0,25x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }]">
       <og-portfolio__process>
         <simple-carousel>
           <og-portfolio__slide data-carousel-slide="" title-of-work="Diety Head" filename-id="process-01">
@@ -606,7 +616,8 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
               <li>Modo is my goto for 3D because it’s fast and relatively easy to use</li>
               <li>I blocked out the temple based on the thumbnails I liked, exploring space and plugging in zbrush assets</li>
               <li>Test render to figure out lighting/<abbr title="composition">comp</abbr></li>
-          
+            </ul>
+          </og-portfolio__slide>
           <og-portfolio__slide data-carousel-slide="" title-of-work="Render" filename-id="process-10">
             <ul>
               <li>I decided to use vue to render the scene because of the options it gives in the atmosphere editor and also because it has a large library of 3D plants that I can drop in and get free lighting out of</li>
@@ -620,14 +631,33 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
               <li>Then I can lovingly overpaint and finesse each element into a cohesive whole</li>
             </ul>
           </og-portfolio__slide>
-        
+        </simple-carousel>
+      </og-portfolio__process>
+    </og-portfolio__piece>
+    
+
+    
+    <og-portfolio__piece id="the-promised-land" directory="[[directory]]" filename-prefix="[[filenamePrefix]]" title-of-work="The Promised Land" filename-id="the-promised-land" short-description=" " resolutions="[ { &quot;width&quot;: &quot;2468&quot;, &quot;height&quot;: &quot;1196&quot;, &quot;filenameSuffix&quot;: &quot;&quot;, &quot;types&quot;: [ &quot;png&quot; ] } ]"></og-portfolio__piece>
+    
+
+    
+    <og-portfolio__piece id="new-york-state-of-mind" directory="[[directory]]" filename-prefix="[[filenamePrefix]]" title-of-work="New York State of Mind" filename-id="robbery" short-description="A high-speed car chase through New York City, with a masked gunman in a BMW shooting at another masked gunman in the back of a security truck with its doors open and money flying out." resolutions="[ { &quot;width&quot;: &quot;2100&quot;, &quot;height&quot;: &quot;1160&quot;, &quot;filenameSuffix&quot;: &quot;&quot;, &quot;types&quot;: [ &quot;jpg&quot;, &quot;png&quot; ] }, { &quot;width&quot;: &quot;1050&quot;, &quot;height&quot;: &quot;580&quot;, &quot;filenameSuffix&quot;: &quot;@0,5x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }, { &quot;width&quot;: &quot;525&quot;, &quot;height&quot;: &quot;290&quot;, &quot;filenameSuffix&quot;: &quot;@0,25x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] } ]">
+    </og-portfolio__piece>
+    
+
+    
+    <og-portfolio__piece id="sledgehammer" directory="[[directory]]" filename-prefix="[[filenamePrefix]]" title-of-work="Sledgehammer" filename-id="crackhouse" short-description="A man dragging a dead body across the floor." resolutions="[ { &quot;width&quot;: &quot;2826&quot;, &quot;height&quot;: &quot;1527&quot;, &quot;filenameSuffix&quot;: &quot;&quot;, &quot;types&quot;: [ &quot;jpg&quot;, &quot;png&quot; ] }, { &quot;width&quot;: &quot;1413&quot;, &quot;height&quot;: &quot;764&quot;, &quot;filenameSuffix&quot;: &quot;@0,5x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }, { &quot;width&quot;: &quot;707&quot;, &quot;height&quot;: &quot;382&quot;, &quot;filenameSuffix&quot;: &quot;@0,25x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] } ]">
       
-    
+    </og-portfolio__piece>
     
 
-  </ul></og-portfolio__slide></simple-carousel></og-portfolio__process></og-portfolio__piece></template>
+    
+     <og-portfolio__piece id="the-shark" directory="[[directory]]" filename-prefix="[[filenamePrefix]]" title-of-work="The Shark" filename-id="shark" short-description="A man in a fedora and trenchcoat, holding a pistol, hiding behind a car as another enters a door." resolutions="[ { &quot;width&quot;: &quot;4224&quot;, &quot;height&quot;: &quot;2160&quot;, &quot;filenameSuffix&quot;: &quot;&quot;, &quot;types&quot;: [ &quot;jpg&quot;, &quot;png&quot; ] }, { &quot;width&quot;: &quot;2112&quot;, &quot;height&quot;: &quot;1080&quot;, &quot;filenameSuffix&quot;: &quot;@0,5x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }, { &quot;width&quot;: &quot;1056&quot;, &quot;height&quot;: &quot;540&quot;, &quot;filenameSuffix&quot;: &quot;@0,25x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] } ]">
+    </og-portfolio__piece>
+    
+  </template>
 
-  <script>Polymer({is:"og-portfolio",hostAttributes:{role:"article",id:"portfolio"},properties:{directory:{type:String,value:"src/images/"},filenamePrefix:{type:String,value:"oliver-guiney"},filenameId:{type:String},pieces:{type:Array,value:function(){return[{title:"New York State of Mind",filenameId:"robbery",resolutions:[{width:"2100",height:"1160",filenameSuffix:"",types:["jpg","png"]},{width:"1050",height:"580",filenameSuffix:"@0,5x",types:["jpg"]},{width:"525",height:"290",filenameSuffix:"@0,25x",types:["jpg"]}]},{title:"Sledge Hammer",filenameId:"crackhouse",resolutions:[{width:"2826",height:"1527",filenameSuffix:"",types:["jpg","png"]},{width:"1413",height:"764",filenameSuffix:"@0,5x",types:["jpg"]},{width:"707",height:"382",filenameSuffix:"@0,25x",types:["jpg"]}]},{title:"The Shark",filenameId:"shark",resolutions:[{width:"4224",height:"2160",filenameSuffix:"",types:["jpg","png"]},{width:"2112",height:"1080",filenameSuffix:"@0,5x",types:["jpg"]},{width:"1056",height:"540",filenameSuffix:"@0,25x",types:["jpg"]}]}]}}},created:function(){},ready:function(){}});</script>
+  <script>Polymer({is:"og-portfolio",hostAttributes:{role:"article",id:"portfolio"},properties:{directory:{type:String,value:"src/images/"},filenamePrefix:{type:String,value:"oliver-guiney"},filenameId:{type:String},pieces:{type:Array,value:function(){return[]}}},created:function(){},ready:function(){}});</script>
 </dom-module>
 <dom-module id="og-about" assetpath="src/og-about/">
   <template>
