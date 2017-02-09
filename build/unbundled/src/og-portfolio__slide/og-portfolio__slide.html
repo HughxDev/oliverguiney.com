@@ -1,0 +1,22 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+
+</head><body><dom-module id="og-portfolio__slide">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        /*float: left;*/
+      }
+    </style>
+    
+    <img id="image" aria-labelledby$="[[portfolioPieceFilenameId]]-[[filenameId]]-description">
+    <div id$="[[portfolioPieceFilenameId]]-[[filenameId]]-description" class="visuallyhidden">
+      <h5>[[titleOfWork]]</h5>
+      <content></content>
+    </div>
+  </template>
+
+  <script>var getClosest=function(e,t){for(Element.prototype.matches||(Element.prototype.matches=Element.prototype.matchesSelector||Element.prototype.mozMatchesSelector||Element.prototype.msMatchesSelector||Element.prototype.oMatchesSelector||Element.prototype.webkitMatchesSelector||function(e){for(var t=(this.document||this.ownerDocument).querySelectorAll(e),o=t.length;--o>=0&&t.item(o)!==this;);return o>-1});e&&e!==document;e=e.parentNode)if(e.matches(t))return e;return null};Polymer({is:"og-portfolio__slide",hostAttributes:{role:"group",id:"process"},properties:{hostFilenameId:{type:String},filenameId:{type:String},filenamePrefix:{type:String,value:"oliver-guiney"},filenameSuffix:{type:String,value:""},filenamePrepend:{type:String,value:"",reflectToAttribute:!0},types:{type:Array,value:["jpg"]},directory:{type:String,value:"src/images/"},titleOfWork:{type:String}},attached:function(){var e=getClosest(this,"og-portfolio__piece");this.portfolioPieceFilenameId=e.filenameId,this.$.image.src=this.directory+this.portfolioPieceFilenameId+"/"+this.filenamePrefix+"-"+this.portfolioPieceFilenameId+"-"+this.filenameId+"."+this.types[0]}});</script>
+</dom-module>
+</body></html>

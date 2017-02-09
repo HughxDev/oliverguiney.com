@@ -51,6 +51,11 @@
         --heading-font: "TT Lakes";
         --global-spacing: 2rem;
         --off-white: whitesmoke;
+        --white: var(--off-white);
+        --frame-color: black;
+        --global-shadow: 0 0 20px rgba(0,0,0,0.75);
+        /*--w: 1920;
+        --h: 1080;*/
       }
 
       body {
@@ -122,10 +127,25 @@
               margin-bottom: 1.5rem;
             }
           }
+
+          a:hover, a:focus {
+            text-decoration: none;
+          }
+
+          .visuallyhidden { 
+            position: absolute; 
+            overflow: hidden; 
+            clip: rect(0 0 0 0); 
+            height: 1px; width: 1px; 
+            margin: -1px; padding: 0; border: 0; 
+          }
         </style>
       </template>
     </dom-module>
 
+    
+    
+  
     <link rel="import" href="src/og-site/og-site.html">
   
   
