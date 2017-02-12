@@ -11,8 +11,8 @@
       }
     </style>
     <!-- <img src$="{{filenamePrepend}}-{{filenameId}}.{{types.0}}" /> -->
-    <img id="image" aria-labelledby$="[[portfolioPieceFilenameId]]-[[filenameId]]-description" />
-    <div id$="[[portfolioPieceFilenameId]]-[[filenameId]]-description" class="visuallyhidden">
+    <img id="image" aria-labelledby$="[[descriptionId]]" />
+    <div id$="[[descriptionId]]" class="visuallyhidden">
       <h5>[[titleOfWork]]</h5>
       <content></content>
     </div>
@@ -23,7 +23,7 @@
 
       is: 'og-portfolio__slide',
 
-      behaviors: [ OG.DOM, OG.Images ],
+      behaviors: [ OG.DOM, OG.Image, OG.String ],
 
       hostAttributes: {
         role: 'group',
@@ -37,6 +37,12 @@
         filenameId: {
           type: String,
           value: ''
+        },
+        dasherizedFilenameId: {
+          type: String
+        },
+        descriptionId: {
+          type: String
         },
         filenameSuffix: {
           type: String,
@@ -67,11 +73,18 @@
       },
 
       ready: function ogPortfolioSlideAttached() {
-        // this.async(function ogPortfolioSlideAttachedAsync() {
-          this.portfolioPiece = this.getClosest( this, 'og-portfolio__piece' );
+        this.dasherizedFilenameId = this.dasherize( this.filenameId );
 
-          this.$.image.srcset = this.getSrcset( this.portfolioPiece );
-        // });
+        this.portfolioPiece = this.getClosest( this, 'og-portfolio__piece' );
+
+        this.descriptionId =
+          this.portfolioPiece.filenameId
+          + '-'
+          + this.dasherizedFilenameId
+          + '-description'
+        ;
+
+        this.$.image.srcset = this.getSrcset( this.portfolioPiece );
       },
 
       getSrc: function ogPortfolioSlideGetSrc() {

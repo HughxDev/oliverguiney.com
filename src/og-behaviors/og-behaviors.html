@@ -1,6 +1,12 @@
 <script>
   window.OG = window.OG || {};
 
+  OG.String = {
+    dasherize: function ogDasherize( string ) {
+      return string.toLowerCase().replace( /\s/g, '-' );
+    }
+  };
+
   OG.DOM = {
     /**
      * Get the closest matching element up the DOM tree.
@@ -41,7 +47,7 @@
     }
   };
 
-  OG.Images = {
+  OG.Image = {
     getSrcset: function ogGetSrcset( container ) {
       var image = this;
       var srcset = '';
@@ -63,8 +69,6 @@
         subdirectory = image.subdirectory;
 
         if ( 'filenameId' in image ) {
-          console.log( 'has filenameId' );
-
           filenameAppend = '%20-%20' + image.filenameId.replace( /\s/g, '%20' );
         }
       }
@@ -83,7 +87,7 @@
             + '%20'
             + referenceObject.filenameSuffix.replace( /\s/g, '%20' )
             + filenameAppend
-            + referenceObject.resolutions[i].resolutionSuffix.replace( ',', '%2C' )
+            + referenceObject.resolutions[i].zoomLevel.replace( ',', '%2C' )
             + '.'
             + referenceObject.resolutions[i].types[0]
             + ' '
@@ -96,8 +100,6 @@
           }
         }
       }
-
-      console.log ( 'srcset', srcset );
 
       return srcset;
     }
