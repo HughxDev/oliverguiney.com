@@ -172,6 +172,8 @@
 
       is: 'og-portfolio__piece',
 
+      behaviors: [ OG.DOM, OG.Images ],
+
       hostAttributes: {
         role: 'article'
       },
@@ -192,14 +194,13 @@
           value: false,
           reflectToAttribute: true
         },
-        piece: {
-          type: Object
-        },
         directory: {
-          type: String
+          type: String,
+          value: 'src/images/'
         },
-        filenamePrefix: {
-          type: String
+        filenameSuffix: {
+          type: String,
+          value: 'by Oliver Guiney'
         },
         filenameId: {
           type: String
@@ -306,37 +307,7 @@
         portfolioPiece.addEventListener( "keydown", portfolioPiece._handleFlipActivate );
       },
 
-      getSrcset: function ogPortfolioGetSrcset() {
-        var portfolioPiece = this;
-        var srcset = '';
-        var i;
-
-        if ( portfolioPiece.hasOwnProperty( 'resolutions' ) && !!portfolioPiece.resolutions.length ) {
-          i = portfolioPiece.resolutions.length - 1;
-
-          for ( ; i >= 0; i--) {
-            srcset += portfolioPiece.directory
-              + portfolioPiece.filenameId
-              + '/'
-              + portfolioPiece.filenamePrefix
-              + '-'
-              + portfolioPiece.filenameId
-              + portfolioPiece.resolutions[i].filenameSuffix.replace( ',', '%2C' )
-              + '.'
-              + portfolioPiece.resolutions[i].types[0]
-              + ' '
-              + portfolioPiece.resolutions[i].width
-              + 'w'
-            ;
-          
-            if ( i !== 0 ) {
-              srcset += ', ';
-            }
-          }
-        }
-
-        return srcset;
-      }
+      // getSrcset
     });
   </script>
 </dom-module>
