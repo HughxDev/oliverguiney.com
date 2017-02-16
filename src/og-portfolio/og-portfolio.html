@@ -10,6 +10,8 @@
     <style include="shared-styles">
       :host {
         display: block;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       p {
@@ -286,11 +288,34 @@
         id: 'portfolio'
       },
 
-      // properties: {},
+      properties: {
+        _widths: {
+          type: Array,
+          value: []
+        }
+      },
 
       // created: function ogPortfolioCreated() {},
 
       // ready: function ogPortfolioReady() {},
+
+      attached: function ogPortfolioAttached() {
+        var root = Polymer.dom( this.root )
+        var pieces = root.querySelectorAll( 'og-portfolio__piece' );
+        var i = pieces.length - 1;
+
+        for ( ; i >= 0; i-- ) {
+          if ( 'x' in pieces[i] ) {
+            this._widths.push( pieces[i].x );
+          }
+        }
+
+        this._widths.sort(function(a, b) {
+          return a - b;
+        });
+
+        this.style.maxWidth = this._widths[0] + 'px';
+      }
     });
   </script>
 </dom-module>
