@@ -30,6 +30,9 @@
     <!-- <link rel="import" href="/styles/fonts.html" />
     <style include="fonts"></style> -->
 
+    <script src="https://use.typekit.net/xey3oyf.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+
     <style is="custom-style">
       @font-face {
         /**
@@ -58,7 +61,19 @@
         src: url('src/fonts/32F316_0_0.eot?#iefix') format('embedded-opentype'),
           url('src/fonts/32F316_0_0.woff2') format('woff2'),
           url('src/fonts/32F316_0_0.woff') format('woff'),
-          url('src/fonts/32F316_0_0.ttf') format('truetype');
+          url('src/fonts/32F316_0_0.ttf') format('truetype')
+        ;
+      }
+
+      @font-face {
+        font-family: 'Foro Extra Light';
+        font-weight: 100;
+        src: url('src/fonts/330523_0_0.eot');
+        src: url('src/fonts//330523_0_0.eot?#iefix') format('embedded-opentype'),
+          url('src/fonts/330523_0_0.woff2') format('woff2'),
+          url('src/fonts/330523_0_0.woff') format('woff'),
+          url('src/fonts/330523_0_0.ttf') format('truetype')
+        ;
       }
 
       /* Use the :root selector to define custom properties and mixins */
@@ -78,9 +93,15 @@
       body {
         padding: 0;
         margin: 0 var(--global-spacing);
-        font-family: sans-serif;
+        font-family: "skolar-sans-latin", sans-serif;
         background-image: url('src/images/patterns/noisy_net.png');
         color: var(--off-white);
+        /*font-family: 'Foro Extra Light';*/
+        /*font-family: "TT Lakes";*/
+        font-size: 1.25rem;
+        font-style: normal;
+        line-height: 1.25;
+        font-weight: 200;
       }
 
       @media (-webkit-min-device-pixel-ratio: 2),
