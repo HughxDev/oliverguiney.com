@@ -117,6 +117,13 @@
         right: calc( var(--global-spacing) / 2 );
         top: calc( var(--global-spacing) / 2 );
         opacity: 0;
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: bold;
+
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
       }
 
       :host([flipped]) .card__close {
@@ -151,5 +158,5 @@
     </div>
   </template>
 
-  <script>Polymer({is:"og-portfolio__piece",hostAttributes:{role:"article"},properties:{x:{type:Number,reflectToAttribute:!0},y:{type:Number,reflectToAttribute:!0},flipped:{type:Boolean,value:!1,reflectToAttribute:!0},piece:{type:Object},directory:{type:String},filenamePrefix:{type:String},filenameId:{type:String},titleOfWork:{type:String},shortDescription:{type:String},resolutions:{type:Array,value:[],reflectToAttribute:!1},date:{type:String}},flip:function(){var e=this;e.flipped=!e.flipped,e.flipped?e.$.close.focus():e.$.front.focus()},_handleFlipActivate:function(e){var t=this,r=e.target.className,i=Polymer.dom(t);if("keydown"===e.type||"keyup"===e.type||"keypress"===e.type){if(i.classList.remove("non-keyboard"),32!==e.which&&13!==e.which)return;e.preventDefault()}else i.classList.add("non-keyboard");e.target!==e.currentTarget?(null===r.match("card__image")&&null===r.match("card__front")||t.flip(),null!==r.match("card__back"),null===r.match("card__close")&&null===r.match("card__close-icon")||t.flip()):t.flip(),e.stopPropagation()},ready:function(){var e=this;e.hasOwnProperty("resolutions")&&e.resolutions.length&&(e.x=e.resolutions[0].width,e.y=e.resolutions[0].height,e.$.image.srcset=e.getSrcset())},attached:function(){var e=this;e.addEventListener("click",e._handleFlipActivate),e.addEventListener("keydown",e._handleFlipActivate)},getSrcset:function(){var e,t=this,r="";if(t.hasOwnProperty("resolutions")&&t.resolutions.length)for(e=t.resolutions.length-1;e>=0;e--)r+=t.directory+t.filenameId+"/"+t.filenamePrefix+"-"+t.filenameId+t.resolutions[e].filenameSuffix.replace(",","%2C")+"."+t.resolutions[e].types[0]+" "+t.resolutions[e].width+"w",0!==e&&(r+=", ");return r}});</script>
+  <script>Polymer({is:"og-portfolio__piece",behaviors:[OG.DOM,OG.Image],hostAttributes:{role:"article"},properties:{x:{type:Number,reflectToAttribute:!0},y:{type:Number,reflectToAttribute:!0},flipped:{type:Boolean,value:!1,reflectToAttribute:!0},directory:{type:String,value:"src/images/"},filenameSuffix:{type:String,value:"by Oliver Guiney"},filenameId:{type:String},titleOfWork:{type:String},shortDescription:{type:String},resolutions:{type:Array,value:[],reflectToAttribute:!1},date:{type:String}},flip:function(){var e=this;e.flipped=!e.flipped,e.flipped?e.$.close.focus():e.$.front.focus()},_handleFlipActivate:function(e){var t=this,r=e.target.className,i=Polymer.dom(t);if("keydown"===e.type||"keyup"===e.type||"keypress"===e.type){if(i.classList.remove("non-keyboard"),32!==e.which&&13!==e.which)return;e.preventDefault()}else i.classList.add("non-keyboard");e.target!==e.currentTarget?(null===r.match("card__image")&&null===r.match("card__front")||t.flip(),null!==r.match("card__back"),null===r.match("card__close")&&null===r.match("card__close-icon")||t.flip()):t.flip(),e.stopPropagation()},ready:function(){var e=this;e.hasOwnProperty("resolutions")&&e.resolutions.length&&(e.x=e.resolutions[0].width,e.y=e.resolutions[0].height,e.$.image.srcset=e.getSrcset())},attached:function(){var e=this;e.addEventListener("click",e._handleFlipActivate),e.addEventListener("keydown",e._handleFlipActivate)}});</script>
 </dom-module></body></html>

@@ -11,13 +11,13 @@
       }
     </style>
     
-    <img id="image" aria-labelledby$="[[portfolioPieceFilenameId]]-[[filenameId]]-description">
-    <div id$="[[portfolioPieceFilenameId]]-[[filenameId]]-description" class="visuallyhidden">
+    <img id="image" aria-describedby$="[[descriptionId]]">
+    <div id$="[[descriptionId]]" class="visuallyhidden">
       <h5>[[titleOfWork]]</h5>
       <content></content>
     </div>
   </template>
 
-  <script>var getClosest=function(e,t){for(Element.prototype.matches||(Element.prototype.matches=Element.prototype.matchesSelector||Element.prototype.mozMatchesSelector||Element.prototype.msMatchesSelector||Element.prototype.oMatchesSelector||Element.prototype.webkitMatchesSelector||function(e){for(var t=(this.document||this.ownerDocument).querySelectorAll(e),o=t.length;--o>=0&&t.item(o)!==this;);return o>-1});e&&e!==document;e=e.parentNode)if(e.matches(t))return e;return null};Polymer({is:"og-portfolio__slide",hostAttributes:{role:"group",id:"process"},properties:{hostFilenameId:{type:String},filenameId:{type:String},filenamePrefix:{type:String,value:"oliver-guiney"},filenameSuffix:{type:String,value:""},filenamePrepend:{type:String,value:"",reflectToAttribute:!0},types:{type:Array,value:["jpg"]},directory:{type:String,value:"src/images/"},titleOfWork:{type:String}},attached:function(){var e=getClosest(this,"og-portfolio__piece");this.portfolioPieceFilenameId=e.filenameId,this.$.image.src=this.directory+this.portfolioPieceFilenameId+"/"+this.filenamePrefix+"-"+this.portfolioPieceFilenameId+"-"+this.filenameId+"."+this.types[0]}});</script>
+  <script>Polymer({is:"og-portfolio__slide",behaviors:[OG.DOM,OG.Image,OG.String],hostAttributes:{role:"group",id:"process"},properties:{hostFilenameId:{type:String},filenameId:{type:String,value:""},dasherizedFilenameId:{type:String},descriptionId:{type:String},filenameSuffix:{type:String,value:""},filenamePrepend:{type:String,value:"",reflectToAttribute:!0},types:{type:Array,value:["jpg"]},directory:{type:String},subdirectory:{type:String,value:"process/"},titleOfWork:{type:String},portfolioPiece:{type:Object}},ready:function(){this.dasherizedFilenameId=this.dasherize(this.filenameId),this.portfolioPiece=this.getClosest(this,"og-portfolio__piece"),this.descriptionId=this.portfolioPiece.filenameId+"-"+this.dasherizedFilenameId+"-description",this.$.image.srcset=this.getSrcset(this.portfolioPiece)},getSrc:function(){var e=/\s/g,i=this.directory+this.portfolioPiece.filenameId+"/"+this.subdirectory+"“"+this.portfolioPiece.titleOfWork.replace(e,"%20")+"”%20"+this.portfolioPiece.filenameSuffix.replace(e,"%20")+"%20-%20"+this.filenameId.replace(e,"%20")+"."+this.types[0];return i}});</script>
 </dom-module>
 </body></html>
