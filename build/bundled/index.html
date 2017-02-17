@@ -22,6 +22,9 @@ e.attachedCallback&&e.attachedCallback())}function c(e){d(e),g(e,function(e){d(e
 
     
 
+    <script src="https://use.typekit.net/xey3oyf.js"></script>
+    <script>try{Typekit.load({async:!0})}catch(a){}</script>
+
     <style is="custom-style">
       @font-face {
         /**
@@ -50,7 +53,19 @@ e.attachedCallback&&e.attachedCallback())}function c(e){d(e),g(e,function(e){d(e
         src: url('src/fonts/32F316_0_0.eot?#iefix') format('embedded-opentype'),
           url('src/fonts/32F316_0_0.woff2') format('woff2'),
           url('src/fonts/32F316_0_0.woff') format('woff'),
-          url('src/fonts/32F316_0_0.ttf') format('truetype');
+          url('src/fonts/32F316_0_0.ttf') format('truetype')
+        ;
+      }
+
+      @font-face {
+        font-family: 'Foro Extra Light';
+        font-weight: 100;
+        src: url('src/fonts/330523_0_0.eot');
+        src: url('src/fonts//330523_0_0.eot?#iefix') format('embedded-opentype'),
+          url('src/fonts/330523_0_0.woff2') format('woff2'),
+          url('src/fonts/330523_0_0.woff') format('woff'),
+          url('src/fonts/330523_0_0.ttf') format('truetype')
+        ;
       }
 
       /* Use the :root selector to define custom properties and mixins */
@@ -70,9 +85,15 @@ e.attachedCallback&&e.attachedCallback())}function c(e){d(e),g(e,function(e){d(e
       body {
         padding: 0;
         margin: 0 var(--global-spacing);
-        font-family: sans-serif;
+        font-family: "skolar-sans-latin", sans-serif;
         background-image: url('src/images/patterns/noisy_net.png');
         color: var(--off-white);
+        /*font-family: 'Foro Extra Light';*/
+        /*font-family: "TT Lakes";*/
+        font-size: 1.25rem;
+        font-style: normal;
+        line-height: 1.25;
+        font-weight: 200;
       }
 
       @media (-webkit-min-device-pixel-ratio: 2),
@@ -192,7 +213,7 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
 
 
 
-<dom-module id="og-header" assetpath="src/og-header/">
+<script>window.OG=window.OG||{},OG.String={dasherize:function(e){return e.toLowerCase().replace(/\s/g,"-")}},OG.DOM={getClosest:function(e,t){for(Element.prototype.matches||(Element.prototype.matches=Element.prototype.matchesSelector||Element.prototype.mozMatchesSelector||Element.prototype.msMatchesSelector||Element.prototype.oMatchesSelector||Element.prototype.webkitMatchesSelector||function(e){for(var t=(this.document||this.ownerDocument).querySelectorAll(e),o=t.length;--o>=0&&t.item(o)!==this;);return o>-1});e&&e!==document&&"#document-fragment"!==e.nodeName;e=Polymer.dom(e).parentNode)if(e.matches(t))return e;return null}},OG.Image={getSrcset:function(e){var t,o,r=this,n="",l="",i="";if(e?(o=e,groupFilenameId=e.filenameId):(o=r,groupFilenameId=r.filenameId),"subdirectory"in r&&(l=r.subdirectory,"filenameId"in r&&(i="%20-%20"+r.filenameId.replace(/\s/g,"%20"))),o.resolutions)for(t=o.resolutions.length-1;t>=0;t--)n+=o.directory+groupFilenameId+"/"+l+"“"+o.titleOfWork.replace(/\s/g,"%20")+"”%20"+o.filenameSuffix.replace(/\s/g,"%20")+i+o.resolutions[t].zoomLevel.replace(",","%2C")+"."+o.resolutions[t].types[0]+" "+o.resolutions[t].width+"w",0!==t&&(n+=", ");return n}};</script><dom-module id="og-header" assetpath="src/og-header/">
   <template>
     <style include="shared-styles">
       :host {
@@ -229,18 +250,28 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
 
       a {
         color: #28aadc;
+        display: inline-block;
+        margin-right: 1rem;
+      }
+
+      a:last-child {
+        margin-right: 0;
       }
 
       .email-address {
         text-transform: uppercase;
       }
     </style>
-    <h1 class="__name __child">Oliver Guiney</h1>
+    <h1 class="__name __child">
+      
+      Oliver Guiney
+    </h1>
     <p class="__title __child">Concept Artist</p>
-    <p class="__child"><a class="email-address" href="mailto:oliver.guiney@gmail.com">oliver.guiney@gmail.com</a></p>
+    
     <nav class="__nav __child">
       
       <a href="#about">About</a>
+      <a href="mailto:mailto:oliver.guiney@gmail.com">E-mail</a>
     </nav>
   </template>
 
@@ -362,6 +393,13 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
         right: calc( var(--global-spacing) / 2 );
         top: calc( var(--global-spacing) / 2 );
         opacity: 0;
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: bold;
+
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
       }
 
       :host([flipped]) .card__close {
@@ -396,7 +434,7 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
     </div>
   </template>
 
-  <script>Polymer({is:"og-portfolio__piece",hostAttributes:{role:"article"},properties:{x:{type:Number,reflectToAttribute:!0},y:{type:Number,reflectToAttribute:!0},flipped:{type:Boolean,value:!1,reflectToAttribute:!0},piece:{type:Object},directory:{type:String},filenamePrefix:{type:String},filenameId:{type:String},titleOfWork:{type:String},shortDescription:{type:String},resolutions:{type:Array,value:[],reflectToAttribute:!1},date:{type:String}},flip:function(){var e=this;e.flipped=!e.flipped,e.flipped?e.$.close.focus():e.$.front.focus()},_handleFlipActivate:function(e){var t=this,r=e.target.className,i=Polymer.dom(t);if("keydown"===e.type||"keyup"===e.type||"keypress"===e.type){if(i.classList.remove("non-keyboard"),32!==e.which&&13!==e.which)return;e.preventDefault()}else i.classList.add("non-keyboard");e.target!==e.currentTarget?(null===r.match("card__image")&&null===r.match("card__front")||t.flip(),null!==r.match("card__back"),null===r.match("card__close")&&null===r.match("card__close-icon")||t.flip()):t.flip(),e.stopPropagation()},ready:function(){var e=this;e.hasOwnProperty("resolutions")&&e.resolutions.length&&(e.x=e.resolutions[0].width,e.y=e.resolutions[0].height,e.$.image.srcset=e.getSrcset())},attached:function(){var e=this;e.addEventListener("click",e._handleFlipActivate),e.addEventListener("keydown",e._handleFlipActivate)},getSrcset:function(){var e,t=this,r="";if(t.hasOwnProperty("resolutions")&&t.resolutions.length)for(e=t.resolutions.length-1;e>=0;e--)r+=t.directory+t.filenameId+"/"+t.filenamePrefix+"-"+t.filenameId+t.resolutions[e].filenameSuffix.replace(",","%2C")+"."+t.resolutions[e].types[0]+" "+t.resolutions[e].width+"w",0!==e&&(r+=", ");return r}});</script>
+  <script>Polymer({is:"og-portfolio__piece",behaviors:[OG.DOM,OG.Image],hostAttributes:{role:"article"},properties:{x:{type:Number,reflectToAttribute:!0},y:{type:Number,reflectToAttribute:!0},flipped:{type:Boolean,value:!1,reflectToAttribute:!0},directory:{type:String,value:"src/images/"},filenameSuffix:{type:String,value:"by Oliver Guiney"},filenameId:{type:String},titleOfWork:{type:String},shortDescription:{type:String},resolutions:{type:Array,value:[],reflectToAttribute:!1},date:{type:String}},flip:function(){var e=this;e.flipped=!e.flipped,e.flipped?e.$.close.focus():e.$.front.focus()},_handleFlipActivate:function(e){var t=this,r=e.target.className,i=Polymer.dom(t);if("keydown"===e.type||"keyup"===e.type||"keypress"===e.type){if(i.classList.remove("non-keyboard"),32!==e.which&&13!==e.which)return;e.preventDefault()}else i.classList.add("non-keyboard");e.target!==e.currentTarget?(null===r.match("card__image")&&null===r.match("card__front")||t.flip(),null!==r.match("card__back"),null===r.match("card__close")&&null===r.match("card__close-icon")||t.flip()):t.flip(),e.stopPropagation()},ready:function(){var e=this;e.hasOwnProperty("resolutions")&&e.resolutions.length&&(e.x=e.resolutions[0].width,e.y=e.resolutions[0].height,e.$.image.srcset=e.getSrcset())},attached:function(){var e=this;e.addEventListener("click",e._handleFlipActivate),e.addEventListener("keydown",e._handleFlipActivate)}});</script>
 </dom-module><dom-module id="og-portfolio__process" assetpath="src/og-portfolio__process/">
   <template>
     <style include="shared-styles">
@@ -421,14 +459,14 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
       }
     </style>
     
-    <img id="image" aria-labelledby$="[[portfolioPieceFilenameId]]-[[filenameId]]-description">
-    <div id$="[[portfolioPieceFilenameId]]-[[filenameId]]-description" class="visuallyhidden">
+    <img id="image" aria-describedby$="[[descriptionId]]">
+    <div id$="[[descriptionId]]" class="visuallyhidden">
       <h5>[[titleOfWork]]</h5>
       <content></content>
     </div>
   </template>
 
-  <script>var getClosest=function(e,t){for(Element.prototype.matches||(Element.prototype.matches=Element.prototype.matchesSelector||Element.prototype.mozMatchesSelector||Element.prototype.msMatchesSelector||Element.prototype.oMatchesSelector||Element.prototype.webkitMatchesSelector||function(e){for(var t=(this.document||this.ownerDocument).querySelectorAll(e),o=t.length;--o>=0&&t.item(o)!==this;);return o>-1});e&&e!==document;e=e.parentNode)if(e.matches(t))return e;return null};Polymer({is:"og-portfolio__slide",hostAttributes:{role:"group",id:"process"},properties:{hostFilenameId:{type:String},filenameId:{type:String},filenamePrefix:{type:String,value:"oliver-guiney"},filenameSuffix:{type:String,value:""},filenamePrepend:{type:String,value:"",reflectToAttribute:!0},types:{type:Array,value:["jpg"]},directory:{type:String,value:"src/images/"},titleOfWork:{type:String}},attached:function(){var e=getClosest(this,"og-portfolio__piece");this.portfolioPieceFilenameId=e.filenameId,this.$.image.src=this.directory+this.portfolioPieceFilenameId+"/"+this.filenamePrefix+"-"+this.portfolioPieceFilenameId+"-"+this.filenameId+"."+this.types[0]}});</script>
+  <script>Polymer({is:"og-portfolio__slide",behaviors:[OG.DOM,OG.Image,OG.String],hostAttributes:{role:"group",id:"process"},properties:{hostFilenameId:{type:String},filenameId:{type:String,value:""},dasherizedFilenameId:{type:String},descriptionId:{type:String},filenameSuffix:{type:String,value:""},filenamePrepend:{type:String,value:"",reflectToAttribute:!0},types:{type:Array,value:["jpg"]},directory:{type:String},subdirectory:{type:String,value:"process/"},titleOfWork:{type:String},portfolioPiece:{type:Object}},ready:function(){this.dasherizedFilenameId=this.dasherize(this.filenameId),this.portfolioPiece=this.getClosest(this,"og-portfolio__piece"),this.descriptionId=this.portfolioPiece.filenameId+"-"+this.dasherizedFilenameId+"-description",this.$.image.srcset=this.getSrcset(this.portfolioPiece)},getSrc:function(){var e=/\s/g,i=this.directory+this.portfolioPiece.filenameId+"/"+this.subdirectory+"“"+this.portfolioPiece.titleOfWork.replace(e,"%20")+"”%20"+this.portfolioPiece.filenameSuffix.replace(e,"%20")+"%20-%20"+this.filenameId.replace(e,"%20")+"."+this.types[0];return i}});</script>
 </dom-module>
 <dom-module id="carousel-slide" assetpath="bower_components/simple-carousel/">	
 	<template>
@@ -485,6 +523,10 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
         font-weight: bold;
         cursor: pointer;
         opacity: 0.7;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
       }
 
       button:hover,
@@ -527,6 +569,8 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
     <style include="shared-styles">
       :host {
         display: block;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       p {
@@ -537,19 +581,19 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
     <p>Select a piece to view process details.</p>
     
     
-    <og-portfolio__piece id="think-vertically" directory="[[directory]]" filename-prefix="[[filenamePrefix]]" title-of-work="Think Vertically" filename-id="hydroponic" short-description="A woman in a white lab coat tending to a futuristic machine in a lab with a lot of plant overgrowth." resolutions="[ { &quot;width&quot;: &quot;2000&quot;, &quot;height&quot;: &quot;1080&quot;, &quot;filenameSuffix&quot;: &quot;&quot;, &quot;types&quot;: [ &quot;jpg&quot;, &quot;png&quot; ] }, { &quot;width&quot;: &quot;1000&quot;, &quot;height&quot;: &quot;540&quot;, &quot;filenameSuffix&quot;: &quot;@0,5x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }, { &quot;width&quot;: &quot;500&quot;, &quot;height&quot;: &quot;270&quot;, &quot;filenameSuffix&quot;: &quot;@0,25x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] } ]">
+    <og-portfolio__piece id="think-vertically" filename-id="think-vertically" title-of-work="Think Vertically" short-description="A woman in a white lab coat tending to a futuristic machine in a lab with a lot of plant overgrowth." resolutions="[ { &quot;width&quot;: &quot;2000&quot;, &quot;height&quot;: &quot;1080&quot;, &quot;zoomLevel&quot;: &quot;&quot;, &quot;types&quot;: [ &quot;jpg&quot;, &quot;png&quot; ] }, { &quot;width&quot;: &quot;1000&quot;, &quot;height&quot;: &quot;540&quot;, &quot;zoomLevel&quot;: &quot;@0,5x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }, { &quot;width&quot;: &quot;500&quot;, &quot;height&quot;: &quot;270&quot;, &quot;zoomLevel&quot;: &quot;@0,25x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] } ]">
           
     </og-portfolio__piece>
     
 
     
-    <og-portfolio__piece id="wrathful-deity" directory="[[directory]]" filename-prefix="[[filenamePrefix]]" title-of-work="Wrathful Deit fdjlksfjwelfhsekjfhsldfjhslfjhdslfhjy" short-description="In a mountainous region, a man with a pistol approaches the opening of a massive stone temple shaped like a fanged god’s head." filename-id="wrathful-deity" resolutions="[{ &quot;width&quot;: &quot;2000&quot;, &quot;height&quot;: &quot;1080&quot;, &quot;filenameSuffix&quot;: &quot;&quot;, &quot;types&quot;: [ &quot;jpg&quot;, &quot;png&quot; ] }, { &quot;width&quot;: &quot;1000&quot;, &quot;height&quot;: &quot;540&quot;, &quot;filenameSuffix&quot;: &quot;@0,5x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }, { &quot;width&quot;: &quot;500&quot;, &quot;height&quot;: &quot;270&quot;, &quot;filenameSuffix&quot;: &quot;@0,25x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }]">
+    <og-portfolio__piece id="wrathful-deity" filename-id="wrathful-deity" title-of-work="Wrathful Deity" short-description="In a mountainous region, a man with a pistol approaches the opening of a massive stone temple shaped like a fanged god’s head." resolutions="[{ &quot;width&quot;: &quot;2042&quot;, &quot;height&quot;: &quot;1080&quot;, &quot;zoomLevel&quot;: &quot;&quot;, &quot;types&quot;: [ &quot;jpg&quot;, &quot;png&quot; ] }, { &quot;width&quot;: &quot;1021&quot;, &quot;height&quot;: &quot;540&quot;, &quot;zoomLevel&quot;: &quot;@0,5x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }, { &quot;width&quot;: &quot;511&quot;, &quot;height&quot;: &quot;270&quot;, &quot;zoomLevel&quot;: &quot;@0,25x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }]">
       <og-portfolio__process>
         <simple-carousel>
-          <og-portfolio__slide data-carousel-slide="" title-of-work="Diety Head" filename-id="process-01">
+          <og-portfolio__slide data-carousel-slide="" title-of-work="Diety Head" filename-id="Process 01">
             <p>Based on a confluence of Balinese stone masks and statues</p>
           </og-portfolio__slide>
-          <og-portfolio__slide data-carousel-slide="" title-of-work="Pillar Design" filename-id="process-02">
+          <og-portfolio__slide data-carousel-slide="" title-of-work="Pillar Design" filename-id="Process 02">
             <dl>
               <dt>Brick Shingles</dt>
               <dd>Konark Sun Temple</dd>
@@ -559,14 +603,14 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
               <dd>Prambanan, Indonesia</dd>
             </dl>
           </og-portfolio__slide>
-          <og-portfolio__slide data-carousel-slide="" title-of-work="Thumbnails 1" filename-id="process-03">
+          <og-portfolio__slide data-carousel-slide="" title-of-work="Thumbnails 1" filename-id="Process 03">
             <ul>
               <li>Initially did 200 abstract thumbnails to explore shapes in space</li>
               <li>Setting up sheets of 25 with various sizes and restrictions</li>
               <li>Spending usually only a minute tops for each thumb</li>
             </ul>
           </og-portfolio__slide>
-          <og-portfolio__slide data-carousel-slide="" title-of-work="Thumbnails 2" filename-id="process-04">
+          <og-portfolio__slide data-carousel-slide="" title-of-work="Thumbnails 2" filename-id="Process 04">
             <ul>
               <li>Narrowing in on the thumbnails I liked, and working them up</li>
               <li>I didn’t use any of these thumbs DIRECTLY, but I took elements from each one, mostly 1, 5 and 8</li>
@@ -574,19 +618,19 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
               <li>Part of what makes art exciting is to learn from those failures and figure out problems as you go</li>
             </ul>
           </og-portfolio__slide>
-          <og-portfolio__slide data-carousel-slide="" title-of-work="Research" filename-id="process-05">
+          <og-portfolio__slide data-carousel-slide="" title-of-work="Research" filename-id="Process 05">
             <ol>
               <li>Right side: [Collage of temple reference images]</li>
               <li>Left side: [Collage of lighting/mood reference images (mostly mountainous skylines)]</li>
             </ol>
           </og-portfolio__slide>
-          <og-portfolio__slide data-carousel-slide="" title-of-work="Research" filename-id="process-06">
+          <og-portfolio__slide data-carousel-slide="" title-of-work="Research" filename-id="Process 06">
             <ol>
               <li>Right side: [Collage of deity head reference images]</li>
               <li>Left side: [Collage of Indonesian jungle reference images]</li>
             </ol>
           </og-portfolio__slide>
-          <og-portfolio__slide data-carousel-slide="" title-of-work="Character" filename-id="process-07">
+          <og-portfolio__slide data-carousel-slide="" title-of-work="Character" filename-id="Process 07">
             <dl>
               <dt>Daz 3D</dt>
               <dd>
@@ -611,28 +655,28 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
               </dd>
             </dl>
           </og-portfolio__slide>
-          <og-portfolio__slide data-carousel-slide="" title-of-work="3D Assets - Temple: Z-Brush" filename-id="process-08">
+          <og-portfolio__slide data-carousel-slide="" title-of-work="3D Assets - Temple: Z-Brush" filename-id="Process 08">
             <ul>
               <li>Started with a base sculpt of a monster head from badkings</li>
               <li>My friend Peter Schwaegerle helped me with oversculpts to more closely resemble the source ref</li>
               <li>Using displace brush + custom alpha to crudely block in filigree relief to get approximate lighting from 3D</li>
             </ul>
           </og-portfolio__slide>
-          <og-portfolio__slide data-carousel-slide="" title-of-work="3D Modeling: Modo" filename-id="process-09">
+          <og-portfolio__slide data-carousel-slide="" title-of-work="3D Modeling: Modo" filename-id="Process 09">
             <ul>
               <li>Modo is my goto for 3D because it’s fast and relatively easy to use</li>
               <li>I blocked out the temple based on the thumbnails I liked, exploring space and plugging in zbrush assets</li>
               <li>Test render to figure out lighting/<abbr title="composition">comp</abbr></li>
             </ul>
           </og-portfolio__slide>
-          <og-portfolio__slide data-carousel-slide="" title-of-work="Render" filename-id="process-10">
+          <og-portfolio__slide data-carousel-slide="" title-of-work="Render" filename-id="Process 10">
             <ul>
               <li>I decided to use vue to render the scene because of the options it gives in the atmosphere editor and also because it has a large library of 3D plants that I can drop in and get free lighting out of</li>
               <li>I want to push the 3D as far as possible before I get into photoshop</li>
               <li>Back cliff wall downloaded from badkings, although vue is great for mountains as well</li>
             </ul>
           </og-portfolio__slide>
-          <og-portfolio__slide data-carousel-slide="" title-of-work="Compositing" filename-id="process-11">
+          <og-portfolio__slide data-carousel-slide="" title-of-work="Compositing" filename-id="Process 11">
             <ul>
               <li>I like to knock in all my textures with crunchy detail at first</li>
               <li>Then I can lovingly overpaint and finesse each element into a cohesive whole</li>
@@ -644,27 +688,73 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
     
 
     
-    <og-portfolio__piece id="the-promised-land" directory="[[directory]]" filename-prefix="[[filenamePrefix]]" title-of-work="The Promised Land" filename-id="the-promised-land" short-description=" " resolutions="[ { &quot;width&quot;: &quot;2468&quot;, &quot;height&quot;: &quot;1196&quot;, &quot;filenameSuffix&quot;: &quot;&quot;, &quot;types&quot;: [ &quot;png&quot; ] } ]"></og-portfolio__piece>
+    <og-portfolio__piece id="promised-land" filename-id="promised-land" title-of-work="The Promised Land" short-description=" " resolutions="[ { &quot;width&quot;: &quot;2468&quot;, &quot;height&quot;: &quot;1196&quot;, &quot;zoomLevel&quot;: &quot;&quot;, &quot;types&quot;: [ &quot;jpg&quot;, &quot;png&quot; ] }, { &quot;width&quot;: &quot;1234&quot;, &quot;height&quot;: &quot;598&quot;, &quot;zoomLevel&quot;: &quot;@0,5x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }, { &quot;width&quot;: &quot;617&quot;, &quot;height&quot;: &quot;299&quot;, &quot;zoomLevel&quot;: &quot;@0,25x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] } ]"></og-portfolio__piece>
     
 
     
-    <og-portfolio__piece id="new-york-state-of-mind" directory="[[directory]]" filename-prefix="[[filenamePrefix]]" title-of-work="New York State of Mind" filename-id="robbery" short-description="A high-speed car chase through New York City, with a masked gunman in a BMW shooting at another masked gunman in the back of a security truck with its doors open and money flying out." resolutions="[ { &quot;width&quot;: &quot;2100&quot;, &quot;height&quot;: &quot;1160&quot;, &quot;filenameSuffix&quot;: &quot;&quot;, &quot;types&quot;: [ &quot;jpg&quot;, &quot;png&quot; ] }, { &quot;width&quot;: &quot;1050&quot;, &quot;height&quot;: &quot;580&quot;, &quot;filenameSuffix&quot;: &quot;@0,5x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }, { &quot;width&quot;: &quot;525&quot;, &quot;height&quot;: &quot;290&quot;, &quot;filenameSuffix&quot;: &quot;@0,25x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] } ]">
+    <og-portfolio__piece id="new-york-state-of-mind" filename-id="new-york-state-of-mind" title-of-work="New York State of Mind" short-description="A high-speed car chase through New York City, with a masked gunman in a BMW shooting at another masked gunman in the back of a security truck with its doors open and money flying out." resolutions="[ { &quot;width&quot;: &quot;2100&quot;, &quot;height&quot;: &quot;1160&quot;, &quot;zoomLevel&quot;: &quot;&quot;, &quot;types&quot;: [ &quot;jpg&quot;, &quot;png&quot; ] }, { &quot;width&quot;: &quot;1050&quot;, &quot;height&quot;: &quot;580&quot;, &quot;zoomLevel&quot;: &quot;@0,5x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }, { &quot;width&quot;: &quot;525&quot;, &quot;height&quot;: &quot;290&quot;, &quot;zoomLevel&quot;: &quot;@0,25x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] } ]">
+      <simple-carousel>
+        <og-portfolio__slide data-carousel-slide="" title-of-work="Research" filename-id="Process 01">
+          <ol>
+            <li>Right side: [collage of reference images], “Brinks armored truck”</li>
+            <li>Left side: [collage of reference images], “Brooklyn, NYC: Afternoon light”</li>
+          </ol>
+        </og-portfolio__slide>
+        <og-portfolio__slide data-carousel-slide="" title-of-work="Mood" filename-id="Process 02">
+          <p>Right side: [right to left, top down: a photo of a Brooklyn street under a bridge; a screenshot from <cite>GTAV</cite> featuring a man shooting at the back of an armored truck; a screenshot from <cite>Heat</cite> featuring a man with in a hockey mask holding a rifle and standing in front of an armored truck]</p>
+          <ul>
+            <li>I wanted this piece to feel like a screenshot from a movie so I was looking at <cite>Heat</cite>, and <cite>GTAV</cite>, as well as great car chase scenes like the one from <cite>Bullit</cite> and also <cite>The Dark Knight</cite></li>
+            <li>I also recently visited NYC so I was taking pictures throughout brooklyn, some of them had cool light shapes from the train platforms so I knew I wanted to use that in some way</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide data-carousel-slide="" title-of-work="Compostion" filename-id="Process 03">
+          <p>Top: [Three shots of the 3D composition at various angles]</p>
+          <ul>
+            <li>I sketched out a few ideas in 3D using downloaded models for the car and armored truck</li>
+            <li>This made it easy to get different camera angles and try to play cinematographer</li>
+            <li>Since I didn’t have the benefit of a moving scene, I wanted a comp that was going to be dynamic and help sell a sense of motion</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide data-carousel-slide="" title-of-work="Character" filename-id="Process 04">
+          <p>Left side: [Four low-angle shots of the back of a car with a man in a ski mask aiming an airsoft gun out of the window]</p>
+          <ul>
+            <li>I did a photoshoot for the main character using an M4 airsoft gun</li>
+            <li>The main costume was improvised from household clothing</li>
+            <li>Since the lighting was the same as the comp, I was able to use the reflection as a texture</li>
+            <li>Warping in and masking the reflections allowed me to achieve accurate lighting on the car and gave me an easier time integrating the character</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide data-carousel-slide="" title-of-work="Render" filename-id="Process 05">
+          <p>Top: [barebones rendition of piece]</p>
+          <ul>
+            <li>I used keyshot for the main car and modo for everything else</li>
+            <li>The buildings are just cubes with textures from the cgtextures website</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide data-carousel-slide="" title-of-work="Compositing" filename-id="Process 06">
+          <p>Left side: [near-complete rendition of piece], “Before Adjustments”</p>
+          <ul>
+            <li>Since the majority of the piece is figured out by this point, it’s just a matter of getting the right textures in the right places</li>
+            <li>I also did photoshoots around my neighborhood so the bg props would have a consistency with lighting, perspective and picture quality</li>
+            <li>Then for the home stretch it’s all about unifying everything and pushing the lighting toward my target mood, and in this case adding all the <abbr>vfx</abbr> stuff like sparks, bullet casings and debris</li>
+          </ul>
+        </og-portfolio__slide>
+      </simple-carousel>
     </og-portfolio__piece>
     
 
     
-    <og-portfolio__piece id="sledgehammer" directory="[[directory]]" filename-prefix="[[filenamePrefix]]" title-of-work="Sledgehammer" filename-id="crackhouse" short-description="A man dragging a dead body across the floor." resolutions="[ { &quot;width&quot;: &quot;2826&quot;, &quot;height&quot;: &quot;1527&quot;, &quot;filenameSuffix&quot;: &quot;&quot;, &quot;types&quot;: [ &quot;jpg&quot;, &quot;png&quot; ] }, { &quot;width&quot;: &quot;1413&quot;, &quot;height&quot;: &quot;764&quot;, &quot;filenameSuffix&quot;: &quot;@0,5x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }, { &quot;width&quot;: &quot;707&quot;, &quot;height&quot;: &quot;382&quot;, &quot;filenameSuffix&quot;: &quot;@0,25x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] } ]">
-      
+    <og-portfolio__piece id="sledgehammer" filename-id="sledgehammer" title-of-work="Sledgehammer" short-description="A man dragging a dead body across the floor of a crackhouse." resolutions="[ { &quot;width&quot;: &quot;2826&quot;, &quot;height&quot;: &quot;1527&quot;, &quot;zoomLevel&quot;: &quot;&quot;, &quot;types&quot;: [ &quot;jpg&quot;, &quot;png&quot; ] }, { &quot;width&quot;: &quot;1413&quot;, &quot;height&quot;: &quot;764&quot;, &quot;zoomLevel&quot;: &quot;@0,5x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }, { &quot;width&quot;: &quot;707&quot;, &quot;height&quot;: &quot;382&quot;, &quot;zoomLevel&quot;: &quot;@0,25x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] } ]">   
     </og-portfolio__piece>
     
 
     
-     <og-portfolio__piece id="the-shark" directory="[[directory]]" filename-prefix="[[filenamePrefix]]" title-of-work="The Shark" filename-id="shark" short-description="A man in a fedora and trenchcoat, holding a pistol, hiding behind a car as another enters a door." resolutions="[ { &quot;width&quot;: &quot;4224&quot;, &quot;height&quot;: &quot;2160&quot;, &quot;filenameSuffix&quot;: &quot;&quot;, &quot;types&quot;: [ &quot;jpg&quot;, &quot;png&quot; ] }, { &quot;width&quot;: &quot;2112&quot;, &quot;height&quot;: &quot;1080&quot;, &quot;filenameSuffix&quot;: &quot;@0,5x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }, { &quot;width&quot;: &quot;1056&quot;, &quot;height&quot;: &quot;540&quot;, &quot;filenameSuffix&quot;: &quot;@0,25x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] } ]">
+     <og-portfolio__piece id="shark" filename-id="shark" title-of-work="The Shark" short-description="A man in a fedora and trenchcoat, holding a pistol, hiding behind a car as another enters a door." resolutions="[ { &quot;width&quot;: &quot;4224&quot;, &quot;height&quot;: &quot;2160&quot;, &quot;zoomLevel&quot;: &quot;&quot;, &quot;types&quot;: [ &quot;jpg&quot;, &quot;png&quot; ] }, { &quot;width&quot;: &quot;2112&quot;, &quot;height&quot;: &quot;1080&quot;, &quot;zoomLevel&quot;: &quot;@0,5x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] }, { &quot;width&quot;: &quot;1056&quot;, &quot;height&quot;: &quot;540&quot;, &quot;zoomLevel&quot;: &quot;@0,25x&quot;, &quot;types&quot;: [ &quot;jpg&quot; ] } ]">
     </og-portfolio__piece>
     
   </template>
 
-  <script>Polymer({is:"og-portfolio",hostAttributes:{role:"article",id:"portfolio"},properties:{directory:{type:String,value:"src/images/"},filenamePrefix:{type:String,value:"oliver-guiney"},filenameId:{type:String},pieces:{type:Array,value:function(){return[]}}},created:function(){},ready:function(){}});</script>
+  <script>Polymer({is:"og-portfolio",hostAttributes:{role:"article",id:"work"},properties:{_widths:{type:Array,value:[]}},attached:function(){for(var t=Polymer.dom(this.root),o=t.querySelectorAll("og-portfolio__piece"),i=o.length-1;i>=0;i--)"x"in o[i]&&this._widths.push(o[i].x);this._widths.sort(function(t,o){return t-o}),this.style.maxWidth=this._widths[0]+"px"}});</script>
 </dom-module>
 <dom-module id="og-about" assetpath="src/og-about/">
   <template>
@@ -681,7 +771,7 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
 
       img {
         /*float: left;*/
-        width: 200px;
+        /*width: 200px;*/
         /*border-radius: 25px;*/
         /* border: 8px solid whitesmoke; */
         /*margin-left: -200px;*/
@@ -715,7 +805,7 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
         margin-right: auto;
       }
     </style>
-    <img src="src/images/avatars/linkedin-avatar.jpg">
+    <img src="/src/images/avatars/headshot@0,5x.jpg" srcset="/src/images/avatars/headshot@0,5x.jpg 0.5x, /src/images/avatars/headshot.jpg, /src/images/avatars/headshot@2x.jpg 2x" width="270" height="270">
     <h2>About</h2>
     <p>I am a concept designer with 3 years of freelance experience doing artwork for movies, videogames, and advertisement. I specialize in environment design, and also have experience doing matte painting, and character design. I love exploring different workflows and technologies to get faster results with my work.</p>
   </template>
@@ -737,10 +827,10 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
         font-weight: 500;
       }
     </style>
-    <p>© 2016–[[currentYear]]</p>
+    <p>© 2016–[[currentYear]] Oliver Guiney</p>
   </template>
 
-  <script>Polymer({is:"og-footer",hostAttributes:{role:"contentinfo",id:"footer"},properties:{currentYear:{value:function(){return(new Date).getFullYear()}}}});</script>
+  <script>Polymer({is:"og-footer",hostAttributes:{role:"contentinfo",id:"footer"},properties:{currentYear:{type:String,value:function(){return(new Date).getFullYear().toString()}}}});</script>
 </dom-module>
 <dom-module id="og-site" assetpath="src/og-site/">
   <template>
