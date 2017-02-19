@@ -16,9 +16,9 @@
         font-weight: 500;
       }
     </style>
-    <p>© 2016–[[currentYear]]</p>
+    <p>© 2016–[[currentYear]] Oliver Guiney</p>
   </template>
 
-  <script>Polymer({is:"og-footer",hostAttributes:{role:"contentinfo",id:"footer"},properties:{currentYear:{value:function(){return(new Date).getFullYear()}}}});</script>
+  <script>Polymer({is:"og-footer",hostAttributes:{role:"contentinfo",id:"footer"},properties:{currentYear:{type:String,value:function(){return(new Date).getFullYear().toString()}}}});</script>
 </dom-module>
 </body></html>
