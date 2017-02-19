@@ -16,7 +16,7 @@
         font-weight: 500;
       }
     </style>
-    <p>&copy; 2016–[[currentYear]]</p>
+    <p>&copy; 2016–[[currentYear]] Oliver Guiney</p>
   </template>
 
   <script>
@@ -31,8 +31,9 @@
 
       properties: {
         currentYear: {
+          type: String,
           value: function () {
-            return new Date().getFullYear();
+            return new Date().getFullYear().toString();
           }
         }
       },
