@@ -37,4 +37,5 @@ ehthumbs.db
 Thumbs.db
 
 # Repo-specific
-src-assets/processes/*
+# src-assets/processes/*
+src-assets/*
