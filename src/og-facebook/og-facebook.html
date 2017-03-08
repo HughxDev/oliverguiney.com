@@ -1,0 +1,45 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../shared-styles/shared-styles.html" />
+<!-- <link rel="import" href="../og-behaviors/og-behaviors.html" /> -->
+
+<dom-module id="og-facebook">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: inline-block;
+      }
+    </style>
+    <a href$="[[url]]">
+      <picture>
+        <source srcset="../src/images/social/fb.svg" type="image/svg+xml">
+        <img
+          src="../src/images/social/fb.png"
+          srcset="../src/images/social/fb.png 1x, ../src/images/social/fb@2x.png 2x, ../src/images/social/fb@3x.png 3x"
+          xlink:href=""
+          width="25"
+          height="26"
+          alt$="[[alt]]"
+        />
+      </picture>
+    </a>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'og-facebook',
+
+      properties: {
+        url: {
+          type: String,
+          value: 'https://www.facebook.com/profile.php?id=506521696'
+        },
+        alt: {
+          type: String,
+          value: 'Facebook Logo'
+        }
+      },
+
+    });
+  </script>
+</dom-module>
