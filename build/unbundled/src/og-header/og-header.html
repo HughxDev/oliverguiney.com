@@ -1,5 +1,6 @@
 <html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../shared-styles/shared-styles.html">
+<link rel="import" href="../og-social/og-social.html">
 
 </head><body><dom-module id="og-header">
   <template>
@@ -10,18 +11,6 @@
         margin: var(--global-spacing) auto;
         font-size: 1.25rem;
       }
-
-      /*.__name {
-        font-size: 2.5rem;
-        line-height: 1;
-        font-weight: 500;
-      }
-
-      @media (min-width: 30em) {
-        .__name {
-          font-size: 4rem;
-        }
-      }*/
 
       .__name, .__title {
         margin-top: 0;
@@ -49,6 +38,10 @@
       .email-address {
         text-transform: uppercase;
       }
+
+      .__social {
+        margin-top: 1.5rem;
+      }
     </style>
     <h1 class="__name __child">
       
@@ -59,8 +52,8 @@
     <nav class="__nav __child">
       
       <a href="#about">About</a>
-      <a href="mailto:mailto:oliver.guiney@gmail.com">E-mail</a>
     </nav>
+    <og-social class="__social"></og-social>
   </template>
 
   <script>Polymer({is:"og-header",hostAttributes:{role:"banner",id:"top"}});</script>

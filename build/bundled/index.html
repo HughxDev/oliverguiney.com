@@ -213,7 +213,119 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
 
 
 
-<script>window.OG=window.OG||{},OG.String={dasherize:function(e){return e.toLowerCase().replace(/\s/g,"-")}},OG.DOM={getClosest:function(e,t){for(Element.prototype.matches||(Element.prototype.matches=Element.prototype.matchesSelector||Element.prototype.mozMatchesSelector||Element.prototype.msMatchesSelector||Element.prototype.oMatchesSelector||Element.prototype.webkitMatchesSelector||function(e){for(var t=(this.document||this.ownerDocument).querySelectorAll(e),o=t.length;--o>=0&&t.item(o)!==this;);return o>-1});e&&e!==document&&"#document-fragment"!==e.nodeName;e=Polymer.dom(e).parentNode)if(e.matches(t))return e;return null}},OG.Image={getSrcset:function(e){var t,o,r=this,n="",l="",i="";if(e?(o=e,groupFilenameId=e.filenameId):(o=r,groupFilenameId=r.filenameId),"subdirectory"in r&&(l=r.subdirectory,"filenameId"in r&&(i="%20-%20"+r.filenameId.replace(/\s/g,"%20"))),o.resolutions)for(t=o.resolutions.length-1;t>=0;t--)n+=o.directory+groupFilenameId+"/"+l+"“"+o.titleOfWork.replace(/\s/g,"%20")+"”%20"+o.filenameSuffix.replace(/\s/g,"%20")+i+o.resolutions[t].zoomLevel.replace(",","%2C")+"."+o.resolutions[t].types[0]+" "+o.resolutions[t].width+"w",0!==t&&(n+=", ");return n}};</script><dom-module id="og-header" assetpath="src/og-header/">
+<script>window.OG=window.OG||{},OG.String={dasherize:function(e){return e.toLowerCase().replace(/\s/g,"-")}},OG.DOM={getClosest:function(e,t){for(Element.prototype.matches||(Element.prototype.matches=Element.prototype.matchesSelector||Element.prototype.mozMatchesSelector||Element.prototype.msMatchesSelector||Element.prototype.oMatchesSelector||Element.prototype.webkitMatchesSelector||function(e){for(var t=(this.document||this.ownerDocument).querySelectorAll(e),o=t.length;--o>=0&&t.item(o)!==this;);return o>-1});e&&e!==document&&"#document-fragment"!==e.nodeName;e=Polymer.dom(e).parentNode)if(e.matches(t))return e;return null}},OG.Image={getSrcset:function(e){var t,o,r=this,n="",l="",i="";if(e?(o=e,groupFilenameId=e.filenameId):(o=r,groupFilenameId=r.filenameId),"subdirectory"in r&&(l=r.subdirectory,"filenameId"in r&&(i="%20-%20"+r.filenameId.replace(/\s/g,"%20"))),o.resolutions)for(t=o.resolutions.length-1;t>=0;t--)n+=o.directory+groupFilenameId+"/"+l+"“"+o.titleOfWork.replace(/\s/g,"%20")+"”%20"+o.filenameSuffix.replace(/\s/g,"%20")+i+o.resolutions[t].zoomLevel.replace(",","%2C")+"."+o.resolutions[t].types[0]+" "+o.resolutions[t].width+"w",0!==t&&(n+=", ");return n}};</script><dom-module id="og-facebook" assetpath="src/og-facebook/">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: inline-block;
+      }
+
+      .__link, .__icon {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+      }
+    </style>
+    <a class="__link" href$="[[url]]" title$="[[network]]" aria-label$="[[network]]">
+      <picture class="__icon">
+        <source srcset="../src/images/social/facebook.svg" type="image/svg+xml">
+        <img src="src/src/images/social/facebook.png" srcset="../src/images/social/facebook.png, ../src/images/social/facebook@2x.png 2x, ../src/images/social/facebook@3x.png 3x" width="25" height="26" alt$="[[alt]]">
+      </picture>
+    </a>
+  </template>
+
+  <script>Polymer({is:"og-facebook",properties:{url:{type:String,value:"https://www.facebook.com/profile.php?id=506521696"},network:{type:String,value:"Facebook"},alt:{type:String,value:"Facebook Logo"}}});</script>
+</dom-module><dom-module id="og-instagram" assetpath="src/og-instagram/">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: inline-block;
+      }
+
+      .__link, .__icon {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+      }
+    </style>
+    <a class="__link" href$="[[url]]" title$="[[network]]" aria-label$="[[network]]">
+      <picture class="__icon">
+        <source srcset="../src/images/social/instagram.svg" type="image/svg+xml">
+        <img src="src/src/images/social/instagram.png" srcset="../src/images/social/instagram.png, ../src/images/social/instagram@2x.png 2x, ../src/images/social/instagram@3x.png 3x" width="25" height="26" alt$="[[alt]]">
+      </picture>
+    </a>
+  </template>
+
+  <script>Polymer({is:"og-instagram",properties:{url:{type:String,value:"https://www.instagram.com/oliverguiney/"},network:{type:String,value:"Instagram"},alt:{type:String,value:"Instagram Logo"}}});</script>
+</dom-module><dom-module id="og-artstation" assetpath="src/og-artstation/">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: inline-block;
+      }
+
+      .__link, .__icon {
+        display: inline-block;
+        width: 25px;
+        height: 23px;
+      }
+    </style>
+    <a class="__link" href$="[[url]]" title$="[[network]]" aria-label$="[[network]]">
+      <picture class="__icon">
+        <source srcset="../src/images/social/artstation.svg" type="image/svg+xml">
+        <img src="src/src/images/social/artstation.png" srcset="../src/images/social/artstation.png, ../src/images/social/artstation@2x.png 2x, ../src/images/social/artstation@3x.png 3x" width="25" height="26" alt$="[[alt]]">
+      </picture>
+    </a>
+  </template>
+
+  <script>Polymer({is:"og-artstation",properties:{url:{type:String,value:"http://oliver.artstation.com/"},network:{type:String,value:"Artstation"},alt:{type:String,value:"Artstation Logo"}}});</script>
+</dom-module><dom-module id="og-email" assetpath="src/og-email/">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: inline-block;
+      }
+
+      .__link, .__icon {
+        width: 25px;
+        height: 20px;
+      }
+    </style>
+    <a class="__link" href$="[[url]]" title$="[[network]]" aria-label$="[[network]]">
+      <picture class="__icon">
+        <source srcset="../src/images/social/email.svg" type="image/svg+xml">
+        <img src="src/src/images/social/email.png" srcset="../src/images/social/email.png, ../src/images/social/email@2x.png 2x, ../src/images/social/email@3x.png 3x" width="25" height="20" alt$="[[alt]]">
+      </picture>
+    </a>
+  </template>
+
+  <script>Polymer({is:"og-email",properties:{url:{type:String,value:"mailto:oliver.guiney@gmail.com"},network:{type:String,value:"E-mail"},alt:{type:String,value:"E-mail Icon"}}});</script>
+</dom-module><dom-module id="og-social" assetpath="src/og-social/">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+      .__item {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .__item:not(:last-child) {
+        margin-right: 1em;
+      }
+    </style>
+    <og-facebook id="facebook" class="__item"></og-facebook>
+    
+    <og-instagram id="instagram" class="__item"></og-instagram>
+    <og-artstation id="arstation" class="__item"></og-artstation>
+    
+    <og-email id="email" class="__item"></og-email>
+  </template>
+
+  <script>Polymer({is:"og-social",properties:{behance:{type:Boolean,value:!0},facebook:{type:Boolean,value:!0},instagram:{type:Boolean,value:!0},twitter:{type:Boolean,value:!1}}});</script>
+</dom-module><dom-module id="og-header" assetpath="src/og-header/">
   <template>
     <style include="shared-styles">
       :host {
@@ -222,18 +334,6 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
         margin: var(--global-spacing) auto;
         font-size: 1.25rem;
       }
-
-      /*.__name {
-        font-size: 2.5rem;
-        line-height: 1;
-        font-weight: 500;
-      }
-
-      @media (min-width: 30em) {
-        .__name {
-          font-size: 4rem;
-        }
-      }*/
 
       .__name, .__title {
         margin-top: 0;
@@ -261,6 +361,10 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
       .email-address {
         text-transform: uppercase;
       }
+
+      .__social {
+        margin-top: 1.5rem;
+      }
     </style>
     <h1 class="__name __child">
       
@@ -271,8 +375,8 @@ n&&e.updateNativeStyleProperties(document.documentElement,this.customStyle)}};re
     <nav class="__nav __child">
       
       <a href="#about">About</a>
-      <a href="mailto:mailto:oliver.guiney@gmail.com">E-mail</a>
     </nav>
+    <og-social class="__social"></og-social>
   </template>
 
   <script>Polymer({is:"og-header",hostAttributes:{role:"banner",id:"top"}});</script>
