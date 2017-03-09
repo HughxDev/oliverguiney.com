@@ -1,0 +1,541 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../shared-styles/shared-styles.html" />
+<link rel="import" href="../og-portfolio__piece/og-portfolio__piece.html" />
+<link rel="import" href="../og-portfolio__process/og-portfolio__process.html" />
+<link rel="import" href="../og-portfolio__slide/og-portfolio__slide.html" />
+<link rel="import" href="../../bower_components/simple-carousel/simple-carousel.html">
+
+<dom-module id="og-portfolio">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      p {
+        text-align: center;
+      }
+    </style>
+    <h2 class="visuallyhidden">Work</h2>
+    <p>Select a piece to view process details.</p>
+
+    <!-- Rebirth -->
+    <og-portfolio__piece
+      id="rebirth"
+      filename-id="rebirth"
+      title-of-work="Rebirth" 
+      short-description=""
+      resolutions='[ { "width": "1912", "height": "1072", "zoomLevel": "", "types": [ "jpg" ] }, { "width": "956", "height": "536", "zoomLevel": "@0,5x", "types": [ "jpg" ] }, { "width": "478", "height": "268", "zoomLevel": "@0,25x", "types": [ "jpg" ] } ]'>
+      <simple-carousel>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work="Research: Shrine"
+          filename-id="Process 01">
+          <p>Looking at a lot of real life temples with different architectural styles and trying to find something that would fit a world where dragons can be seen as gods in a somewhat believable way</p>
+        </og-portfolio__slide>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work="Research: Dragon"
+          filename-id="Process 02">
+          <ul>
+            <li>For the dragon I looked at a lot of bronze sculptures and statues of ancient gods</li>
+            <li>I wanted to get some Batman-esque shapes, something that felt iconic, some gargoyles I found gave off a similar vibe</li>
+            <li>I really liked some of the angular shapes in the sculptures by John Maisano, his work already seemed like it was based in fantasy so I wanted to use some of that</li>
+            <li>For the design of the dragon I was looking at Game of Thrones and Reign of Fire; They both had a simplistic approach trading in all the gimmicky frills for something more laid back and classy</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work="Mood"
+          filename-id="Process 04">
+          <ul>
+            <li>The lighting in game of thrones is LEGIT, so I knew for a dark fantasy piece this was the place to look</li>
+            <li>The way they pull off an ominous mood is with silhouetted characters, top down back lighting with lots of blue/cyan light and firey orange accents</li>
+            <li>I tried to set up my scene in a similar way</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work="Dragon Iteration"
+          filename-id="Process 05">
+          <ul>
+            <li>The biggest struggle I had doing this piece was nailing down the design and material of the dragon</li>
+            <li>I was thinking too much with my concept art brain, trying too hard to design something cool instead of thinking about what would make the most sense for the story</li>
+            <li>Based on feedback I realized that one of the first designs I did was working better because it was straightforward and had a material that matched the idea of an ancient deity statue in a throne room, so I iterated on that for the final</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work="3D Assets: Dragon"
+          filename-id="Process 06">
+          <ul>
+            <li>Using a base mesh from daz 3D I was able to easily pose the dragon and play with sliders for general shape and proportions which made it easy to iterate different designs</li>
+            <li>I then oversculpted it in zbrush so I could have more creative freedom with design</li>
+            <li>I went for a look that was similar to my ref: angular sculpture, minimal frills/spikes, old looking</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work="Character: Photoshoot"
+          filename-id="Process 07">
+          <ul>
+            <li>For the main figure I wasn’t finding the right photos online and the 3D version was looking weird so I got a cloak and posed it myself</li>
+            <li>I was looking at Chase Stone’s artwork and noticed that his characters are super expressive with their body language, even if they’re in the background</li>
+            <li>-In earlier versions I had only one guy bowing to the dragon, but his head was closer to the floor so there wasn’t as much of a dialogue between the two</li>
+            <li>Showing the guy in the water also helps sells the function of the space since it’s being used as part of a ritual</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work="Render"
+          filename-id="Process 08">
+          <ul>
+            <li>I used modo to rmodel and ender out my room</li>
+            <li>keyshot to get the base for the dragon</li>
+          </ul>
+        </og-portfolio__slide>
+      </simple-carousel>
+    </og-portfolio__piece>
+    <!-- /Rebirth -->
+    
+    <!-- Think Vertically -->
+    <og-portfolio__piece
+      id="think-vertically"
+      filename-id="think-vertically"
+      title-of-work="Think Vertically"
+      short-description="A woman in a white lab coat tending to a futuristic machine in a lab with a lot of plant overgrowth."
+      resolutions='[ { "width": "2000", "height": "1080", "zoomLevel": "", "types": [ "jpg", "png" ] }, { "width": "1000", "height": "540", "zoomLevel": "@0,5x", "types": [ "jpg" ] }, { "width": "500", "height": "270", "zoomLevel": "@0,25x", "types": [ "jpg" ] } ]'>
+      <og-portfolio__process>
+        <simple-carousel>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Research"
+            filename-id="Process 01">
+            <p>Looking at tons of photos of: hydroponic pods, labs,indoor gardens, nasa projects, modern interior design, architectural  visualisation, and vertical farming</p>
+            <p>More ref on pinterest board: <a href="https://www.pinterest.com/brandonstricker/olivers-briefs/"><code>https://www.pinterest.com/brandonstricker/olivers-briefs/</code></a></p>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Mood"
+            filename-id="Process 02">
+            <ul>
+              <li>For the mood I was looking at stills from the movie Sunshine, real labs, and an awesome piece by Luke Berliner</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="3D Assets"
+            filename-id="Process 03">
+            <ul>
+              <li>Using MODO I modeled out some reusable assets based on ref</li>
+              <li>Adding them to my modo preset library made it super easy to kitbash different compositions in 3D</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Comp"
+            filename-id="Process 04">
+            <ul>
+              <li>I struggled to nail down the comp because I wasn’t approaching the design in a systematic way, it just wasn’t FEELING like a hydroponics lab</li>
+              <li>By doing more research and focusing on functionality, I was able to find a cool space that also fufilled the brief, and looked more believable</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Character"
+            filename-id="Process 05">
+            <ul>
+              <li>Using an iphone camera and a galaxy s4 camera, I did a photoshoot getting coverage on various poses in correct lighting and perspective</li>
+              <li>By using two phones I was able to get different exposures and see which one worked best for scene integration</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Render"
+            filename-id="Process 06">
+            <ul>
+              <li>My modo render was coming out dark and grainy so I tried keyshot</li>
+              <li>Keyshot was coming out too clean and overpowering</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Final Render"
+            filename-id="Process 07">
+            <ul>
+              <li>By exporting my scene as an fbx I was able to import my camera into keyshot</li>
+              <li>Then by messing with the settings I was able to line up the shot to to the modo version to get the final composite render that I used as my base</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Compositing"
+            filename-id="Process 08">
+            <ul>
+              <li>Laying in phototextures over the 3D</li>
+              <li>Doing keyshot render region passes for different materials to mask into for variation</li>
+              <li>Pixel squid for toolbox</li>
+              <li>From here it’s just a matter of overpainting, fogging a bit, getting greebly textures in, and really pushing the lighting/grading towards the mood</li>
+            </ul>
+          </og-portfolio__slide>
+        </simple-carousel>
+      </og-portfolio__process>
+    </og-portfolio__piece>
+    <!-- /Think Vertically -->
+
+    <!-- Wrathful Deity -->
+    <og-portfolio__piece
+      id="wrathful-deity"
+      filename-id="wrathful-deity"
+      title-of-work="Wrathful Deity"
+      short-description="In a mountainous region, a man with a pistol approaches the opening of a massive stone temple shaped like a fanged god’s head."
+      resolutions='[{ "width": "2042", "height": "1080", "zoomLevel": "", "types": [ "jpg", "png" ] }, { "width": "1021", "height": "540", "zoomLevel": "@0,5x", "types": [ "jpg" ] }, { "width": "511", "height": "270", "zoomLevel": "@0,25x", "types": [ "jpg" ] }]'>
+      <og-portfolio__process>
+        <simple-carousel>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Diety Head"
+            filename-id="Process 01">
+            <p>Based on a confluence of Balinese stone masks and statues</p>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Pillar Design"
+            filename-id="Process 02">
+            <dl>
+              <dt>Brick Shingles</dt>
+              <dd>Konark Sun Temple</dd>
+              <dt>Base Relief</dt>
+              <dd>Masroor rock cut temple, India</dd>
+              <dt>Tree carving in middle</dt>
+              <dd>Prambanan, Indonesia</dd>
+            </dl>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Thumbnails 1"
+            filename-id="Process 03">
+            <ul>
+              <li>Initially did 200 abstract thumbnails to explore shapes in space</li>
+              <li>Setting up sheets of 25 with various sizes and restrictions</li>
+              <li>Spending usually only a minute tops for each thumb</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Thumbnails 2"
+            filename-id="Process 04">
+            <ul>
+              <li>Narrowing in on the thumbnails I liked, and working them up</li>
+              <li>I didn’t use any of these thumbs DIRECTLY, but I took elements from each one, mostly 1, 5 and 8</li>
+              <li>Looking back, I’d try to do more of the problem solving in this phase, as I ran into problems later</li>
+              <li>Part of what makes art exciting is to learn from those failures and figure out problems as you go</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Research"
+            filename-id="Process 05">
+            <ol>
+              <li>Right side: [Collage of temple reference images]</li>
+              <li>Left side: [Collage of lighting/mood reference images (mostly mountainous skylines)]</li>
+            </ol>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Research"
+            filename-id="Process 06">
+            <ol>
+              <li>Right side: [Collage of deity head reference images]</li>
+              <li>Left side: [Collage of Indonesian jungle reference images]</li>
+            </ol>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Character"
+            filename-id="Process 07">
+            <dl>
+              <dt>Daz 3D</dt>
+              <dd>
+                <ul>
+                  <li>Getting the pose believable based on <abbr title="reference">ref</abbr></li>
+                </ul>
+              </dd>
+              <dt>Marvelous Designer</dt>
+              <dd>
+                <ul>
+                  <li>Shirt based on an actual shirt I own</li>
+                  <li>Pants downloaded from fearless makers</li>
+                </ul>
+              </dd>
+              <dt>Keyshot</dt>
+              <dd>
+                <ul>
+                  <li><abbr title="High-dynamic-range imaging">HDRI</abbr> for lighting</li>
+                  <li>Modo for boots/hair/gear</li>
+                  <li>Advanced materials to plug in textures</li>
+                </ul>
+              </dd>
+            </dl>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="3D Assets - Temple: Z-Brush"
+            filename-id="Process 08">
+            <ul>
+              <li>Started with a base sculpt of a monster head from badkings</li>
+              <li>My friend Peter Schwaegerle helped me with oversculpts to more closely resemble the source ref</li>
+              <li>Using displace brush + custom alpha to crudely block in filigree relief to get approximate lighting from 3D</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="3D Modeling: Modo"
+            filename-id="Process 09">
+            <ul>
+              <li>Modo is my goto for 3D because it’s fast and relatively easy to use</li>
+              <li>I blocked out the temple based on the thumbnails I liked, exploring space and plugging in zbrush assets</li>
+              <li>Test render to figure out lighting/<abbr title="composition">comp</abbr></li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Render"
+            filename-id="Process 10">
+            <ul>
+              <li>I decided to use vue to render the scene because of the options it gives in the atmosphere editor and also because it has a large library of 3D plants that I can drop in and get free lighting out of</li>
+              <li>I want to push the 3D as far as possible before I get into photoshop</li>
+              <li>Back cliff wall downloaded from badkings, although vue is great for mountains as well</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Compositing"
+            filename-id="Process 11">
+            <ul>
+              <li>I like to knock in all my textures with crunchy detail at first</li>
+              <li>Then I can lovingly overpaint and finesse each element into a cohesive whole</li>
+            </ul>
+          </og-portfolio__slide>
+        </simple-carousel>
+      </og-portfolio__process>
+    </og-portfolio__piece>
+    <!-- /Wrathful Deity -->
+
+    <!-- The Promised Land -->
+    <og-portfolio__piece
+      id="promised-land"
+      filename-id="promised-land"
+      title-of-work="The Promised Land"
+      short-description=" "
+      resolutions='[ { "width": "2468", "height": "1196", "zoomLevel": "", "types": [ "jpg", "png" ] }, { "width": "1234", "height": "598", "zoomLevel": "@0,5x", "types": [ "jpg" ] }, { "width": "617", "height": "299", "zoomLevel": "@0,25x", "types": [ "jpg" ] } ]'
+      ></og-portfolio__piece>
+    <!-- /The Promised Land -->
+
+    <!-- New York State of Mind -->
+    <og-portfolio__piece
+      id="new-york-state-of-mind"
+      filename-id="new-york-state-of-mind"
+      title-of-work="New York State of Mind" 
+      short-description="A high-speed car chase through New York City, with a masked gunman in a BMW shooting at another masked gunman in the back of a security truck with its doors open and money flying out."
+      resolutions='[ { "width": "2100", "height": "1160", "zoomLevel": "", "types": [ "jpg", "png" ] }, { "width": "1050", "height": "580", "zoomLevel": "@0,5x", "types": [ "jpg" ] }, { "width": "525", "height": "290", "zoomLevel": "@0,25x", "types": [ "jpg" ] } ]'>
+      <simple-carousel>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work="Research"
+          filename-id="Process 01">
+          <ol>
+            <li>Right side: [collage of reference images], “Brinks armored truck”</li>
+            <li>Left side: [collage of reference images], “Brooklyn, NYC: Afternoon light”</li>
+          </ol>
+        </og-portfolio__slide>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work="Mood"
+          filename-id="Process 02">
+          <p>Right side: [right to left, top down: a photo of a Brooklyn street under a bridge; a screenshot from <cite>GTAV</cite> featuring a man shooting at the back of an armored truck; a screenshot from <cite>Heat</cite> featuring a man with in a hockey mask holding a rifle and standing in front of an armored truck]</p>
+          <ul>
+            <li>I wanted this piece to feel like a screenshot from a movie so I was looking at <cite>Heat</cite>, and <cite>GTAV</cite>, as well as great car chase scenes like the one from <cite>Bullit</cite> and also <cite>The Dark Knight</cite></li>
+            <li>I also recently visited NYC so I was taking pictures throughout brooklyn, some of them had cool light shapes from the train platforms so I knew I wanted to use that in some way</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work="Compostion"
+          filename-id="Process 03">
+          <p>Top: [Three shots of the 3D composition at various angles]</p>
+          <ul>
+            <li>I sketched out a few ideas in 3D using downloaded models for the car and armored truck</li>
+            <li>This made it easy to get different camera angles and try to play cinematographer</li>
+            <li>Since I didn’t have the benefit of a moving scene, I wanted a comp that was going to be dynamic and help sell a sense of motion</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work="Character"
+          filename-id="Process 04">
+          <p>Left side: [Four low-angle shots of the back of a car with a man in a ski mask aiming an airsoft gun out of the window]</p>
+          <ul>
+            <li>I did a photoshoot for the main character using an M4 airsoft gun</li>
+            <li>The main costume was improvised from household clothing</li>
+            <li>Since the lighting was the same as the comp, I was able to use the reflection as a texture</li>
+            <li>Warping in and masking the reflections allowed me to achieve accurate lighting on the car and gave me an easier time integrating the character</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work="Render"
+          filename-id="Process 05">
+          <p>Top: [barebones rendition of piece]</p>
+          <ul>
+            <li>I used keyshot for the main car and modo for everything else</li>
+            <li>The buildings are just cubes with textures from the cgtextures website</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work="Compositing"
+          filename-id="Process 06">
+          <p>Left side: [near-complete rendition of piece], “Before Adjustments”</p>
+          <ul>
+            <li>Since the majority of the piece is figured out by this point, it’s just a matter of getting the right textures in the right places</li>
+            <li>I also did photoshoots around my neighborhood so the bg props would have a consistency with lighting, perspective and picture quality</li>
+            <li>Then for the home stretch it’s all about unifying everything and pushing the lighting toward my target mood, and in this case adding all the <abbr>vfx</abbr> stuff like sparks, bullet casings and debris</li>
+          </ul>
+        </og-portfolio__slide>
+      </simple-carousel>
+    </og-portfolio__piece>
+    <!-- /New York State of Mind -->
+
+    <!-- Sledgehammer -->
+    <og-portfolio__piece
+      id="sledge-hammer"
+      filename-id="sledge-hammer"
+      title-of-work="Sledge Hammer"
+      short-description="A man dragging a dead body across the floor of a crackhouse."
+      resolutions='[ { "width": "2826", "height": "1527", "zoomLevel": "", "types": [ "jpg", "png" ] }, { "width": "1413", "height": "764", "zoomLevel": "@0,5x", "types": [ "jpg" ] }, { "width": "707", "height": "382", "zoomLevel": "@0,25x", "types": [ "jpg" ] } ]'
+    >
+      <simple-carousel>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work="Research"
+          filename-id="Process 01">
+          <p>Right side: [collage of reference images]<br/>Interior Space: Looking at urban exploration, abandoned and foreclosed homes, and interesting personal details</p>
+          <p>Left side: [collage of reference images]<br/>Meth Lab: Looking at real life versions of meth labs; lots of clutter, everyday household items, and chemistry equipment</p>
+        </og-portfolio__slide>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work="Reduxing"
+          filename-id="Process 02">
+          <ul>
+            <li>Looking back on this piece, I realized a lot wasn’t working, mainly: the mood/lighting weren’t selling the idea enough</li>
+            <li>The perspective was getting skewed because of too many randomly tilted walls, and the hardwood floor was wonky</li>
+            <li>The texturing was feeling amateurish and indecisve</li>
+            <li>Not enough value separation between background and foreground, needs more of a graphic read</li>
+            <li>I still thought that the composition and story were cool, so I tried to give it another go</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work="Mood"
+          filename-id="Process 03">
+          <p>For mood I was looking at Friday the Thirteenth screenshots to try and hit the horror vibe I was going for</p>
+        </og-portfolio__slide>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work="Render"
+          filename-id="Process 04">
+          <ul>
+            <li>Using a better understanding of Modo since making the original, I was able to start off with way more of a headstart at the 3D stage</li>
+            <li>I arranged the lighting to be more like the jason vorhees screenshots, rim lighting on the villain character with an upshot</li>
+            <li>I also fixed the perspective issues by straightening the walls and modeling out some basic wooden planks to reinforce perspective on the floor</li>
+            <li>In the final I have more of a graphic triangular lighting pattern, which looking back I could have done in the 3D as well</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work="Character Posing"
+          filename-id="Process 05">
+          <p>Left side: [collage of photos]<br />Photoshoot: Trying to find the most natural way to drag a body down a hallway
+          <p>Right side: [two screenshots of 3D models of someone dragging a body]<br />Daz 3D: Using photoshoot and other <abbr title="reference">ref</abbr>, going for accuracy to nail the pose in 3D</p>
+        </og-portfolio__slide>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work="Character Rendering"
+          filename-id="Process 06">
+          <p>Top left: [photo of a young man playing dead on a rug with legs propped up on stairs]. Top right: [3D rendering of someone in a hazmat suit dragging a dead man in the same pose]</p>
+          <ul>
+            <li>Since the hazmat guy is mostly covered, I knew that it would be easier to have him be just 3D, since marvelous is good at folds</li>
+            <li>I did a beuty render with both characters that I overlayed onto my render i, and then played with blending modes and warping to line it up and match the lighting</li>
+            <li>Got another photoshoot in to get the dead guy since the pose was kind of awkward and the 3D wasn’t working as well</li>
+          </ul>
+        </og-portfolio__slide>
+        <og-portfolio__slide
+          data-carousel-slide=""
+          title-of-work=""
+          filename-id="Process 07">
+          <ul>
+            <li>Before adjustments: taking it from here to the finished version is mostly just pushing the grading toward those same screenshots</li>
+            <li>I got <abbr>crit</abbr> suggesting that the light be a bit more dramatic, and triangular; this forced the focus to be on the characters and gave it a more of a harsh graphic look, which fit nicely with the target mood</li>
+            <li>I’m also using little overpaints and mixerbrush for detail control and consistency</li>
+            <li>I learned a lot by reworking this older piece, it realy helps give perspective to the changes in decision making and working habits that you pick up along the way!</li>
+          </ul>
+        </og-portfolio__slide>
+      </simple-carousel>
+    </og-portfolio__piece>
+    <!-- /Sledgehammer -->
+
+    <!-- The Shark -->
+     <og-portfolio__piece
+      id="shark"
+      filename-id="shark"
+      title-of-work="The Shark"
+      short-description="A man in a fedora and trenchcoat, holding a pistol, hiding behind a car as another enters a door."
+      resolutions='[ { "width": "4224", "height": "2160", "zoomLevel": "", "types": [ "jpg", "png" ] }, { "width": "2112", "height": "1080", "zoomLevel": "@0,5x", "types": [ "jpg" ] }, { "width": "1056", "height": "540", "zoomLevel": "@0,25x", "types": [ "jpg" ] } ]'>
+    </og-portfolio__piece>
+    <!-- /The Shark -->
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'og-portfolio',
+
+      hostAttributes: {
+        role: 'article',
+        id: 'work'
+      },
+
+      properties: {
+        _widths: {
+          type: Array,
+          value: []
+        }
+      },
+
+      // created: function ogPortfolioCreated() {},
+
+      // ready: function ogPortfolioReady() {},
+
+      attached: function ogPortfolioAttached() {
+        var root = Polymer.dom( this.root )
+        var pieces = root.querySelectorAll( 'og-portfolio__piece' );
+        var i = pieces.length - 1;
+
+        for ( ; i >= 0; i-- ) {
+          if ( 'x' in pieces[i] ) {
+            this._widths.push( pieces[i].x );
+          }
+        }
+
+        this._widths.sort(function(a, b) {
+          return a - b;
+        });
+
+        this.style.maxWidth = this._widths[0] + 'px';
+      }
+    });
+  </script>
+</dom-module>

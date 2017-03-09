@@ -1,0 +1,33 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../shared-styles/shared-styles.html" />
+
+<dom-module id="og-portfolio__process">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <h4 class="visuallyhidden">Process</h4>
+    <content></content>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'og-portfolio__process',
+
+      hostAttributes: {
+        role: 'group',
+        id: 'process'
+      },
+
+      properties: {},
+
+      attached: function () {
+        // $(this).slick();
+      }
+    });
+  </script>
+</dom-module>

@@ -1,0 +1,33 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../shared-styles/shared-styles.html" />
+<link rel="import" href="../og-behaviors/og-behaviors.html" />
+<link rel="import" href="../og-header/og-header.html" />
+<link rel="import" href="../og-portfolio/og-portfolio.html" />
+<link rel="import" href="../og-about/og-about.html" />
+<link rel="import" href="../og-footer/og-footer.html" />
+
+<dom-module id="og-site">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+    </style>
+    <og-header></og-header>
+    <main>
+      <og-portfolio></og-portfolio>
+      <og-about></og-about>
+    </main>
+    <og-footer></og-footer>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'og-site',
+
+      properties: {},
+
+    });
+  </script>
+</dom-module>

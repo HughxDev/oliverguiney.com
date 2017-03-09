@@ -1,0 +1,53 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../shared-styles/shared-styles.html" />
+<!-- <link rel="import" href="../og-behaviors/og-behaviors.html" /> -->
+
+<dom-module id="og-twitter">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: inline-block;
+      }
+
+      .__link, .__icon {
+        width: 25px;
+        height: 21px;
+      }
+    </style>
+    <a class="__link" href$="[[url]]" title$="[[network]]" aria-label$="[[network]]">
+      <picture class="__icon">
+        <source srcset="../src/images/social/twitter.svg" type="image/svg+xml" />
+        <img
+          src="../src/images/social/twitter.png"
+          srcset="../src/images/social/twitter.png 1x, ../src/images/social/twitter@2x.png 2x, ../src/images/social/twitter@3x.png 3x"
+          width="25"
+          height="26"
+          alt$="[[alt]]"
+        />
+      </picture>
+    </a>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'og-twitter',
+
+      properties: {
+        url: {
+          type: String,
+          value: 'https://www.twitter.com'
+        },
+        network: {
+          type: String,
+          value: 'Twitter'
+        },
+        alt: {
+          type: String,
+          value: 'Twitter Logo'
+        }
+      },
+
+    });
+  </script>
+</dom-module>
