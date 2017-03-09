@@ -1,0 +1,61 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../shared-styles/shared-styles.html" />
+<!-- <link rel="import" href="../og-behaviors/og-behaviors.html" /> -->
+<!-- <link rel="import" href="../og-twitter/og-twitter.html" /> -->
+<link rel="import" href="../og-facebook/og-facebook.html" />
+<!-- <link rel="import" href="../og-behance/og-behance.html" /> -->
+<link rel="import" href="../og-instagram/og-instagram.html" />
+<link rel="import" href="../og-artstation/og-artstation.html" />
+<link rel="import" href="../og-email/og-email.html" />
+
+<dom-module id="og-social">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+      .__item {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .__item:not(:last-child) {
+        margin-right: 1em;
+      }
+    </style>
+    <og-facebook id="facebook" class="__item"></og-facebook>
+    <!-- <og-twitter id="twitter" class="__item"></og-twitter> -->
+    <og-instagram id="instagram" class="__item"></og-instagram>
+    <og-artstation id="arstation" class="__item"></og-artstation>
+    <!-- <og-behance id="behance" class="__item"></og-behance> -->
+    <og-email id="email" class="__item"></og-email>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'og-social',
+
+      properties: {
+        behance: {
+          type: Boolean,
+          value: true
+        },
+        facebook: {
+          type: Boolean,
+          value: true
+        },
+        instagram: {
+          type: Boolean,
+          value: true
+        },
+        twitter: {
+          type: Boolean,
+          value: false
+        }
+      },
+
+    });
+  </script>
+</dom-module>

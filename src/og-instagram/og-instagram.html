@@ -1,7 +1,8 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html" />
 <link rel="import" href="../shared-styles/shared-styles.html" />
+<!-- <link rel="import" href="../og-behaviors/og-behaviors.html" /> -->
 
-<dom-module id="og-facebook">
+<dom-module id="og-instagram">
   <template>
     <style include="shared-styles">
       :host {
@@ -16,10 +17,10 @@
     </style>
     <a class="__link" href$="[[url]]" title$="[[network]]" aria-label$="[[network]]">
       <picture class="__icon">
-        <source srcset="../src/images/social/facebook.svg" type="image/svg+xml" />
+        <source srcset="../src/images/social/instagram.svg" type="image/svg+xml" />
         <img
-          src="../src/images/social/facebook.png"
-          srcset="../src/images/social/facebook.png 1x, ../src/images/social/facebook@2x.png 2x, ../src/images/social/facebook@3x.png 3x"
+          src="../src/images/social/instagram.png"
+          srcset="../src/images/social/instagram.png 1x, ../src/images/social/instagram@2x.png 2x, ../src/images/social/instagram@3x.png 3x"
           width="25"
           height="26"
           alt$="[[alt]]"
@@ -31,20 +32,20 @@
   <script>
     Polymer({
 
-      is: 'og-facebook',
+      is: 'og-instagram',
 
       properties: {
         url: {
           type: String,
-          value: 'https://www.facebook.com/profile.php?id=506521696'
+          value: 'https://www.instagram.com/oliverguiney/'
         },
         network: {
           type: String,
-          value: 'Facebook'
+          value: 'Instagram'
         },
         alt: {
           type: String,
-          value: 'Facebook Logo'
+          value: 'Instagram Logo'
         }
       },
 
