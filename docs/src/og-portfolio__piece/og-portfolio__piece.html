@@ -1,7 +1,7 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html" />
-<link rel="import" href="../shared-styles/shared-styles.html" />
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../shared-styles/shared-styles.html">
 
-<dom-module id="og-portfolio__piece">
+</head><body><dom-module id="og-portfolio__piece">
   <template>
     <style include="shared-styles">
       :host {
@@ -162,171 +162,18 @@
     </style>
     <div id="front" class="card__front" role="button" tabindex="0" title="Reveal Process slides" aria-label="Reveal Process slides">
       <h3 class="visuallyhidden">[[titleOfWork]]</h3>
-      <!-- <content select="img, .piece__image"></content> -->
-      <img
-        class="card__image"
-        id="image"
-        alt="[[shortDescription]]"
-      />
+      
+      <img class="card__image" id="image" alt="[[shortDescription]]">
     </div>
     <div id="back" class="card__back">
-      <!-- <content select="p, .card__text"></content> -->
-      <!-- <p class="card__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, explicabo! Quidem amet laborum dignissimos quia, repudiandae cum totam perferendis velit voluptatum aspernatur vel animi ab, unde odit quos magnam, eveniet!</p> -->
-      <a
-        id="close"
-        class="card__close"
-        title="Hide Process slides"
-        aria-label="Hide Process slides"
-        role="button"
-        tabindex="0"
-      >
-        <span class="card__close-icon" aria-hidden="true">&times;</span>
+      
+      
+      <a id="close" class="card__close" title="Hide Process slides" aria-label="Hide Process slides" role="button" tabindex="0">
+        <span class="card__close-icon" aria-hidden="true">×</span>
       </a>
       <content select="og-portfolio__process, simple-carousel"></content>
     </div>
   </template>
 
-  <script>
-    Polymer({
-
-      is: 'og-portfolio__piece',
-
-      behaviors: [ OG.DOM, OG.Image ],
-
-      hostAttributes: {
-        role: 'article'
-      },
-
-      properties: {
-        x: {
-          type: Number,
-          // value: 1920,
-          reflectToAttribute: true
-        },
-        y: {
-          type: Number,
-          // value: 1080,
-          reflectToAttribute: true
-        },
-        flipped: {
-          type: Boolean,
-          value: false,
-          reflectToAttribute: true
-        },
-        directory: {
-          type: String,
-          value: 'src/images/'
-        },
-        filenameSuffix: {
-          type: String,
-          value: 'by Oliver Guiney'
-        },
-        filenameId: {
-          type: String
-        },
-        titleOfWork: {
-          type: String
-        },
-        shortDescription: {
-          type: String
-        },
-        resolutions: {
-          type: Array,
-          value: [],
-          reflectToAttribute: false
-        },
-        date: {
-          type: String
-        }
-      },
-
-      flip: function ogPortfolioPieceFlip() {
-        var portfolioPiece = this;
-
-        portfolioPiece.flipped = !portfolioPiece.flipped;
-
-        if ( portfolioPiece.flipped ) {
-          portfolioPiece.$.close.focus();
-        // }
-        } else {
-          portfolioPiece.$.front.focus();
-        }
-      },
-
-      _handleFlipActivate: function ogPortfolioPieceHandleFlipActivate( event ) {
-        var portfolioPiece = this;
-        var className = event.target.className;
-        var host = Polymer.dom( portfolioPiece );
-
-        // Keyboard events
-        if ( ( event.type === 'keydown' ) || ( event.type === 'keyup' ) || ( event.type === 'keypress' ) ) {
-          host.classList.remove( 'non-keyboard' );
-
-          // Spacebar = 32, Enter/Return = 13
-          if ( ( event.which === 32 ) || ( event.which === 13 ) ) {
-            // Spacebar sometimes scrolls down the page
-            event.preventDefault();
-          } else {
-            // If any other key was pressed ignore it
-            return;
-          }
-        // Non-keyboard events (click, touch, etc.)
-        } else {
-          host.classList.add( 'non-keyboard' );
-        }
-
-        if ( event.target !== event.currentTarget ) {
-          // console.log( 'className', className );
-
-          if (
-            ( className.match( 'card__image' ) !== null )
-            || ( className.match( 'card__front' ) !== null )
-          ) {
-            // console.log( 'card__image or card__front clicked' );
-            portfolioPiece.flip();
-          }
-
-          if ( className.match( 'card__back' ) !== null ) {
-            // console.log( 'card__back clicked' );
-          }
-
-          if (
-            ( className.match( 'card__close' ) !== null )
-            || ( className.match( 'card__close-icon' ) !== null )
-          ) {
-            // console.log( 'card__close or card__close-icon clicked' );
-            portfolioPiece.flip();
-          }
-        } else {
-          portfolioPiece.flip();
-        }
-
-        event.stopPropagation();
-      },
-
-      // created: function ogPortfolioPieceCreated() {},
-
-      ready: function ogPortfolioPieceReady() {
-        var portfolioPiece = this;
-        
-        // portfolioPiece.$.image.srcset = portfolioPiece.getSrcset();
-
-        if ( portfolioPiece.hasOwnProperty( 'resolutions' ) && !!portfolioPiece.resolutions.length ) {
-          portfolioPiece.x = portfolioPiece.resolutions[0].width;
-          portfolioPiece.y = portfolioPiece.resolutions[0].height;
-
-          portfolioPiece.$.image.srcset = portfolioPiece.getSrcset();
-        }
-      },
-
-      attached: function ogPortfolioPieceAttached() {
-        var portfolioPiece = this;
-
-        portfolioPiece.addEventListener( "click", portfolioPiece._handleFlipActivate );
-        portfolioPiece.addEventListener( "keydown", portfolioPiece._handleFlipActivate );
-      },
-
-      // getSrcset
-    });
-  </script>
-</dom-module>
+  <script>Polymer({is:"og-portfolio__piece",behaviors:[OG.DOM,OG.Image],hostAttributes:{role:"article"},properties:{x:{type:Number,reflectToAttribute:!0},y:{type:Number,reflectToAttribute:!0},flipped:{type:Boolean,value:!1,reflectToAttribute:!0},directory:{type:String,value:"src/images/"},filenameSuffix:{type:String,value:"by Oliver Guiney"},filenameId:{type:String},titleOfWork:{type:String},shortDescription:{type:String},resolutions:{type:Array,value:[],reflectToAttribute:!1},date:{type:String}},flip:function(){var e=this;e.flipped=!e.flipped,e.flipped?e.$.close.focus():e.$.front.focus()},_handleFlipActivate:function(e){var t=this,r=e.target.className,i=Polymer.dom(t);if("keydown"===e.type||"keyup"===e.type||"keypress"===e.type){if(i.classList.remove("non-keyboard"),32!==e.which&&13!==e.which)return;e.preventDefault()}else i.classList.add("non-keyboard");e.target!==e.currentTarget?(null===r.match("card__image")&&null===r.match("card__front")||t.flip(),null!==r.match("card__back"),null===r.match("card__close")&&null===r.match("card__close-icon")||t.flip()):t.flip(),e.stopPropagation()},ready:function(){var e=this;e.hasOwnProperty("resolutions")&&e.resolutions.length&&(e.x=e.resolutions[0].width,e.y=e.resolutions[0].height,e.$.image.srcset=e.getSrcset())},attached:function(){var e=this;e.addEventListener("click",e._handleFlipActivate),e.addEventListener("keydown",e._handleFlipActivate)}});</script>
+</dom-module></body></html>

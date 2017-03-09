@@ -1,7 +1,7 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../shared-styles/shared-styles.html" />
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../shared-styles/shared-styles.html">
 
-<dom-module id="og-footer">
+</head><body><dom-module id="og-footer">
   <template>
     <style include="shared-styles">
       :host {
@@ -16,28 +16,9 @@
         font-weight: 500;
       }
     </style>
-    <p>&copy; 2016–[[currentYear]] Oliver Guiney</p>
+    <p>© 2016–[[currentYear]] Oliver Guiney</p>
   </template>
 
-  <script>
-    Polymer({
-
-      is: 'og-footer',
-
-      hostAttributes: {
-        role: 'contentinfo',
-        id: 'footer'
-      },
-
-      properties: {
-        currentYear: {
-          type: String,
-          value: function () {
-            return new Date().getFullYear().toString();
-          }
-        }
-      },
-
-    });
-  </script>
+  <script>Polymer({is:"og-footer",hostAttributes:{role:"contentinfo",id:"footer"},properties:{currentYear:{type:String,value:function(){return(new Date).getFullYear().toString()}}}});</script>
 </dom-module>
+</body></html>

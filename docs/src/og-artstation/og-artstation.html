@@ -1,7 +1,7 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html" />
-<link rel="import" href="../shared-styles/shared-styles.html" />
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../shared-styles/shared-styles.html">
 
-<dom-module id="og-artstation">
+</head><body><dom-module id="og-artstation">
   <template>
     <style include="shared-styles">
       :host {
@@ -16,38 +16,11 @@
     </style>
     <a class="__link" href$="[[url]]" title$="[[network]]" aria-label$="[[network]]">
       <picture class="__icon">
-        <source srcset="../src/images/social/artstation.svg" type="image/svg+xml" />
-        <img
-          src="../src/images/social/artstation.png"
-          srcset="../src/images/social/artstation.png 1x, ../src/images/social/artstation@2x.png 2x, ../src/images/social/artstation@3x.png 3x"
-          width="25"
-          height="26"
-          alt$="[[alt]]"
-        />
+        <source srcset="../src/images/social/artstation.svg" type="image/svg+xml">
+        <img src="../src/images/social/artstation.png" srcset="../src/images/social/artstation.png, ../src/images/social/artstation@2x.png 2x, ../src/images/social/artstation@3x.png 3x" width="25" height="26" alt$="[[alt]]">
       </picture>
     </a>
   </template>
 
-  <script>
-    Polymer({
-
-      is: 'og-artstation',
-
-      properties: {
-        url: {
-          type: String,
-          value: 'http://oliver.artstation.com/'
-        },
-        network: {
-          type: String,
-          value: 'Artstation'
-        },
-        alt: {
-          type: String,
-          value: 'Artstation Logo'
-        }
-      },
-
-    });
-  </script>
-</dom-module>
+  <script>Polymer({is:"og-artstation",properties:{url:{type:String,value:"http://oliver.artstation.com/"},network:{type:String,value:"Artstation"},alt:{type:String,value:"Artstation Logo"}}});</script>
+</dom-module></body></html>
