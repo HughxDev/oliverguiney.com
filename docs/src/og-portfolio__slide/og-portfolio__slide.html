@@ -1,0 +1,23 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../shared-styles/shared-styles.html">
+
+</head><body><dom-module id="og-portfolio__slide">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        /*float: left;*/
+      }
+    </style>
+    
+    <img id="image" aria-describedby$="[[descriptionId]]">
+    <div id$="[[descriptionId]]" class="visuallyhidden">
+      <h5>[[titleOfWork]]</h5>
+      <content></content>
+    </div>
+  </template>
+
+  <script>Polymer({is:"og-portfolio__slide",behaviors:[OG.DOM,OG.Image,OG.String],hostAttributes:{role:"group",id:"process"},properties:{hostFilenameId:{type:String},filenameId:{type:String,value:""},dasherizedFilenameId:{type:String},descriptionId:{type:String},filenameSuffix:{type:String,value:""},filenamePrepend:{type:String,value:"",reflectToAttribute:!0},types:{type:Array,value:["jpg"]},directory:{type:String},subdirectory:{type:String,value:"process/"},titleOfWork:{type:String},portfolioPiece:{type:Object}},ready:function(){this.dasherizedFilenameId=this.dasherize(this.filenameId),this.portfolioPiece=this.getClosest(this,"og-portfolio__piece"),this.descriptionId=this.portfolioPiece.filenameId+"-"+this.dasherizedFilenameId+"-description",this.$.image.srcset=this.getSrcset(this.portfolioPiece)},getSrc:function(){var e=/\s/g,i=this.directory+this.portfolioPiece.filenameId+"/"+this.subdirectory+"“"+this.portfolioPiece.titleOfWork.replace(e,"%20")+"”%20"+this.portfolioPiece.filenameSuffix.replace(e,"%20")+"%20-%20"+this.filenameId.replace(e,"%20")+"."+this.types[0];return i}});</script>
+</dom-module>
+</body></html>

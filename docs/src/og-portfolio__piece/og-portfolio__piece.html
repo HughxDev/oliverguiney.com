@@ -1,0 +1,179 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../shared-styles/shared-styles.html">
+
+</head><body><dom-module id="og-portfolio__piece">
+  <template>
+    <style include="shared-styles">
+      :host {
+        /*--w: 1920;
+        --h: 1080;*/
+
+        display: block;
+
+        margin-bottom: calc( var(--global-spacing) * .75 );
+        /*box-shadow: 0 2px 2px rgba(255,255,255,0.125)*/
+        /*border: .5rem solid var(--off-white);*/
+
+        position: relative;
+        /*float: left;*/
+
+        padding-bottom: calc( var(--h) / var(--w) * 100% );
+        width: 100%;
+        /*text-align: center;*/
+      }
+
+      /* Resolutions */
+
+      /* Widths*/
+      :host([x="720"])  { --w: 720;  } /* 480p */
+      :host([x="1280"]) { --w: 1280; } /* 720p */
+      :host([x="1912"]) { --w: 1912; }
+      :host([x="1920"]) { --w: 1920; } /* 1080p */
+      :host([x="2000"]) { --w: 2000; }
+      :host([x="2042"]) { --w: 2042; }
+      :host([x="2100"]) { --w: 2100; }
+      :host([x="2468"]) { --w: 2468; }
+      :host([x="2826"]) { --w: 2826; }
+      :host([x="3840"]) { --w: 3840; } /* 4K (UHD) */
+      :host([x="4096"]) { --w: 4096; } /* 4K (DCI) */
+      :host([x="4224"]) { --w: 4224; }
+      /* /Widths */
+
+      /* Heights */
+      :host([y="480"])  { --h: 480;  } /* 480p */
+      :host([y="720"])  { --h: 720;  } /* 720p */
+      :host([y="1072"]) { --h: 1072; }
+      :host([y="1080"]) { --h: 1080; } /* 1080p */
+      :host([y="1160"]) { --h: 1160; }
+      :host([y="1196"]) { --h: 1196; }
+      :host([y="1527"]) { --h: 1527; }
+      :host([y="2160"]) { --h: 2160; } /* 4K (UHD, DCI) */
+      /* /Heights */
+
+      /* /Resolutions */
+
+      :host([flipped]) .card__front {
+        -webkit-transform: rotateY(-180deg);
+        transform: rotateY(-180deg);
+      }
+
+      :host([flipped]) .card__back {
+        -webkit-transform: rotateY(0);
+        transform: rotateY(0);
+      }
+
+      .card__front,
+      .card__back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .card__front,
+      .card__back {
+        -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+        -webkit-transition: -webkit-transform 0.3s;
+                transition: transform 0.3s;
+      }
+
+      .card__front {
+        z-index: 2;
+        cursor: pointer;
+      }
+
+      .card__back {
+        z-index: 1;
+        box-shadow: var(--global-shadow);
+        /*padding: var(--global-spacing);*/
+        background-color: #1e1e1e;
+        -webkit-transform: rotateY(-180deg);
+                transform: rotateY(-180deg);
+      }
+
+      .card__back > :first-child {
+        margin-top: 0;
+      }
+
+      .card__back > :last-child {
+        margin-bottom: 0;
+      }
+
+      .card__image {
+        /*border: .5rem solid var(--off-white);*/
+        /*border: .25rem solid var(--frame-color);*/
+        max-width: 100%;
+        box-shadow: var(--global-shadow);
+      }
+
+      /*@media (min-width: 40em) {
+        img {
+          border: .5rem solid var(--frame-color);
+        }
+      }*/
+
+      .card__close {
+        border: 0;
+        background: none;
+        font-size: 3rem;
+        color: var(--white);
+        padding: 0;
+        margin: 0;
+        line-height: 0.7ex;
+        width: 1.2ex;
+        height: 1ex;
+        display: block;
+        /*overflow: hidden;*/
+        /*outline: none;*/
+        text-align: center;
+        cursor: pointer;
+        z-index: 2;
+        position: absolute;
+        right: calc( var(--global-spacing) / 2 );
+        top: calc( var(--global-spacing) / 2 );
+        opacity: 0;
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: bold;
+
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      :host([flipped]) .card__close {
+        opacity: 0.5;
+        transition: opacity 0.25s ease;
+      }
+
+      .card__close:focus,
+      .card__close:hover {
+        opacity: 1;
+      }
+
+      /*.card__close:focus {
+
+      }*/
+      :host(.non-keyboard) :focus {
+        outline: none !important;
+      }
+    </style>
+    <div id="front" class="card__front" role="button" tabindex="0" title="Reveal Process slides" aria-label="Reveal Process slides">
+      <h3 class="visuallyhidden">[[titleOfWork]]</h3>
+      
+      <img class="card__image" id="image" alt="[[shortDescription]]">
+    </div>
+    <div id="back" class="card__back">
+      
+      
+      <a id="close" class="card__close" title="Hide Process slides" aria-label="Hide Process slides" role="button" tabindex="0">
+        <span class="card__close-icon" aria-hidden="true">×</span>
+      </a>
+      <content select="og-portfolio__process, simple-carousel"></content>
+    </div>
+  </template>
+
+  <script>Polymer({is:"og-portfolio__piece",behaviors:[OG.DOM,OG.Image],hostAttributes:{role:"article"},properties:{x:{type:Number,reflectToAttribute:!0},y:{type:Number,reflectToAttribute:!0},flipped:{type:Boolean,value:!1,reflectToAttribute:!0},directory:{type:String,value:"src/images/"},filenameSuffix:{type:String,value:"by Oliver Guiney"},filenameId:{type:String},titleOfWork:{type:String},shortDescription:{type:String},resolutions:{type:Array,value:[],reflectToAttribute:!1},date:{type:String}},flip:function(){var e=this;e.flipped=!e.flipped,e.flipped?e.$.close.focus():e.$.front.focus()},_handleFlipActivate:function(e){var t=this,r=e.target.className,i=Polymer.dom(t);if("keydown"===e.type||"keyup"===e.type||"keypress"===e.type){if(i.classList.remove("non-keyboard"),32!==e.which&&13!==e.which)return;e.preventDefault()}else i.classList.add("non-keyboard");e.target!==e.currentTarget?(null===r.match("card__image")&&null===r.match("card__front")||t.flip(),null!==r.match("card__back"),null===r.match("card__close")&&null===r.match("card__close-icon")||t.flip()):t.flip(),e.stopPropagation()},ready:function(){var e=this;e.hasOwnProperty("resolutions")&&e.resolutions.length&&(e.x=e.resolutions[0].width,e.y=e.resolutions[0].height,e.$.image.srcset=e.getSrcset())},attached:function(){var e=this;e.addEventListener("click",e._handleFlipActivate),e.addEventListener("keydown",e._handleFlipActivate)}});</script>
+</dom-module></body></html>

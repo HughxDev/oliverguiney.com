@@ -1,0 +1,24 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../shared-styles/shared-styles.html">
+
+</head><body><dom-module id="og-footer">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        text-align: center;
+        /*margin: var(--global-spacing) auto;*/
+        margin: 6rem auto var(--global-spacing);
+      }
+
+      h2 {
+        font-family: var(--heading-font);
+        font-weight: 500;
+      }
+    </style>
+    <p>© 2016–[[currentYear]] Oliver Guiney</p>
+  </template>
+
+  <script>Polymer({is:"og-footer",hostAttributes:{role:"contentinfo",id:"footer"},properties:{currentYear:{type:String,value:function(){return(new Date).getFullYear().toString()}}}});</script>
+</dom-module>
+</body></html>
