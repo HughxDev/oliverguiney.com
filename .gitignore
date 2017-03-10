@@ -40,3 +40,4 @@ Thumbs.db
 # src-assets/processes/*
 src-assets/*
 build/*
+sftp-config.json
