@@ -9,9 +9,15 @@
 
         /*float: left;*/
       }
+
+      .__image {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+      }
     </style>
     <!-- <img src$="{{filenamePrepend}}-{{filenameId}}.{{types.0}}" /> -->
-    <img id="image" aria-describedby$="[[descriptionId]]" />
+    <img id="image" class="__image" aria-describedby$="[[descriptionId]]" />
     <div id$="[[descriptionId]]" class="visuallyhidden">
       <h5>[[titleOfWork]]</h5>
       <content></content>
