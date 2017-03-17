@@ -36,7 +36,9 @@
       properties: {
         url: {
           type: String,
-          value: 'mailto:oliver.guiney@gmail.com'
+          value: function () {
+            return 'mailto:' + encodeURIComponent( '"Oliver Guiney"<oliver.guiney@gmail.com>' );
+          }
         },
         network: {
           type: String,
