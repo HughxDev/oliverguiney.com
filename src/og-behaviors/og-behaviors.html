@@ -48,52 +48,90 @@
   };
 
   OG.Image = {
-    getSrcset: function ogGetSrcset( container ) {
+    _getFilenameParts: function ogImageGetFilenameParts( container ) {
       var image = this;
-      var srcset = '';
-      var i;
-      var directory;
-      var subdirectory = '';
-      var filenameAppend = '';
-      var referenceObject;
+      
+      var parts = {
+        "subdirectory": "",
+        "filenameAppend": "",
+        "referenceObject": null,
+        "groupFilenameId": null,
+      };
 
       if ( container ) {
-        referenceObject = container;
-        groupFilenameId = container.filenameId;
+        parts.referenceObject = container;
+        parts.groupFilenameId = container.filenameId;
       } else {
-        referenceObject = image;
-        groupFilenameId = image.filenameId;
+        parts.referenceObject = image;
+        parts.groupFilenameId = image.filenameId;
       }
 
       if ( 'subdirectory' in image ) {
-        subdirectory = image.subdirectory;
+        parts.subdirectory = image.subdirectory;
 
         if ( 'filenameId' in image ) {
-          filenameAppend = '%20-%20' + image.filenameId.replace( /\s/g, '%20' );
+          parts.filenameAppend = '%20-%20' + image.filenameId.replace( /\s/g, '%20' );
         }
       }
 
-      if ( referenceObject.resolutions ) {
-        i = referenceObject.resolutions.length - 1;
+      return parts;
+    },
+    getSrc: function ogImageGetSrc( container ) {
+      var image = this;
+      var filenameParts = image._getFilenameParts( container );
+
+      // [ { "width": "1912", "height": "1072", "zoomLevel": "", "types": [ "jpg" ] }, ... ]
+      // Smallest-width image first
+      var sorted = image.resolutions.sort(function ( a, b ) {
+        if ( b.width < a.width ) {
+          return -1;
+        }
+
+        if ( b.width > a.width ) {
+          return 1;
+        }
+
+        return 0;
+      });
+
+      // Everything before the srcset descriptor
+      return image.getUrl( filenameParts, sorted[0] );
+    },
+    getUrl: function ogImageGetUrl( filenameParts, resolutionObject, srcsetMode ) {
+      srcsetMode = ( srcsetMode || false );
+
+      var url = filenameParts.referenceObject.directory // "/" included
+        + filenameParts.groupFilenameId
+        + '/'
+        + filenameParts.subdirectory
+        + '“' // '%E2%80%9C' // “
+        + filenameParts.referenceObject.titleOfWork.replace( /\s/g, '%20' )
+        + '”' // '%E2%80%9D' // ”
+        + '%20'
+        + filenameParts.referenceObject.filenameSuffix.replace( /\s/g, '%20' )
+        + filenameParts.filenameAppend
+        + resolutionObject.zoomLevel.replace( ',', '%2C' )
+        + '.'
+        + resolutionObject.types[0]
+      ;
+
+      if ( srcsetMode ) {
+        url += ' ' + resolutionObject.width + 'w';
+      }
+
+      return url;
+    },
+    getSrcset: function ogImageGetSrcset( container ) {
+      var image = this;
+      var srcset = '';
+      var i;
+      var filenameParts = image._getFilenameParts( container );
+
+      if ( filenameParts.referenceObject.resolutions ) {
+        i = filenameParts.referenceObject.resolutions.length - 1;
 
         for ( ; i >= 0; i--) {
-          srcset += referenceObject.directory // "/" included
-            + groupFilenameId
-            + '/'
-            + subdirectory
-            + '“' // '%E2%80%9C' // “
-            + referenceObject.titleOfWork.replace( /\s/g, '%20' )
-            + '”' // '%E2%80%9D' // ”
-            + '%20'
-            + referenceObject.filenameSuffix.replace( /\s/g, '%20' )
-            + filenameAppend
-            + referenceObject.resolutions[i].zoomLevel.replace( ',', '%2C' )
-            + '.'
-            + referenceObject.resolutions[i].types[0]
-            + ' '
-            + referenceObject.resolutions[i].width
-            + 'w'
-          ;
+          srcset += image.getUrl( filenameParts, filenameParts.referenceObject.resolutions[i], true );
         
           if ( i !== 0 ) {
             srcset += ', ';

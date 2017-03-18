@@ -317,6 +317,7 @@
           portfolioPiece.x = portfolioPiece.resolutions[0].width;
           portfolioPiece.y = portfolioPiece.resolutions[0].height;
 
+          portfolioPiece.$.image.src = portfolioPiece.getSrc();
           portfolioPiece.$.image.srcset = portfolioPiece.getSrcset();
         }
       },
