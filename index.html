@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
@@ -49,8 +49,6 @@
     <meta property="os:src" content="https://github.com/hguiney/oliverguiney.com.git" />
     <meta property="os:issue" content="https://github.com/hguiney/oliverguiney.com/issues" />
     <meta property="os:branch" content="master" />
-
-    <script defer src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
     <script>
       /* this script must run before Polymer is imported */
@@ -134,20 +132,47 @@
         font-weight: 200;
       }
 
-      @media (-webkit-min-device-pixel-ratio: 2),
-        (min-resolution: 192dpi) {
+      @media ( -webkit-min-device-pixel-ratio: 2 ), ( min-resolution: 192dpi ) {
         body {
           background-image: url('src/images/patterns/noisy_net_@2X.png'); 
         }
+      }
+
+      html.js:not(.wf-active) > body,
+      html.js:not(.wf-active) > body a {
+        color: transparent !important;
       }
     </style>
 
     <link rel="import" href="src/shared-styles/shared-styles.html" />  
     <link rel="import" href="src/og-site/og-site.html" />
   </head>
-  <body>
+  <body unresolved>
     <og-site></og-site>
 
+    <script>
+      (function() {
+        var classList = document.documentElement.classList;
+
+        classList.remove( 'no-js' );
+        classList.add( 'js' );
+
+        if (
+          'registerElement' in document
+          && 'import' in document.createElement( 'link' )
+          && 'content' in document.createElement( 'template' )
+        ) {
+          // do nothing
+        } else {
+          var webcomponentsjs = document.createElement( 'script' );
+    
+          webcomponentsjs.setAttribute( 'defer', 'defer' );
+          webcomponentsjs.src = 'bower_components/webcomponentsjs/webcomponents-lite.min.js';
+
+          document.body.appendChild( webcomponentsjs );
+        }
+      })();
+    </script>
     <script src="https://use.typekit.net/xey3oyf.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
   </body>
