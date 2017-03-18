@@ -55,16 +55,13 @@
     <script>
       /* this script must run before Polymer is imported */
       window.Polymer = {
-        dom: 'shadow',
+        dom: 'shady',
         lazyRegister: true
       };
     </script>
 
     <!-- <link rel="import" href="/styles/fonts.html" />
     <style include="fonts"></style> -->
-
-    <script src="https://use.typekit.net/xey3oyf.js"></script>
-    <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
     <style is="custom-style">
       @font-face {
@@ -150,5 +147,8 @@
   </head>
   <body>
     <og-site></og-site>
+    
+    <script src="https://use.typekit.net/xey3oyf.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
   </body>
 </html>

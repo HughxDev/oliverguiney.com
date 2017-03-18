@@ -12,16 +12,12 @@
         width: 100%;
         max-width: 100%;
       }
-
-      .invisible {
-        opacity: 0;
-      }
     </style>
     <!-- <img src$="{{filenamePrepend}}-{{filenameId}}.{{types.0}}" /> -->
     <img id="image" class="__image" aria-describedby$="[[descriptionId]]" />
     <div id$="[[descriptionId]]" class="visuallyhidden">
       <h5>[[titleOfWork]]</h5>
-      <content id="content" class="invisible"></content>
+      <content></content>
     </div>
   </template>
 
@@ -99,9 +95,9 @@
         this.$.image.srcset = this.getSrcset( filenameParts );
       },
 
-      attached: function ogPortfolioSlideAttached() {
-        this.$.content.removeAttribute( 'class' );
-      }
+      // attached: function ogPortfolioSlideAttached() {
+      //   this.$.content.removeAttribute( 'class' );
+      // }
     });
   </script>
 </dom-module>
