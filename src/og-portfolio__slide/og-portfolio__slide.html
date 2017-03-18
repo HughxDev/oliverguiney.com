@@ -78,9 +78,13 @@
       },
 
       ready: function ogPortfolioSlideAttached() {
+        var filenameParts;
+
         this.dasherizedFilenameId = this.dasherize( this.filenameId );
 
         this.portfolioPiece = this.getClosest( this, 'og-portfolio__piece' );
+
+        filenameParts = this.getFilenameParts( this.portfolioPiece );
 
         this.descriptionId =
           this.portfolioPiece.filenameId
@@ -89,32 +93,8 @@
           + '-description'
         ;
 
-        this.$.image.srcset = this.getSrcset( this.portfolioPiece );
-      },
-
-      getSrc: function ogPortfolioSlideGetSrc() {
-        var regexWhitespace = /\s/g;
-
-        var src =
-          this.directory
-          + this.portfolioPiece.filenameId
-          + '/' + this.subdirectory
-          + '“'
-          + this.portfolioPiece.titleOfWork.replace( regexWhitespace, '%20' )
-          + '”'
-          + '%20'
-          + this.portfolioPiece.filenameSuffix.replace( regexWhitespace, '%20' )
-          + '%20'
-          + '-'
-          + '%20'
-          + this.filenameId.replace( regexWhitespace, '%20' )
-          + '.'
-          + this.types[0]
-        ;
-
-        // console.log( this.getSrcset() );
-
-        return src;
+        this.$.image.src = this.getSrc( filenameParts );
+        this.$.image.srcset = this.getSrcset( filenameParts );
       }
     });
   </script>

@@ -48,7 +48,7 @@
   };
 
   OG.Image = {
-    _getFilenameParts: function ogImageGetFilenameParts( container ) {
+    getFilenameParts: function ogImageGetFilenameParts( container ) {
       var image = this;
       
       var parts = {
@@ -56,14 +56,17 @@
         "filenameAppend": "",
         "referenceObject": null,
         "groupFilenameId": null,
+        "resolutions": null
       };
 
       if ( container ) {
         parts.referenceObject = container;
         parts.groupFilenameId = container.filenameId;
+        // parts.resolutions = container.resolutions;
       } else {
         parts.referenceObject = image;
         parts.groupFilenameId = image.filenameId;
+        // parts.resolutions = image.resolutions;
       }
 
       if ( 'subdirectory' in image ) {
@@ -76,13 +79,16 @@
 
       return parts;
     },
-    getSrc: function ogImageGetSrc( container ) {
+    getSrc: function ogImageGetSrc( filenameParts ) {
+      // filenameParts = ( filenameParts || image.getFilenameParts() );
+
       var image = this;
-      var filenameParts = image._getFilenameParts( container );
+
+      // console.log( 'filenameParts.referenceObject.__proto__', filenameParts.referenceObject.__proto__ );
 
       // [ { "width": "1912", "height": "1072", "zoomLevel": "", "types": [ "jpg" ] }, ... ]
       // Smallest-width image first
-      var sorted = image.resolutions.sort(function ( a, b ) {
+      var sorted = filenameParts.referenceObject.resolutions.sort(function ( a, b ) {
         if ( b.width < a.width ) {
           return -1;
         }
@@ -121,11 +127,12 @@
 
       return url;
     },
-    getSrcset: function ogImageGetSrcset( container ) {
+    getSrcset: function ogImageGetSrcset( filenameParts ) {
+      // filenameParts = ( filenameParts || image.getFilenameParts() );
+
       var image = this;
       var srcset = '';
       var i;
-      var filenameParts = image._getFilenameParts( container );
 
       if ( filenameParts.referenceObject.resolutions ) {
         i = filenameParts.referenceObject.resolutions.length - 1;
