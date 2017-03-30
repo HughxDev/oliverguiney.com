@@ -1,0 +1,27 @@
+{
+  "name": "oliverguiney.com",
+  "version": "1.0.0",
+  "description": "Oliver Guiney’s Portfolio Site",
+  "main": "index.html",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "polymer serve",
+    "crunch": "find ./src/images/ -name \"*.png\" -exec guetzli --quality 84 {} {}.jpg \\; && rename \"s/png.jpg/jpg/\" ./src/images/*.png.jpg"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hguiney/oliverguiney.com.git"
+  },
+  "keywords": [
+    "portfolio"
+  ],
+  "author": "Hugh Guiney",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/hguiney/oliverguiney.com/issues"
+  },
+  "homepage": "https://github.com/hguiney/oliverguiney.com#readme"
+}
