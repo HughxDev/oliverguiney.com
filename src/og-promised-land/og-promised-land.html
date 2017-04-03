@@ -1,0 +1,60 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../../bower_components/simple-carousel/simple-carousel.html" />
+<link rel="import" href="../shared-styles/shared-styles.html" />
+<link rel="import" href="../og-portfolio__piece/og-portfolio__piece.html" />
+<link rel="import" href="../og-portfolio__process/og-portfolio__process.html" />
+
+<dom-module id="og-promised-land">
+  <template>
+    <style include="shared-styles"></style>
+    <og-portfolio__piece
+      id="promised-land"
+      filename-id="promised-land"
+      title-of-work="The Promised Land"
+      short-description=" "
+      resolutions='[ { "width": "2468", "height": "1196", "zoomLevel": "", "types": [ "jpg", "png" ] }, { "width": "1234", "height": "598", "zoomLevel": "@0,5x", "types": [ "jpg" ] }, { "width": "617", "height": "299", "zoomLevel": "@0,25x", "types": [ "jpg" ] } ]'
+      >
+      <og-portfolio__process>
+        <simple-carousel>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Mood"
+            filename-id="Process 01">
+            <p>[collage of desert landscapes]</p>
+            <ul>
+              <li>Looking at Lawrence of Arabia to try and hit a similar mood of desert adventure with a hint of danger</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Reference"
+            filename-id="Process 02">
+            <p>[collage of desert scenery]</p>
+            <ul>
+              <li>The cliffs were based on Wadi Rum in Jordan</li>
+              <li>For the camel riders I was looking at bedouin culture</li>
+              <li>I was also looking at haboob sandstorms for the sky and the dust formations</li>
+              <li>The city was inspired by Jerusalem but pushed with a larger scale</li>
+              <li>Additionally I was looking at oasis based towns like Huacachina</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Composition"
+            filename-id="Process 03">
+            <p>[rough sketch]</p>
+            <ul>
+              <li>For the comp I tried to keep it simple, again looking at Lawrence screenshots</li>
+              <li>I deviated from the sketch a bit, mostly keeping the same idea but pushing the scale more towards epic proportions</li>
+            </ul>
+          </og-portfolio__slide>
+        </simple-carousel>
+      </og-portfolio__process>
+    </og-portfolio__piece>
+  </template>
+  <script>
+    Polymer({
+      is: 'og-promised-land'
+    });
+  </script>
+</dom-module>

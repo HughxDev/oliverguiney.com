@@ -1,0 +1,60 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../../bower_components/simple-carousel/simple-carousel.html" />
+<link rel="import" href="../shared-styles/shared-styles.html" />
+<link rel="import" href="../og-portfolio__piece/og-portfolio__piece.html" />
+<link rel="import" href="../og-portfolio__process/og-portfolio__process.html" />
+
+<dom-module id="og-rocky-pass">
+  <template>
+    <style include="shared-styles"></style>
+    <og-portfolio__piece id="rocky-pass" filename-id="rocky-pass" title-of-work="Rocky Pass" short-description=" " resolutions='[ { "width": "2153", "height": "1098", "zoomLevel": "", "types": [ "jpg", "png" ] }, { "width": "1077", "height": "549", "zoomLevel": "@0,5x", "types": [ "jpg", "png" ] }, { "width": "538", "height": "275", "zoomLevel": "@0,25x", "types": [ "jpg", "png" ] } ]'>
+      <og-portfolio__process>
+        <simple-carousel>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Mood"
+            filename-id="Process 01">
+            <ul>
+              <li>For mood I was looking at screenshots of Prometheus as all as photos of hilly mountains in early evening lighting</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Research"
+            filename-id="Process 02">
+            <ul>
+              <li>Looking at mountains from Ireland, Switzerland, and Iceland to explore cool rock formations</li>
+              <li>I found some old master paintings of shepherds; they usually grouped the sheep into bigger light shapes, with the shepherd more vertical and dark in value</li>
+              <li>Part of Prometheus was shot at The Old Man in the Mountain, so that was my visual cue for the design of the jagged rock shapes</li>
+              <li>I also researched different types of vernacular architecture for the straw huts, and tried to incorporate similar props from the photos</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Back Plate"
+            filename-id="Process 03">
+            <ul>
+              <li>The initial plate had a few issues: mostly it was too noisy everywhere and felt unbalanced</li>
+              <li>It was good in that the lighting was pretty even making it easy to play with</li>
+              <li>Having the value structure already established made it easier to integrate new elements</li>
+              <li>I kept the path in the shot because it reinforces the perspective nicely</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Composition"
+            filename-id="Process 04">
+            <ul>
+              <li>Using a combination of alphas and over-painting I was able to iterate on designs and composition fairly quickly</li>
+            </ul>
+          </og-portfolio__slide>
+        </simple-carousel>
+      </og-portfolio__process>
+    </og-portfolio__piece>
+  </template>
+  <script>
+    Polymer({
+      is: 'og-rocky-pass'
+    });
+  </script>
+</dom-module>

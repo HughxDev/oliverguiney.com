@@ -1,0 +1,78 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../../bower_components/simple-carousel/simple-carousel.html" />
+<link rel="import" href="../shared-styles/shared-styles.html" />
+<link rel="import" href="../og-portfolio__piece/og-portfolio__piece.html" />
+<link rel="import" href="../og-portfolio__process/og-portfolio__process.html" />
+
+<dom-module id="og-shark">
+  <template>
+    <style include="shared-styles"></style>
+     <og-portfolio__piece
+       id="shark"
+       filename-id="shark"
+       title-of-work="The Shark"
+       short-description="A man in a fedora and trenchcoat, holding a pistol, hiding behind a car as another enters a door."
+       resolutions='[ { "width": "4224", "height": "2160", "zoomLevel": "", "types": [ "jpg", "png" ] }, { "width": "2112", "height": "1080", "zoomLevel": "@0,5x", "types": [ "jpg" ] }, { "width": "1056", "height": "540", "zoomLevel": "@0,25x", "types": [ "jpg" ] } ]'>
+      <og-portfolio__process>
+        <simple-carousel>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Mood"
+            filename-id="Process 01">
+            <p>[collage of stills from <cite>The Wire</cite>]</p>
+            <ul>
+              <li>Looking at <cite>The Wire</cite> for set design, lighting, mood and costume reference</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Style"
+            filename-id="Process 02">
+            <p>[collage of stills from noir films]</p>
+            <ul>
+              <li>I really like the graphic, high-contrast style of traditional film noir</li>
+              <li>The cinematography often sculpts with light and uses doors and windows as framing devices</li>
+              <li>Also the compositions were pretty expressionistic with visible emotions and people operating in the shadows so I wanted to incorporate some of those same elements into my scene</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Research"
+            filename-id="Process 03">
+            <p>[collage of reference images]</p>
+            <ul>
+              <li>I was looking at tons of photos of Baltimore to try and get a similar feel with a dilapitated row house</li>
+              <li>I also took some pictures around my neighborhood to add some props that might make the scene feel more lived in</li>
+              <li>Observing the city at night where I live, I realized that the sky was a lighter value than I expected, and that light pollution gives an eerie haze-like effect to the buildings</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Character"
+            filename-id="Process 04">
+            <p>[collage of young man in various crouching poses wearing a jacket and tie while holding prop gun]</p>
+            <ul>
+              <li>I did a photoshoot for the detective character so I had control over pose and lighting</li>
+              <li>This helped me figure out where the shadow would fall, which allowed for easier integration</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Render"
+            filename-id="Process 05">
+            <p>[rendering]</p>
+            <ul>
+              <li>Final render before texturing</li>
+              <li>I ended up changing the tempature of the lights to fit a creepier mood</li>
+            </ul>
+          </og-portfolio__slide>
+        </simple-carousel>
+      </og-portfolio__process>
+    </og-portfolio__piece>
+  </template>
+  <script>
+    Polymer({
+      is: 'og-shark'
+    });
+  </script>
+</dom-module>
