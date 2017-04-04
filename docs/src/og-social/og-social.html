@@ -1,0 +1,37 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../shared-styles/shared-styles.html">
+
+
+<link rel="import" href="../og-facebook/og-facebook.html">
+
+<link rel="import" href="../og-instagram/og-instagram.html">
+<link rel="import" href="../og-artstation/og-artstation.html">
+<link rel="import" href="../og-email/og-email.html">
+
+</head><body><dom-module id="og-social">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+      .__item {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 1;
+      }
+
+      .__item:not(:last-child) {
+        margin-right: 1em;
+      }
+    </style>
+    <og-facebook id="facebook" class="__item"></og-facebook>
+    
+    <og-instagram id="instagram" class="__item"></og-instagram>
+    <og-artstation id="arstation" class="__item"></og-artstation>
+    
+    
+  </template>
+
+  <script>Polymer({is:"og-social",properties:{behance:{type:Boolean,value:!0},facebook:{type:Boolean,value:!0},instagram:{type:Boolean,value:!0},twitter:{type:Boolean,value:!1}}});</script>
+</dom-module></body></html>

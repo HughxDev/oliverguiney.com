@@ -1,0 +1,26 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../shared-styles/shared-styles.html">
+
+</head><body><dom-module id="og-portfolio__slide">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+      .__image {
+        width: 100%;
+        max-width: 100%;
+      }
+    </style>
+    
+    <img id="image" class="__image" aria-describedby$="[[descriptionId]]">
+    <div id$="[[descriptionId]]" class="visuallyhidden">
+      <h5>[[titleOfWork]]</h5>
+      <content></content>
+    </div>
+  </template>
+
+  <script>Polymer({is:"og-portfolio__slide",behaviors:[OG.DOM,OG.Image,OG.String],hostAttributes:{role:"group",id:"process"},properties:{hostFilenameId:{type:String},filenameId:{type:String,value:""},dasherizedFilenameId:{type:String},descriptionId:{type:String},filenameSuffix:{type:String,value:""},filenamePrepend:{type:String,value:"",reflectToAttribute:!0},types:{type:Array,value:["jpg"]},directory:{type:String},subdirectory:{type:String,value:"process/"},titleOfWork:{type:String},portfolioPiece:{type:Object}},ready:function(){var e;this.dasherizedFilenameId=this.dasherize(this.filenameId),this.portfolioPiece=this.getClosest(this,"og-portfolio__piece"),e=this.getFilenameParts(this.portfolioPiece),this.descriptionId=this.portfolioPiece.filenameId+"-"+this.dasherizedFilenameId+"-description",this.$.image.src=this.getSrc(e),this.$.image.srcset=this.getSrcset(e)}});</script>
+</dom-module>
+</body></html>
