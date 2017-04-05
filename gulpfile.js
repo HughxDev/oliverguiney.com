@@ -28,15 +28,23 @@ gulp.task('copy:fonts', function () {
 // 'copy:shared-styles'
 gulp.task('copy', ['copy:server', 'copy:images', 'copy:fonts']);
 
+var vulcanizeOptions = {
+  stripComments: true,
+  inlineScripts: true,
+  inlineCss: true,
+  excludes: ['bower_components/polymer/polymer.html']
+  // stripExcludes: ['bower_components/polymer/polymer.html']
+};
+
 gulp.task('vulcanize:entrypoint', function() {
   return gulp.src('index.html')
-    .pipe(vulcanize())
+    .pipe(vulcanize(vulcanizeOptions))
     .pipe(gulp.dest('build'));
 });
 
 gulp.task('vulcanize:fragments', function() {
   return gulp.src(['src/og-portfolio__slide/**/*'])
-    .pipe(vulcanize())
+    .pipe(vulcanize(vulcanizeOptions))
     .pipe(gulp.dest('build/src/og-portfolio__slide/'));
 });
 
