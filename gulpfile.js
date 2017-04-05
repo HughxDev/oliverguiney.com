@@ -28,11 +28,19 @@ gulp.task('copy:fonts', function () {
 // 'copy:shared-styles'
 gulp.task('copy', ['copy:server', 'copy:images', 'copy:fonts']);
 
-gulp.task('vulcanize', function() {
+gulp.task('vulcanize:entrypoint', function() {
   return gulp.src('index.html')
     .pipe(vulcanize())
     .pipe(gulp.dest('build'));
 });
+
+gulp.task('vulcanize:fragments', function() {
+  return gulp.src(['src/og-portfolio__piece/**/*'])
+    .pipe(vulcanize())
+    .pipe(gulp.dest('build/src/og-portfolio__piece/'));
+});
+
+gulp.task('vulcanize', ['vulcanize:entrypoint', 'vulcanize:fragments']);
 
 gulp.task('minify', function() {
   return gulp.src('build/*.html')

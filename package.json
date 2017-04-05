@@ -8,9 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "polymer serve",
     "crunch": "find ./src/images/ -name \"*.png\" -exec guetzli --quality 84 {} {}.jpg \\; && rename \"s/png.jpg/jpg/\" ./src/images/*.png.jpg",
-    "htmlmin": "find ./src/ -name \"*.html\" -exec bash -c 'mkdir build/$(dirname \"{}\") ; -exec htmlmin {} -o build/$(dirname \"{}\")/{}.html"
   },
   "repository": {
     "type": "git",

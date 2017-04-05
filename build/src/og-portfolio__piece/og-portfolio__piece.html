@@ -1,0 +1,401 @@
+<html><head><meta charset="UTF-8"></head><body><div hidden="" by-vulcanize=""><dom-module id="shared-styles" assetpath="../shared-styles/">
+  <template>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      :focus {
+        outline: var(--a11y-outline-style);
+      }
+
+      .non-keyboard :focus {
+        outline: none !important;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      p {
+        max-width: 39em;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        text-align: center;
+        font-family: var(--heading-font);
+        font-weight: 500;
+        line-height: 1;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      @media (min-width: 50em) {
+        h1, h2, h3, h4, h5, h6 {
+          margin-top: 2rem;
+          margin-bottom: 2rem;
+        }
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+      @media (min-width: 40em) {
+        h1 {
+          font-size: 4rem;
+        }
+      }
+
+      h2 {
+        font-size: 2.25rem;
+      }
+      @media (min-width: 40em) {
+        h2 {
+          font-size: 3.5rem;
+          line-height: .6;
+          padding-top: .5rem;
+          margin-bottom: 1.5rem;
+        }
+      }
+
+      a:hover, a:focus {
+        text-decoration: none;
+      }
+
+      .visuallyhidden { 
+        position: absolute; 
+        overflow: hidden; 
+        clip: rect(0 0 0 0); 
+        height: 1px; width: 1px; 
+        margin: -1px; padding: 0; border: 0; 
+      }
+    </style>
+  </template>
+</dom-module></div><dom-module id="og-portfolio__piece">
+  <template>
+    <style include="shared-styles">
+      :host {
+        /*--w: 1920;
+        --h: 1080;*/
+
+        display: block;
+
+        margin-bottom: calc( var(--global-spacing) * .75 );
+        /*box-shadow: 0 2px 2px rgba(255,255,255,0.125)*/
+        /*border: .5rem solid var(--off-white);*/
+
+        position: relative;
+        /*float: left;*/
+
+        padding-bottom: calc( var(--h) / var(--w) * 100% );
+        width: 100%;
+        /*text-align: center;*/
+      }
+
+      /* Resolutions */
+
+      /* Widths*/
+      :host([x="720"])  { --w: 720;  } /* 480p */
+      :host([x="1280"]) { --w: 1280; } /* 720p */
+      :host([x="1912"]) { --w: 1912; }
+      :host([x="1920"]) { --w: 1920; } /* 1080p */
+      :host([x="2000"]) { --w: 2000; }
+      :host([x="2042"]) { --w: 2042; }
+      :host([x="2100"]) { --w: 2100; }
+      :host([x="2153"]) { --w: 2153; }
+      :host([x="2468"]) { --w: 2468; }
+      :host([x="2826"]) { --w: 2826; }
+      :host([x="3840"]) { --w: 3840; } /* 4K (UHD) */
+      :host([x="4096"]) { --w: 4096; } /* 4K (DCI) */
+      :host([x="4224"]) { --w: 4224; }
+      /* /Widths */
+
+      /* Heights */
+      :host([y="480"])  { --h: 480;  } /* 480p */
+      :host([y="720"])  { --h: 720;  } /* 720p */
+      :host([y="1072"]) { --h: 1072; }
+      :host([y="1080"]) { --h: 1080; } /* 1080p */
+      :host([y="1098"]) { --h: 1098; }
+      :host([y="1160"]) { --h: 1160; }
+      :host([y="1196"]) { --h: 1196; }
+      :host([y="1527"]) { --h: 1527; }
+      :host([y="2160"]) { --h: 2160; } /* 4K (UHD, DCI) */
+      /* /Heights */
+
+      /* /Resolutions */
+
+      :host([flipped]) .card__front {
+        -webkit-transform: rotateY(-180deg);
+        transform: rotateY(-180deg);
+      }
+
+      :host([flipped]) .card__back {
+        -webkit-transform: rotateY(0);
+        transform: rotateY(0);
+      }
+
+      .card__front,
+      .card__back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .card__front,
+      .card__back {
+        -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+        -webkit-transition: -webkit-transform 0.3s;
+                transition: transform 0.3s;
+      }
+
+      .card__front {
+        z-index: 2;
+        cursor: pointer;
+      }
+
+      .card__back {
+        z-index: 1;
+        box-shadow: var(--global-shadow);
+        /*padding: var(--global-spacing);*/
+        background-color: #1e1e1e;
+        -webkit-transform: rotateY(-180deg);
+                transform: rotateY(-180deg);
+      }
+
+      .card__back > :first-child {
+        margin-top: 0;
+      }
+
+      .card__back > :last-child {
+        margin-bottom: 0;
+      }
+
+      .card__image {
+        /*border: .5rem solid var(--off-white);*/
+        /*border: .25rem solid var(--frame-color);*/
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        box-shadow: var(--global-shadow);
+      }
+
+      /*@media (min-width: 40em) {
+        img {
+          border: .5rem solid var(--frame-color);
+        }
+      }*/
+
+      .card__close {
+        border: 0;
+        background: none;
+        font-size: 3rem;
+        color: var(--white);
+        padding: 0;
+        margin: 0;
+        line-height: 0.7ex;
+        width: 1.2ex;
+        height: 1ex;
+        display: block;
+        /*overflow: hidden;*/
+        /*outline: none;*/
+        text-align: center;
+        cursor: pointer;
+        z-index: 2;
+        position: absolute;
+        right: calc( var(--global-spacing) / 2 );
+        top: calc( var(--global-spacing) / 2 );
+        opacity: 0;
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: bold;
+
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      :host([flipped]) .card__close {
+        opacity: 0.5;
+        transition: opacity 0.25s ease;
+      }
+
+      .card__close:focus,
+      .card__close:hover {
+        opacity: 1;
+      }
+
+      /*.card__close:focus {
+
+      }*/
+      :host(.non-keyboard) :focus {
+        outline: none !important;
+      }
+    </style>
+    <div id="front" class="card__front" role="button" tabindex="0" title="Reveal Process slides" aria-label="Reveal Process slides">
+      <h3 class="visuallyhidden">[[titleOfWork]]</h3>
+      <!-- <content select="img, .piece__image"></content> -->
+      <img class="card__image" id="image" alt="[[shortDescription]]">
+    </div>
+    <div id="back" class="card__back">
+      <!-- <content select="p, .card__text"></content> -->
+      <!-- <p class="card__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, explicabo! Quidem amet laborum dignissimos quia, repudiandae cum totam perferendis velit voluptatum aspernatur vel animi ab, unde odit quos magnam, eveniet!</p> -->
+      <a id="close" class="card__close" title="Hide Process slides" aria-label="Hide Process slides" role="button" tabindex="0">
+        <span class="card__close-icon" aria-hidden="true">×</span>
+      </a>
+      <content select="og-portfolio__process, simple-carousel"></content>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'og-portfolio__piece',
+
+      behaviors: [ OG.DOM, OG.Image ],
+
+      hostAttributes: {
+        role: 'article'
+      },
+
+      properties: {
+        x: {
+          type: Number,
+          // value: 1920,
+          reflectToAttribute: true
+        },
+        y: {
+          type: Number,
+          // value: 1080,
+          reflectToAttribute: true
+        },
+        flipped: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true
+        },
+        directory: {
+          type: String,
+          value: 'src/images/'
+        },
+        filenameSuffix: {
+          type: String,
+          value: 'by Oliver Guiney'
+        },
+        filenameId: {
+          type: String
+        },
+        titleOfWork: {
+          type: String
+        },
+        shortDescription: {
+          type: String
+        },
+        resolutions: {
+          type: Array,
+          value: [],
+          reflectToAttribute: false
+        },
+        date: {
+          type: String
+        }
+      },
+
+      flip: function ogPortfolioPieceFlip() {
+        var portfolioPiece = this;
+
+        portfolioPiece.flipped = !portfolioPiece.flipped;
+
+        if ( portfolioPiece.flipped ) {
+          portfolioPiece.$.close.focus();
+        // }
+        } else {
+          portfolioPiece.$.front.focus();
+        }
+      },
+
+      _handleFlipActivate: function ogPortfolioPieceHandleFlipActivate( event ) {
+        var portfolioPiece = this;
+        var className = event.target.className;
+        var host = Polymer.dom( portfolioPiece );
+
+        // Keyboard events
+        if ( ( event.type === 'keydown' ) || ( event.type === 'keyup' ) || ( event.type === 'keypress' ) ) {
+          host.classList.remove( 'non-keyboard' );
+
+          // Spacebar = 32, Enter/Return = 13
+          if ( ( event.which === 32 ) || ( event.which === 13 ) ) {
+            // Spacebar sometimes scrolls down the page
+            event.preventDefault();
+          } else {
+            // If any other key was pressed ignore it
+            return;
+          }
+        // Non-keyboard events (click, touch, etc.)
+        } else {
+          host.classList.add( 'non-keyboard' );
+        }
+
+        if ( event.target !== event.currentTarget ) {
+          // console.log( 'className', className );
+
+          if (
+            ( className.match( 'card__image' ) !== null )
+            || ( className.match( 'card__front' ) !== null )
+          ) {
+            // console.log( 'card__image or card__front clicked' );
+            portfolioPiece.flip();
+          }
+
+          if ( className.match( 'card__back' ) !== null ) {
+            // console.log( 'card__back clicked' );
+          }
+
+          if (
+            ( className.match( 'card__close' ) !== null )
+            || ( className.match( 'card__close-icon' ) !== null )
+          ) {
+            // console.log( 'card__close or card__close-icon clicked' );
+            portfolioPiece.flip();
+          }
+        } else {
+          portfolioPiece.flip();
+        }
+
+        portfolioPiece.importHref( '/src/og-portfolio__slide/og-portfolio__slide.html' );
+
+        event.stopPropagation();
+      },
+
+      // created: function ogPortfolioPieceCreated() {},
+
+      ready: function ogPortfolioPieceReady() {
+        var portfolioPiece = this;
+        var filenameParts = portfolioPiece.getFilenameParts();
+        
+        // portfolioPiece.$.image.srcset = portfolioPiece.getSrcset();
+
+        if ( portfolioPiece.hasOwnProperty( 'resolutions' ) && !!portfolioPiece.resolutions.length ) {
+          portfolioPiece.x = portfolioPiece.resolutions[0].width;
+          portfolioPiece.y = portfolioPiece.resolutions[0].height;
+
+          portfolioPiece.$.image.src = portfolioPiece.getSrc( filenameParts );
+          portfolioPiece.$.image.srcset = portfolioPiece.getSrcset( filenameParts );
+        }
+      },
+
+      attached: function ogPortfolioPieceAttached() {
+        var portfolioPiece = this;
+
+        portfolioPiece.addEventListener( "click", portfolioPiece._handleFlipActivate );
+        portfolioPiece.addEventListener( "keydown", portfolioPiece._handleFlipActivate );
+      },
+
+      // getSrcset
+    });
+  </script>
+</dom-module></body></html>
