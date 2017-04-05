@@ -35,9 +35,9 @@ gulp.task('vulcanize:entrypoint', function() {
 });
 
 gulp.task('vulcanize:fragments', function() {
-  return gulp.src(['src/og-portfolio__piece/**/*'])
+  return gulp.src(['src/og-portfolio__slide/**/*'])
     .pipe(vulcanize())
-    .pipe(gulp.dest('build/src/og-portfolio__piece/'));
+    .pipe(gulp.dest('build/src/og-portfolio__slide/'));
 });
 
 gulp.task('vulcanize', ['vulcanize:entrypoint', 'vulcanize:fragments']);
