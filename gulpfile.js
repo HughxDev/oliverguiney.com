@@ -25,8 +25,13 @@ gulp.task('copy:fonts', function () {
     .pipe(gulp.dest('build/src/fonts/'));
 });
 
+gulp.task('copy:polymer', function () {
+  return gulp.src('bower_components/polymer/**/*')
+    .pipe(gulp.dest('build/bower_components/polymer/'));
+});
+
 // 'copy:shared-styles'
-gulp.task('copy', ['copy:server', 'copy:images', 'copy:fonts']);
+gulp.task('copy', ['copy:polymer', 'copy:server', 'copy:images', 'copy:fonts']);
 
 var vulcanizeOptions = {
   stripComments: true,
