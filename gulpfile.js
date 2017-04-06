@@ -159,7 +159,7 @@ gulp.task('minify:images', function(){
     .pipe(gulp.dest('build/images'));
 });
 
-gulp.task('minify', ['minify:html']);
+gulp.task('minify', ['minify:inline']);
 
 /* Default */
 // Beceause each meta-task relies on the last, we only have to call the latter task in order to call all previous tasks up the chain
