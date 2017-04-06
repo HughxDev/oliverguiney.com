@@ -118,13 +118,13 @@ gulp.task('rewrite', ['vulcanize'], function(){
 
 /* Minify */
 gulp.task('minify:html', ['rewrite'], function() {
-  return gulp.src('build/*.html')
+  return gulp.src('build/**/*.html')
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('build'));
 });
 
 gulp.task('minify:inline', ['minify:html'], function() {
-  return gulp.src('build/*.html')
+  return gulp.src('build/**/*.html')
     .pipe(minifyInline())
     .pipe(gulp.dest('build/'));
 });
