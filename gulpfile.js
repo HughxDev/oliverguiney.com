@@ -3,6 +3,7 @@ var vulcanize = require('gulp-vulcanize');
 var htmlmin = require('gulp-htmlmin');
 var minifyInline = require('gulp-minify-inline');
 var del = require('del');
+var imagemin = require('gulp-imagemin');
 
 /* Clean */
 gulp.task('clean', function () {
@@ -35,6 +36,7 @@ gulp.task('copy:polymer', ['clean'], function () {
 
 // 'copy:shared-styles'
 gulp.task('copy', ['copy:polymer', 'copy:server', 'copy:images', 'copy:fonts']);
+
 
 /* Vulcanize */
 var vulcanizeOptions = {
@@ -69,7 +71,18 @@ gulp.task('minify:html', ['vulcanize'], function() {
 gulp.task('minify:inline', ['minify:html'], function() {
   return gulp.src('build/*.html')
     .pipe(minifyInline())
-    .pipe(gulp.dest('build/'))
+    .pipe(gulp.dest('build/'));
+});
+
+gulp.task('minify:images', function(){
+  return gulp.src('build/src/images/**/*.{png,svg}')
+    .pipe(imagemin([
+      // imagemin.gifsicle({interlaced: true}),
+      // imagemin.jpegtran({progressive: true}),
+      imagemin.optipng({optimizationLevel: 5}),
+      imagemin.svgo({plugins: [{removeViewBox: true}]})
+    ]))
+    .pipe(gulp.dest('build/src/images'));
 });
 
 gulp.task('minify', ['minify:inline']);
