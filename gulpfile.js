@@ -45,6 +45,11 @@ gulp.task('copy:webcomponentsjs', ['clean'], function () {
     .pipe(gulp.dest('build/bower_components/webcomponentsjs/'));
 });
 
+gulp.task('copy:simple-carousel', ['clean'], function () {
+  return gulp.src('bower_components/simple-carousel/**/*')
+    .pipe(gulp.dest('build/bower_components/simple-carousel/'));
+});
+
 gulp.task('copy:fragments', ['clean'], function () {
   return gulp.src(['src/og-portfolio__slide/**/*'])
     .pipe(gulp.dest('build/og-portfolio__slide/'));
@@ -55,7 +60,7 @@ gulp.task('copy:elements', ['clean'], function () {
     .pipe(gulp.dest('build/'));
 });
 
-gulp.task('copy', ['copy:polymer', 'copy:webcomponentsjs', 'copy:server', 'copy:images', 'copy:fonts', 'copy:elements', 'copy:shared-styles']);
+gulp.task('copy', ['copy:polymer', 'copy:webcomponentsjs', 'copy:simple-carousel', 'copy:server', 'copy:images', 'copy:fonts', 'copy:elements', 'copy:shared-styles']);
 
 /* Vulcanize */
 var vulcanizeOptions = {
