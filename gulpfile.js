@@ -4,6 +4,7 @@ var htmlmin = require('gulp-htmlmin');
 var minifyInline = require('gulp-minify-inline');
 var del = require('del');
 var imagemin = require('gulp-imagemin');
+var replace = require('gulp-replace');
 
 /* Clean */
 gulp.task('clean', function () {
@@ -21,12 +22,17 @@ gulp.task('copy:server', ['clean'], function () {
 
 gulp.task('copy:images', ['clean'], function () {
   return gulp.src('src/images/**/*')
-    .pipe(gulp.dest('build/src/images/'));
+    .pipe(gulp.dest('build/images/'));
 });
 
 gulp.task('copy:fonts', ['clean'], function () {
   return gulp.src('src/fonts/**/*')
-    .pipe(gulp.dest('build/src/fonts/'));
+    .pipe(gulp.dest('build/fonts/'));
+});
+
+gulp.task('copy:shared-styles', ['clean'], function () {
+  return gulp.src('src/shared-styles/**/*')
+    .pipe(gulp.dest('build/shared-styles/'));
 });
 
 gulp.task('copy:polymer', ['clean'], function () {
@@ -34,11 +40,20 @@ gulp.task('copy:polymer', ['clean'], function () {
     .pipe(gulp.dest('build/bower_components/polymer/'));
 });
 
-// 'copy:shared-styles'
-gulp.task('copy', ['copy:polymer', 'copy:server', 'copy:images', 'copy:fonts']);
+gulp.task('copy:fragments', ['clean'], function () {
+  return gulp.src(['src/og-portfolio__slide/**/*'])
+    .pipe(gulp.dest('build/og-portfolio__slide/'));
+});
 
+gulp.task('copy', ['copy:polymer', 'copy:server', 'copy:images', 'copy:fonts', 'copy:fragments', 'copy:shared-styles']);
 
 /* Vulcanize */
+gulp.task('rewrite', ['copy'], function(){
+  return gulp.src('build/**/*.html')
+    .pipe(replace(/((?:href|src)=(["']))(\.\.\/)+([^\2]+)(\2)/g, '$1/$4$5'))
+    .pipe(gulp.dest('build/'));
+});
+
 var vulcanizeOptions = {
   stripComments: true,
   inlineScripts: true,
@@ -47,16 +62,16 @@ var vulcanizeOptions = {
   // stripExcludes: ['bower_components/polymer/polymer.html']
 };
 
-gulp.task('vulcanize:entrypoint', ['copy'], function() {
+gulp.task('vulcanize:entrypoint', ['copy', 'rewrite'], function() {
   return gulp.src('index.html')
     .pipe(vulcanize(vulcanizeOptions))
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('vulcanize:fragments', ['copy'], function() {
-  return gulp.src(['src/og-portfolio__slide/**/*'])
+gulp.task('vulcanize:fragments', ['copy', 'rewrite'], function() {
+  return gulp.src(['build/og-portfolio__slide/**/*'])
     .pipe(vulcanize(vulcanizeOptions))
-    .pipe(gulp.dest('build/src/og-portfolio__slide/'));
+    .pipe(gulp.dest('build/og-portfolio__slide/'));
 });
 
 gulp.task('vulcanize', ['vulcanize:entrypoint', 'vulcanize:fragments']);
@@ -75,14 +90,14 @@ gulp.task('minify:inline', ['minify:html'], function() {
 });
 
 gulp.task('minify:images', function(){
-  return gulp.src('build/src/images/**/*.{png,svg}')
+  return gulp.src('build/images/**/*.{png,svg}')
     .pipe(imagemin([
       // imagemin.gifsicle({interlaced: true}),
       // imagemin.jpegtran({progressive: true}),
       imagemin.optipng({optimizationLevel: 5}),
       imagemin.svgo({plugins: [{removeViewBox: true}]})
     ]))
-    .pipe(gulp.dest('build/src/images'));
+    .pipe(gulp.dest('build/images'));
 });
 
 gulp.task('minify', ['minify:inline']);
