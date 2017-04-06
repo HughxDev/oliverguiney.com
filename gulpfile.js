@@ -87,7 +87,7 @@ gulp.task('vulcanize', ['vulcanize:entrypoint', 'vulcanize:fragments']);
 
 /* Rewrite URIs */
 gulp.task('rewrite', ['copy'], function(){
-  return gulp.src(['build/**/*.html', '!build/bower_components/**/*.html'])
+  return gulp.src(['build/**/*.html', 'build/bower_components/simple-carousel/simple-carousel.html', '!build/bower_components/**/*.html'])
     /*
       # Input:
       <link rel="import" href="../../bower_components/polymer/polymer.html" />
