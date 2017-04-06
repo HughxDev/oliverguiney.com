@@ -93,28 +93,24 @@ gulp.task('rewrite', ['vulcanize'], function(){
       ../..?
     */
     .pipe(replace(/(["'])(?:\.\.\/)+(?:src\/)?([^\1\f\t\v\r\n]+)(\1)/g, '$1/$2$3'))
+
     /*
       # Input:
-      <link rel="import" href="/bower_components/polymer/polymer.html" />
-      <img src="/images/oliver-guiney.jpg" />
-      <meta content="http://www.oliverguiney.com/src/images/og-facebook.jpg" />
-      <a href="/src/images/og-facebook.jpg">Link</a>
-      config = { 'src': '/hello.png' }
-
-      Hello...
-      ...
-      ../..?
+      <img src="../src/src/images/oliver-guiney.jpg" srcset="../src/images/oliver.jpg, /src/images/oliver.jpg, ../src/images/oliver.jpeg" />
 
       # Output:
-      <link rel="import" href="/bower_components/polymer/polymer.html" />
-      <img src="/images/oliver-guiney.jpg" />
+      <img src="/images/oliver-guiney.jpg" srcset="/images/oliver.jpg, /images/oliver.jpg, /images/oliver.jpeg" />
+    */
+    .pipe(replace(/((\.\.)+)?/(src\/)+/g, '/'))
+
+    /*
+      # Input:
+      <meta content="http://www.oliverguiney.com/src/images/og-facebook.jpg" />
+      <a href="/src/images/og-facebook.jpg">Link</a>
+
+      # Output:
       <meta content="http://www.oliverguiney.com/images/og-facebook.jpg" />
       <a href="/images/og-facebook.jpg">Link</a>
-      config = { 'src': '/hello.png' }
-
-      Hello...
-      ...
-      ../..?
     */
     .pipe(replace(/(["'])(https?:\/\/)?([^\1\f\t\v\r\n]+)(?:src\/)([^\1\f\t\v\r\n]+)(\1)/g, '$1$2$3$4$5'))
     .pipe(gulp.dest('build/'));
