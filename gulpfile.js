@@ -146,8 +146,8 @@ gulp.task('minify:html', ['rewrite'], function() {
     .pipe(htmlmin({
       removeComments: true,
       collapseWhitespace: true,
-      cssmin: true,
-      jsmin: true
+      minifyCSS: true,
+      minifyJS: true
     }))
     .pipe(gulp.dest('build'));
 });
