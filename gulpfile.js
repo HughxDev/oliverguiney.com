@@ -49,8 +49,27 @@ gulp.task('copy', ['copy:polymer', 'copy:server', 'copy:images', 'copy:fonts', '
 
 /* Vulcanize */
 gulp.task('rewrite', ['copy'], function(){
+/*
+  # Input:
+  <link rel="import" href="../../bower_components/polymer/polymer.html" />
+  <img src="../src/images/oliver-guiney.jpg" />
+  config = { 'src': '../hello.png' }
+
+  Hello...
+  ...
+  ../..?
+
+  # Output:
+  <link rel="import" href="/bower_components/polymer/polymer.html" />
+  <img src="/images/oliver-guiney.jpg" />
+  config = { 'src': '/hello.png' }
+
+  Hello...
+  ...
+  ../..?
+*/
   return gulp.src('build/**/*.html')
-    .pipe(replace(/((?:href|src)=(["']))(\.\.\/)+([^\2]+)(\2)/g, '$1/$4$5'))
+    .pipe(replace(/(["'])(?:\.\.\/)+(?:src\/)?([^\1\f\t\v\r\n]+)(\1)/g, '$1/$2$3'))
     .pipe(gulp.dest('build/'));
 });
 
@@ -69,7 +88,7 @@ gulp.task('vulcanize:entrypoint', ['copy', 'rewrite'], function() {
 });
 
 gulp.task('vulcanize:fragments', ['copy', 'rewrite'], function() {
-  return gulp.src(['build/og-portfolio__slide/**/*'])
+  return gulp.src(['src/og-portfolio__slide/**/*'])
     .pipe(vulcanize(vulcanizeOptions))
     .pipe(gulp.dest('build/og-portfolio__slide/'));
 });
