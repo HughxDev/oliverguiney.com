@@ -48,8 +48,30 @@ gulp.task('copy:fragments', ['clean'], function () {
 gulp.task('copy', ['copy:polymer', 'copy:server', 'copy:images', 'copy:fonts', 'copy:fragments', 'copy:shared-styles']);
 
 /* Vulcanize */
-gulp.task('rewrite', ['copy'], function(){
+var vulcanizeOptions = {
+  stripComments: true,
+  inlineScripts: true,
+  inlineCss: true,
+  excludes: ['bower_components/polymer/polymer.html']
+  // stripExcludes: ['bower_components/polymer/polymer.html']
+};
 
+gulp.task('vulcanize:entrypoint', ['copy'], function() {
+  return gulp.src('index.html')
+    .pipe(vulcanize(vulcanizeOptions))
+    .pipe(gulp.dest('build'));
+});
+
+gulp.task('vulcanize:fragments', ['copy'], function() {
+  return gulp.src(['src/og-portfolio__slide/**/*'])
+    .pipe(vulcanize(vulcanizeOptions))
+    .pipe(gulp.dest('build/og-portfolio__slide/'));
+});
+
+gulp.task('vulcanize', ['vulcanize:entrypoint', 'vulcanize:fragments']);
+
+/* Rewrite URIs */
+gulp.task('rewrite', ['vulcanize'], function(){
   return gulp.src('build/**/*.html')
     /*
       # Input:
@@ -98,30 +120,8 @@ gulp.task('rewrite', ['copy'], function(){
     .pipe(gulp.dest('build/'));
 });
 
-var vulcanizeOptions = {
-  stripComments: true,
-  inlineScripts: true,
-  inlineCss: true,
-  excludes: ['bower_components/polymer/polymer.html']
-  // stripExcludes: ['bower_components/polymer/polymer.html']
-};
-
-gulp.task('vulcanize:entrypoint', ['copy', 'rewrite'], function() {
-  return gulp.src('index.html')
-    .pipe(vulcanize(vulcanizeOptions))
-    .pipe(gulp.dest('build'));
-});
-
-gulp.task('vulcanize:fragments', ['copy', 'rewrite'], function() {
-  return gulp.src(['src/og-portfolio__slide/**/*'])
-    .pipe(vulcanize(vulcanizeOptions))
-    .pipe(gulp.dest('build/og-portfolio__slide/'));
-});
-
-gulp.task('vulcanize', ['vulcanize:entrypoint', 'vulcanize:fragments']);
-
 /* Minify */
-gulp.task('minify:html', ['vulcanize'], function() {
+gulp.task('minify:html', ['rewrite'], function() {
   return gulp.src('build/*.html')
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('build'));
