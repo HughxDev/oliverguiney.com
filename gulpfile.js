@@ -77,7 +77,7 @@ gulp.task('vulcanize', ['vulcanize:entrypoint', 'vulcanize:fragments']);
 
 /* Rewrite URIs */
 gulp.task('rewrite', ['vulcanize'], function(){
-  return gulp.src('build/**/*.html')
+  return gulp.src(['build/**/*.html', '!build/bower_components/**/*.html'])
     /*
       # Input:
       <link rel="import" href="../../bower_components/polymer/polymer.html" />
@@ -123,13 +123,13 @@ gulp.task('rewrite', ['vulcanize'], function(){
 
 /* Minify */
 gulp.task('minify:html', ['rewrite'], function() {
-  return gulp.src('build/**/*.html')
+  return gulp.src(['build/**/*.html', '!build/bower_components/**/*.html'])
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('build'));
 });
 
 gulp.task('minify:inline', ['minify:html'], function() {
-  return gulp.src('build/**/*.html')
+  return gulp.src(['build/**/*.html', '!build/bower_components/**/*.html'])
     .pipe(minifyInline())
     .pipe(gulp.dest('build/'));
 });
