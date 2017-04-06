@@ -57,7 +57,7 @@ var vulcanizeOptions = {
   stripComments: true,
   inlineScripts: true,
   inlineCss: true,
-  excludes: ['bower_components/polymer/polymer.html']
+  excludes: ['bower_components/polymer/polymer.html', 'bower_components/polymer/polymer-mini.html', 'bower_components/polymer/polymer-micro.html', ]
   // stripExcludes: ['bower_components/polymer/polymer.html']
 };
 
