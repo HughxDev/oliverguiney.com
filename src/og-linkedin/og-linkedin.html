@@ -1,0 +1,53 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../shared-styles/shared-styles.html" />
+
+<dom-module id="og-linkedin">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: inline-block;
+      }
+
+      .__link, .__icon {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+      }
+    </style>
+    <a class="__link" href$="[[url]]" title$="[[network]]" aria-label$="[[network]]" target="_blank">
+      <picture class="__icon">
+        <source srcset="../src/images/social/linkedin.svg" type="image/svg+xml" />
+        <img
+          src="../src/images/social/linkedin.png"
+          srcset="../src/images/social/linkedin.png 1x, ../src/images/social/linkedin@2x.png 2x, ../src/images/social/linkedin@3x.png 3x"
+          width="25"
+          height="26"
+          alt$="[[alt]]"
+        />
+      </picture>
+    </a>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'og-linkedin',
+
+      properties: {
+        url: {
+          type: String,
+          value: 'https://www.linkedin.com/in/oliverguiney/'
+        },
+        network: {
+          type: String,
+          value: 'linkedin'
+        },
+        alt: {
+          type: String,
+          value: 'linkedin Logo'
+        }
+      },
+
+    });
+  </script>
+</dom-module>
