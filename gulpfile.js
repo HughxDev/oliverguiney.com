@@ -40,12 +40,17 @@ gulp.task('copy:polymer', ['clean'], function () {
     .pipe(gulp.dest('build/bower_components/polymer/'));
 });
 
+gulp.task('copy:webcomponentsjs', ['clean'], function () {
+  return gulp.src('bower_components/webcomponentsjs/**/*')
+    .pipe(gulp.dest('build/bower_components/webcomponentsjs/'));
+});
+
 gulp.task('copy:fragments', ['clean'], function () {
   return gulp.src(['src/og-portfolio__slide/**/*'])
     .pipe(gulp.dest('build/og-portfolio__slide/'));
 });
 
-gulp.task('copy', ['copy:polymer', 'copy:server', 'copy:images', 'copy:fonts', 'copy:fragments', 'copy:shared-styles']);
+gulp.task('copy', ['copy:polymer', 'copy:webcomponentsjs', 'copy:server', 'copy:images', 'copy:fonts', 'copy:fragments', 'copy:shared-styles']);
 
 /* Vulcanize */
 var vulcanizeOptions = {
