@@ -101,7 +101,7 @@ gulp.task('rewrite', ['vulcanize'], function(){
       # Output:
       <img src="/images/oliver-guiney.jpg" srcset="/images/oliver.jpg, /images/oliver.jpg, /images/oliver.jpeg" />
     */
-    .pipe(replace(/((\.\.)+)?/(src\/)+/g, '/'))
+    .pipe(replace(/((\.\.)+)?\/(src\/)+/g, '/'))
 
     /*
       # Input:
