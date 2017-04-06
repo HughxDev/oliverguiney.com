@@ -49,27 +49,52 @@ gulp.task('copy', ['copy:polymer', 'copy:server', 'copy:images', 'copy:fonts', '
 
 /* Vulcanize */
 gulp.task('rewrite', ['copy'], function(){
-/*
-  # Input:
-  <link rel="import" href="../../bower_components/polymer/polymer.html" />
-  <img src="../src/images/oliver-guiney.jpg" />
-  config = { 'src': '../hello.png' }
 
-  Hello...
-  ...
-  ../..?
-
-  # Output:
-  <link rel="import" href="/bower_components/polymer/polymer.html" />
-  <img src="/images/oliver-guiney.jpg" />
-  config = { 'src': '/hello.png' }
-
-  Hello...
-  ...
-  ../..?
-*/
   return gulp.src('build/**/*.html')
+    /*
+      # Input:
+      <link rel="import" href="../../bower_components/polymer/polymer.html" />
+      <img src="../src/images/oliver-guiney.jpg" />
+      config = { 'src': '../hello.png' }
+
+      Hello...
+      ...
+      ../..?
+
+      # Output:
+      <link rel="import" href="/bower_components/polymer/polymer.html" />
+      <img src="/images/oliver-guiney.jpg" />
+      config = { 'src': '/hello.png' }
+
+      Hello...
+      ...
+      ../..?
+    */
     .pipe(replace(/(["'])(?:\.\.\/)+(?:src\/)?([^\1\f\t\v\r\n]+)(\1)/g, '$1/$2$3'))
+    /*
+      # Input:
+      <link rel="import" href="/bower_components/polymer/polymer.html" />
+      <img src="/images/oliver-guiney.jpg" />
+      <meta content="http://www.oliverguiney.com/src/images/og-facebook.jpg" />
+      <a href="/src/images/og-facebook.jpg">Link</a>
+      config = { 'src': '/hello.png' }
+
+      Hello...
+      ...
+      ../..?
+
+      # Output:
+      <link rel="import" href="/bower_components/polymer/polymer.html" />
+      <img src="/images/oliver-guiney.jpg" />
+      <meta content="http://www.oliverguiney.com/images/og-facebook.jpg" />
+      <a href="/images/og-facebook.jpg">Link</a>
+      config = { 'src': '/hello.png' }
+
+      Hello...
+      ...
+      ../..?
+    */
+    .pipe(replace(/(["'])(https?:\/\/)?([^\1\f\t\v\r\n]+)(?:src\/)([^\1\f\t\v\r\n]+)(\1)/g, '$1$2$3$4$5'))
     .pipe(gulp.dest('build/'));
 });
 
