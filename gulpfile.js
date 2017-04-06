@@ -51,7 +51,7 @@ gulp.task('copy:fragments', ['clean'], function () {
 });
 
 gulp.task('copy:elements', ['clean'], function () {
-  return gulp.src(['src/og-*/'])
+  return gulp.src(['src/og-*/**'])
     .pipe(gulp.dest('build/'));
 });
 
