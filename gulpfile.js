@@ -67,7 +67,12 @@ var vulcanizeOptions = {
   stripComments: true,
   inlineScripts: true,
   inlineCss: true,
-  excludes: ['bower_components/polymer/polymer.html', 'bower_components/polymer/polymer-mini.html', 'bower_components/polymer/polymer-micro.html', ]
+  excludes: [
+    'bower_components/polymer/polymer.html',
+    'bower_components/polymer/polymer-mini.html',
+    'bower_components/polymer/polymer-micro.html',
+    'bower_components/simple-carousel/simple-carousel.html'
+  ]
   // stripExcludes: ['bower_components/polymer/polymer.html']
 };
 
@@ -138,7 +143,12 @@ gulp.task('rewrite', ['copy'], function(){
 /* Minify */
 gulp.task('minify:html', ['rewrite'], function() {
   return gulp.src(['build/**/*.html', '!build/bower_components/**/*.html'])
-    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(htmlmin({
+      removeComments: true,
+      collapseWhitespace: true,
+      cssmin: true,
+      jsmin: true
+    }))
     .pipe(gulp.dest('build'));
 });
 
@@ -159,7 +169,7 @@ gulp.task('minify:images', function(){
     .pipe(gulp.dest('build/images'));
 });
 
-gulp.task('minify', ['minify:inline']);
+gulp.task('minify', ['minify:html']);
 
 /* Default */
 // Beceause each meta-task relies on the last, we only have to call the latter task in order to call all previous tasks up the chain
