@@ -76,7 +76,7 @@ gulp.task('vulcanize:fragments', ['copy'], function() {
 gulp.task('vulcanize', ['vulcanize:entrypoint', 'vulcanize:fragments']);
 
 /* Rewrite URIs */
-gulp.task('rewrite', function(){
+gulp.task('rewrite', ['copy'], function(){
   return gulp.src(['build/**/*.html', '!build/bower_components/**/*.html'])
     /*
       # Input:
