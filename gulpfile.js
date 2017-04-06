@@ -128,6 +128,10 @@ gulp.task('rewrite', ['copy'], function(){
       <a href="/images/og-facebook.jpg">Link</a>
     */
     .pipe(replace(/(["'])(https?:\/\/)?([^\1\f\t\v\r\n]+)(?:src\/)([^\1\f\t\v\r\n]+)(\1)/g, '$1$2$3$4$5'))
+    
+    /* Fuck me… */
+    .pipe(replace(/(href=(["']))(\/polymer\/polymer.html)(\2)/, '$1/bower_components$3$4'))
+
     .pipe(gulp.dest('build/'));
 });
 
