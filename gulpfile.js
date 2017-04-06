@@ -50,7 +50,12 @@ gulp.task('copy:fragments', ['clean'], function () {
     .pipe(gulp.dest('build/og-portfolio__slide/'));
 });
 
-gulp.task('copy', ['copy:polymer', 'copy:webcomponentsjs', 'copy:server', 'copy:images', 'copy:fonts', 'copy:fragments', 'copy:shared-styles']);
+gulp.task('copy:elements', ['clean'], function () {
+  return gulp.src(['src/og-*/'])
+    .pipe(gulp.dest('build/'));
+});
+
+gulp.task('copy', ['copy:polymer', 'copy:webcomponentsjs', 'copy:server', 'copy:images', 'copy:fonts', 'copy:elements', 'copy:shared-styles']);
 
 /* Vulcanize */
 var vulcanizeOptions = {
