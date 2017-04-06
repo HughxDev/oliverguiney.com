@@ -91,7 +91,7 @@ gulp.task('vulcanize:fragments', ['copy'], function() {
 gulp.task('vulcanize', ['vulcanize:entrypoint', 'vulcanize:fragments']);
 
 /* Rewrite URIs */
-gulp.task('rewrite', ['copy'], function(){
+gulp.task('rewrite', ['vulcanize'], function(){
   return gulp.src(['build/**/*.html', '!build/bower_components/!(simple-carousel)/*.html'])
     /*
       # Input:
@@ -152,11 +152,11 @@ gulp.task('minify:html', ['rewrite'], function() {
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('minify:inline', ['minify:html'], function() {
-  return gulp.src(['build/**/*.html', '!build/bower_components/**/*.html'])
-    .pipe(minifyInline())
-    .pipe(gulp.dest('build/'));
-});
+// gulp.task('minify:inline', ['minify:html'], function() {
+//   return gulp.src(['build/**/*.html', '!build/bower_components/**/*.html'])
+//     .pipe(minifyInline())
+//     .pipe(gulp.dest('build/'));
+// });
 
 gulp.task('minify:images', function(){
   return gulp.src('build/images/**/*.{png,svg}')
