@@ -69,8 +69,8 @@ var vulcanizeOptions = {
   inlineCss: true,
   excludes: [
     'bower_components/polymer/polymer.html',
-    'bower_components/polymer/polymer-mini.html',
-    'bower_components/polymer/polymer-micro.html',
+    // 'bower_components/polymer/polymer-mini.html',
+    // 'bower_components/polymer/polymer-micro.html',
     'bower_components/simple-carousel/simple-carousel.html'
   ]
   // stripExcludes: ['bower_components/polymer/polymer.html']
