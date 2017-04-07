@@ -116,6 +116,7 @@
         /*--w: 1920;
         --h: 1080;*/
         --a11y-outline-style: thin dotted;
+        --link-color: #28aadc;
       }
 
       body {
@@ -142,22 +143,13 @@
       html.js:not(.wf-active) > body a {
         color: transparent !important;
       }*/
-      .wf-loading * {
-        color: transparent;
+      .wf-loading og-site {
+        visibility: hidden;
       }
 
-      .wf-loading {
-        --link-color: transparent;
-      }
-
-      .wf-inactive a,
-      .wf-active a {
-        color: #28aadc !important;
-      }
-
-      .wf-inactive,
-      .wf-active {
-        --link-color: #28aadc;
+      .wf-inactive og-site,
+      .wf-active og-site {
+        visibility: visible;
       }
     </style>
 
@@ -201,7 +193,6 @@
         };
 
         // var h = document.getElementsByTagName('html')[0];
-
         // h.className += ' wf-loading';
 
         var t = setTimeout(function() {
