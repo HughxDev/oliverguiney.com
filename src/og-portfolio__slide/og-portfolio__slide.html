@@ -12,20 +12,9 @@
         width: 100%;
         max-width: 100%;
       }
-
-      .visuallyhidden,
-      .visuallyhidden ::content,
-      .visuallyhidden ::content p,
-      .visuallyhidden ::content ul,
-      .visuallyhidden ::content ol,
-      .visuallyhidden ::content dl,
-      .visuallyhidden ::content div {
-        color: transparent;
-      }
     </style>
     <!-- <img src$="{{filenamePrepend}}-{{filenameId}}.{{types.0}}" /> -->
-    <!-- aria-describedby$="[[descriptionId]]" -->
-    <img id="image" class="__image" />
+    <img id="image" class="__image" aria-describedby$="[[descriptionId]]" />
     <div id$="[[descriptionId]]" class="visuallyhidden">
       <h5>[[titleOfWork]]</h5>
       <content></content>
