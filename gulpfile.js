@@ -137,6 +137,9 @@ gulp.task('rewrite', ['copy'], function(){
     /* Fuck me… */
     .pipe(replace(/(href=(["']))(\/polymer\/polymer.html)(\2)/, '$1/bower_components$3$4'))
 
+    /* Fix for FOUC */
+    .pipe(replace(/(<og-portfolio__slide[^>]+>)([\s\S]*)(<\/og-portfolio__slide>)/g, '$1<div style="color:transparent;">$2</div>$3'))
+
     .pipe(gulp.dest('build/'));
 });
 
