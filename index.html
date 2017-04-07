@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="no-js wf-loading">
+<html lang="en" class="no-js">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
@@ -143,13 +143,8 @@
       html.js:not(.wf-active) > body a {
         color: transparent !important;
       }*/
-      .wf-loading og-site {
+      .wf-loading {
         visibility: hidden;
-      }
-
-      .wf-inactive og-site,
-      .wf-active og-site {
-        visibility: visible;
       }
     </style>
 
@@ -192,8 +187,8 @@
           scriptTimeout: 3000
         };
 
-        // var h = document.getElementsByTagName('html')[0];
-        // h.className += ' wf-loading';
+        var h = document.getElementsByTagName('html')[0];
+        h.className += ' wf-loading';
 
         var t = setTimeout(function() {
           h.className = h.className.replace(/(\s|^)wf-loading(\s|$)/g, ' ');
