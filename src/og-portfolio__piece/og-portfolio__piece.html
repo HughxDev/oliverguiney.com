@@ -33,6 +33,7 @@
       :host([x="2042"]) { --w: 2042; }
       :host([x="2100"]) { --w: 2100; }
       :host([x="2153"]) { --w: 2153; }
+      :host([x="2350"]) { --w: 2350; }
       :host([x="2468"]) { --w: 2468; }
       :host([x="2826"]) { --w: 2826; }
       :host([x="3840"]) { --w: 3840; } /* 4K (UHD) */
@@ -163,6 +164,13 @@
       :host(.non-keyboard) :focus {
         outline: none !important;
       }
+
+      .no-process {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
     </style>
     <div id="front" class="card__front" role="button" tabindex="0" title="Reveal Process slides" aria-label="Reveal Process slides">
       <h3 class="visuallyhidden">[[titleOfWork]]</h3>
@@ -186,7 +194,11 @@
       >
         <span class="card__close-icon" aria-hidden="true">&times;</span>
       </a>
-      <content select="og-portfolio__process, simple-carousel"></content>
+      <content select="og-portfolio__process, simple-carousel">
+        <div class="no-process">
+          <span class="no-process__text">No process details available.</span>
+        </div>
+      </content>
     </div>
   </template>
 
