@@ -1,0 +1,59 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../shared-styles/shared-styles.html" />
+
+<dom-module id="og-malafaxis-outbreak">
+  <template>
+    <style include="shared-styles"></style>
+    <og-portfolio__piece
+      id="malafaxis-outbreak"
+      filename-id="malafaxis-outbreak"
+      title-of-work="Malafaxis Outbreak"
+      short-description=""
+      resolutions='[
+        { "width": "2491", "height": "1080", "zoomLevel": "", "types": [ "jpg" ] },
+        { "width": "1246", "height": "540", "zoomLevel": "@0,5x", "types": [ "jpg" ] },
+        { "width": "623", "height": "270", "zoomLevel": "@0,25x", "types": [ "jpg" ] }
+      ]'>
+      <og-portfolio__process>
+        <simple-carousel>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Research"
+            filename-id="Process 01">
+            <ul>
+              <li>Research included looking at tons of photos of riot soldiers, medical supplies, military checkpoints, rainy cities, neon lights, medical tents, biohazard fences, and protesters</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Mood"
+            filename-id="Process 02"
+            >
+            <ul>
+              <li>I wanted the lighting to reflect a sickly mood, with greens and yellows</li>
+              <li>I was looking at screenshots of Blade Runner as well as photos of Shanghai and Tokyo at night</li>
+              <li>Additionally I watched an awesome video of a cyberpunk themed scene in Unreal by Andrew Hasko</li>
+            </ul>
+          </og-portfolio__slide>
+          <og-portfolio__slide
+            data-carousel-slide=""
+            title-of-work="Design"
+            filename-id="Process 03"
+            >
+            <ul>
+              <li>For the designs of the buildings I was inspired by my recent travels to Zurich and Lisbon</li>
+              <li>Some of the modern European architecture already had the cyberpunk feel that I was going for</li>
+              <li>I also liked the juxtaposition between old and new that these places had to offer</li>
+              <li>My local train station had some cool sci-fi elements that I was able to incorporate as well</li>
+            </ul>
+          </og-portfolio__slide>
+        </simple-carousel>
+      </og-portfolio__process>
+    </og-portfolio__piece>
+  </template>
+  <script>
+    Polymer({
+      is: 'og-malafaxis-outbreak'
+    });
+  </script>
+</dom-module>
