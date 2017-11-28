@@ -1,5 +1,0 @@
-# RewriteEngine on
-# RewriteCond %{HTTP_HOST} ^oliverguiney.com$ [NC,OR]
-# RewriteCond %{HTTP_HOST} ^www.oliverguiney.com$
-# RewriteCond %{REQUEST_URI} !build/
-# RewriteRule (.*) /build/$1 [L]
