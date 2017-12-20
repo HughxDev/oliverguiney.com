@@ -16,7 +16,7 @@ gulp.task('clean', function () {
 
 /* Copy */
 gulp.task('copy:server', ['clean'], function () {
-  return gulp.src(['.htaccess', 'favicon.*', 'apple-touch-*', 'index.html', 'CNAME'])
+  return gulp.src(['.htaccess', 'favicon.*', '*touch-icon*', 'index.html', 'CNAME'])
     .pipe(gulp.dest('build/'));
 });
 
