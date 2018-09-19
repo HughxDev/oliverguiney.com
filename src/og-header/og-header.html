@@ -52,6 +52,8 @@
     <nav class="__nav __child">
       <!-- <a href="#work">Work</a> -->
       <a href="#about">About</a>
+      <a href="/">Work</a>
+      <a href="/process-slides">Process Slides</a>
     </nav>
     <og-social class="__social"></og-social>
   </template>
@@ -64,9 +66,22 @@
       hostAttributes: {
         role: 'banner',
         id: 'top'
-      }
+      },
 
       // properties: {},
+
+      attached: function () {
+        var $aboutLink = document.querySelector( '[href="#about"]' );
+        var $about = document.querySelector( '#about' );
+
+        if ( location.hash && ( location.hash === 'about' ) ) {
+          $about.scrollIntoView();
+        }
+
+        $aboutLink.addEventListener( 'click', function aboutClicked() {
+          $about.scrollIntoView();
+        } );
+      }
 
     });
   </script>

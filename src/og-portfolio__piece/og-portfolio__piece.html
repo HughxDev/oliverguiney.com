@@ -89,6 +89,10 @@
 
       .card__front {
         z-index: 2;
+        /* cursor: pointer; */
+      }
+
+      :host([has-process-slide]) .card__front {
         cursor: pointer;
       }
 
@@ -199,11 +203,7 @@
       >
         <span class="card__close-icon" aria-hidden="true">&times;</span>
       </a>
-      <content select="og-portfolio__process, simple-carousel">
-        <div class="no-process">
-          <span class="no-process__text">No process details available.</span>
-        </div>
-      </content>
+      <content select="og-portfolio__process, simple-carousel"></content>
     </div>
   </template>
 
@@ -332,7 +332,7 @@
       ready: function ogPortfolioPieceReady() {
         var portfolioPiece = this;
         var filenameParts = portfolioPiece.getFilenameParts();
-        
+
         // portfolioPiece.$.image.srcset = portfolioPiece.getSrcset();
 
         if ( portfolioPiece.hasOwnProperty( 'resolutions' ) && !!portfolioPiece.resolutions.length ) {
@@ -346,9 +346,13 @@
 
       attached: function ogPortfolioPieceAttached() {
         var portfolioPiece = this;
+        var hasProcessSlide = ( ( portfolioPiece.children[1].children[1] || {"nodeName":""} ).nodeName.toLowerCase() === 'og-portfolio__process' );
 
-        portfolioPiece.addEventListener( "click", portfolioPiece._handleFlipActivate );
-        portfolioPiece.addEventListener( "keydown", portfolioPiece._handleFlipActivate );
+        if ( hasProcessSlide ) {
+          portfolioPiece.setAttribute( 'has-process-slide', '' );
+          portfolioPiece.addEventListener( "click", portfolioPiece._handleFlipActivate );
+          portfolioPiece.addEventListener( "keydown", portfolioPiece._handleFlipActivate );
+        }
       },
 
       // getSrcset

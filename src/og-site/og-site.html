@@ -1,10 +1,15 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html" />
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html" />
 <link rel="import" href="../shared-styles/shared-styles.html" />
 <link rel="import" href="../og-behaviors/og-behaviors.html" />
 <link rel="import" href="../og-header/og-header.html" />
 <link rel="import" href="../og-portfolio/og-portfolio.html" />
+<link rel="import" href="../og-blog/og-blog.html" />
 <link rel="import" href="../og-about/og-about.html" />
 <link rel="import" href="../og-footer/og-footer.html" />
+<link rel="import" href="../og-error-404/og-error-404.html" />
 
 <dom-module id="og-site">
   <template>
@@ -12,10 +17,24 @@
       :host {
         display: block;
       }
+
+      iron-pages {
+        margin-top: 4rem;
+      }
     </style>
+    <app-location route="{{route}}"></app-location>
+    <app-route
+      route="{{route}}"
+      pattern="/:view"
+      data="{{routeData}}"
+      tail="{{subroute}}"></app-route>
     <og-header></og-header>
     <main>
-      <og-portfolio></og-portfolio>
+      <iron-pages selected="[[routeData.view]]" attr-for-selected="name" fallback-selection="error-404">
+        <og-portfolio name=""></og-portfolio>
+        <og-blog name="process-slides"></og-blog>
+        <og-error-404 name="error-404"></og-error-404>
+      </iron-pages>
       <og-about></og-about>
     </main>
     <og-footer></og-footer>
@@ -28,6 +47,20 @@
 
       properties: {},
 
+      observers: [
+        '_routeChanged(route.*,subroute)',
+        '_viewChanged(routeData.view)',
+        '_pathChanged()'
+      ],
+
+      _routeChanged: function( route, subroute ) {
+        console.log( 'route', route );
+      },
+
+      _viewChanged: function( view ) {
+        // load data for view
+        console.log( 'view changed', view );
+      }
     });
   </script>
 </dom-module>

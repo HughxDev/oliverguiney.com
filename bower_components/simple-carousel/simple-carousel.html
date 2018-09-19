@@ -184,7 +184,7 @@ Simple carousel component for Polymer 1.0
         }
       },
       keyboardAdvanceNext: function ( event ) {
-        if ( ( event.which === 32 ) || ( event.which === 13 ) ) {          
+        if ( ( event.which === 32 ) || ( event.which === 13 ) ) {
           this.next( event );
         }
       },
@@ -194,7 +194,6 @@ Simple carousel component for Polymer 1.0
        */
       previous: function( event ){
         var host = Polymer.dom( this );
-        console.log( 'host', host );
 
         if (
           ( event.type === 'keyup' )
@@ -221,7 +220,6 @@ Simple carousel component for Polymer 1.0
        */
       next:function( event ){
         var host = Polymer.dom( this );
-        console.log( 'host', host );
 
         if (
           ( event.type === 'keyup' )
