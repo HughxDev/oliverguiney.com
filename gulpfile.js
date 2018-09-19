@@ -50,6 +50,31 @@ gulp.task('copy:simple-carousel', ['clean'], function () {
     .pipe(gulp.dest('build/bower_components/simple-carousel/'));
 });
 
+gulp.task('copy:app-route', ['clean'], function () {
+  return gulp.src('bower_components/app-route/**/*')
+    .pipe(gulp.dest('build/bower_components/app-route/'));
+});
+
+gulp.task('copy:iron-pages', ['clean'], function () {
+  return gulp.src('bower_components/iron-pages/**/*')
+    .pipe(gulp.dest('build/bower_components/iron-pages/'));
+});
+
+gulp.task('copy:iron-location', ['clean'], function () {
+  return gulp.src('bower_components/iron-location/**/*')
+    .pipe(gulp.dest('build/bower_components/iron-location/'));
+});
+
+gulp.task('copy:iron-resizable-behavior', ['clean'], function () {
+  return gulp.src('bower_components/iron-resizable-behavior/**/*')
+    .pipe(gulp.dest('build/bower_components/iron-resizable-behavior/'));
+});
+
+gulp.task('copy:iron-selector', ['clean'], function () {
+  return gulp.src('bower_components/iron-selector/**/*')
+    .pipe(gulp.dest('build/bower_components/iron-selector/'));
+});
+
 gulp.task('copy:fragments', ['clean'], function () {
   return gulp.src(['src/og-portfolio__slide/**/*'])
     .pipe(gulp.dest('build/og-portfolio__slide/'));
@@ -60,7 +85,21 @@ gulp.task('copy:elements', ['clean'], function () {
     .pipe(gulp.dest('build/'));
 });
 
-gulp.task('copy', ['copy:polymer', 'copy:webcomponentsjs', 'copy:simple-carousel', 'copy:server', 'copy:images', 'copy:fonts', 'copy:elements', 'copy:shared-styles']);
+gulp.task('copy', [
+  'copy:polymer',
+  'copy:webcomponentsjs',
+  'copy:simple-carousel',
+  'copy:app-route',
+  'copy:iron-pages',
+  'copy:iron-location',
+  'copy:iron-resizable-behavior',
+  'copy:iron-selector',
+  'copy:server',
+  'copy:images',
+  'copy:fonts',
+  'copy:elements',
+  'copy:shared-styles'
+]);
 
 /* Vulcanize */
 var vulcanizeOptions = {
@@ -133,7 +172,7 @@ gulp.task('rewrite', ['copy'], function(){
       <a href="/images/og-facebook.jpg">Link</a>
     */
     .pipe(replace(/(["'])(https?:\/\/)?([^\1\f\t\v\r\n]+)(?:src\/)([^\1\f\t\v\r\n]+)(\1)/g, '$1$2$3$4$5'))
-    
+
     /* Fuck me… */
     .pipe(replace(/(href=(["']))(\/polymer\/polymer.html)(\2)/, '$1/bower_components$3$4'))
 
