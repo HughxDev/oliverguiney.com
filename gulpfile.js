@@ -70,6 +70,11 @@ gulp.task('copy:iron-resizable-behavior', ['clean'], function () {
     .pipe(gulp.dest('build/bower_components/iron-resizable-behavior/'));
 });
 
+gulp.task('copy:iron-flex-layout', ['clean'], function () {
+  return gulp.src('bower_components/iron-flex-layout/**/*')
+    .pipe(gulp.dest('build/bower_components/iron-flex-layout/'));
+});
+
 gulp.task('copy:iron-selector', ['clean'], function () {
   return gulp.src('bower_components/iron-selector/**/*')
     .pipe(gulp.dest('build/bower_components/iron-selector/'));
@@ -85,9 +90,24 @@ gulp.task('copy:paper-button', ['clean'], function () {
     .pipe(gulp.dest('build/bower_components/paper-button/'));
 });
 
+gulp.task('copy:paper-behaviors', ['clean'], function () {
+  return gulp.src('bower_components/paper-behaviors/**/*')
+    .pipe(gulp.dest('build/bower_components/paper-behaviors/'));
+});
+
+gulp.task('copy:paper-material', ['clean'], function () {
+  return gulp.src('bower_components/paper-material/**/*')
+    .pipe(gulp.dest('build/bower_components/paper-material/'));
+});
+
 gulp.task('copy:neon-animation', ['clean'], function () {
   return gulp.src('bower_components/neon-animation/**/*')
     .pipe(gulp.dest('build/bower_components/neon-animation/'));
+});
+
+gulp.task('copy:clipboard-polyfill', ['clean'], function () {
+  return gulp.src('node_modules/clipboard-polyfill/**/*')
+    .pipe(gulp.dest('build/node_modules/clipboard-polyfill/'));
 });
 
 gulp.task('copy:fragments', ['clean'], function () {
@@ -111,7 +131,10 @@ gulp.task('copy', [
   'copy:iron-selector',
   'copy:paper-dialog',
   'copy:paper-button',
+  'copy:paper-behaviors',
+  'copy:paper-material',
   'copy:neon-animation',
+  'copy:clipboard-polyfill',
   'copy:server',
   'copy:images',
   'copy:fonts',
