@@ -159,6 +159,11 @@ gulp.task('copy:neon-animation', ['clean'], function () {
 
 // Misc.
 
+gulp.task('copy:font-roboto', ['clean'], function () {
+  return gulp.src('bower_components/font-roboto/**/*')
+    .pipe(gulp.dest('build/bower_components/font-roboto/'));
+});
+
 gulp.task('copy:web-animations-js', ['clean'], function () {
   return gulp.src('bower_components/web-animations-js/**/*')
     .pipe(gulp.dest('build/bower_components/web-animations-js/'));
@@ -202,6 +207,7 @@ gulp.task('copy', [
   'copy:paper-ripple',
   'copy:paper-styles',
   'copy:neon-animation',
+  'copy:font-roboto',
   'copy:web-animations-js',
   'copy:clipboard-polyfill',
   'copy:server',
