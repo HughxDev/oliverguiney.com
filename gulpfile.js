@@ -90,6 +90,11 @@ gulp.task('copy:iron-behaviors', ['clean'], function () {
     .pipe(gulp.dest('build/bower_components/iron-behaviors/'));
 });
 
+gulp.task('copy:iron-meta', ['clean'], function () {
+  return gulp.src('bower_components/iron-meta/**/*')
+    .pipe(gulp.dest('build/bower_components/iron-meta/'));
+});
+
 gulp.task('copy:paper-dialog', ['clean'], function () {
   return gulp.src('bower_components/paper-dialog/**/*')
     .pipe(gulp.dest('build/bower_components/paper-dialog/'));
@@ -125,6 +130,11 @@ gulp.task('copy:neon-animation', ['clean'], function () {
     .pipe(gulp.dest('build/bower_components/neon-animation/'));
 });
 
+gulp.task('copy:web-animations-js', ['clean'], function () {
+  return gulp.src('bower_components/web-animations-js/**/*')
+    .pipe(gulp.dest('build/bower_components/web-animations-js/'));
+});
+
 gulp.task('copy:clipboard-polyfill', ['clean'], function () {
   return gulp.src('node_modules/clipboard-polyfill/**/*')
     .pipe(gulp.dest('build/node_modules/clipboard-polyfill/'));
@@ -152,6 +162,7 @@ gulp.task('copy', [
   'copy:iron-a11y-keys-behavior',
   'copy:iron-selector',
   'copy:iron-behaviors',
+  'copy:iron-meta',
   'copy:paper-dialog',
   'copy:paper-button',
   'copy:paper-behaviors',
@@ -159,6 +170,7 @@ gulp.task('copy', [
   'copy:paper-dialog-behavior',
   'copy:paper-ripple',
   'copy:neon-animation',
+  'copy:web-animations-js',
   'copy:clipboard-polyfill',
   'copy:server',
   'copy:images',
