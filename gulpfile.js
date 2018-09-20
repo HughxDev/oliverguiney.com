@@ -85,6 +85,11 @@ gulp.task('copy:iron-selector', ['clean'], function () {
     .pipe(gulp.dest('build/bower_components/iron-selector/'));
 });
 
+gulp.task('copy:iron-behaviors', ['clean'], function () {
+  return gulp.src('bower_components/iron-behaviors/**/*')
+    .pipe(gulp.dest('build/bower_components/iron-behaviors/'));
+});
+
 gulp.task('copy:paper-dialog', ['clean'], function () {
   return gulp.src('bower_components/paper-dialog/**/*')
     .pipe(gulp.dest('build/bower_components/paper-dialog/'));
@@ -146,6 +151,7 @@ gulp.task('copy', [
   'copy:iron-flex-layout',
   'copy:iron-a11y-keys-behavior',
   'copy:iron-selector',
+  'copy:iron-behaviors',
   'copy:paper-dialog',
   'copy:paper-button',
   'copy:paper-behaviors',
