@@ -130,6 +130,11 @@ gulp.task('copy:paper-ripple', ['clean'], function () {
     .pipe(gulp.dest('build/bower_components/paper-ripple/'));
 });
 
+gulp.task('copy:paper-styles', ['clean'], function () {
+  return gulp.src('bower_components/paper-styles/**/*')
+    .pipe(gulp.dest('build/bower_components/paper-styles/'));
+});
+
 gulp.task('copy:neon-animation', ['clean'], function () {
   return gulp.src('bower_components/neon-animation/**/*')
     .pipe(gulp.dest('build/bower_components/neon-animation/'));
@@ -175,6 +180,7 @@ gulp.task('copy', [
   'copy:paper-material',
   'copy:paper-dialog-behavior',
   'copy:paper-ripple',
+  'copy:paper-styles',
   'copy:neon-animation',
   'copy:web-animations-js',
   'copy:clipboard-polyfill',
