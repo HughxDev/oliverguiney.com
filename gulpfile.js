@@ -50,10 +50,15 @@ gulp.task('copy:simple-carousel', ['clean'], function () {
     .pipe(gulp.dest('build/bower_components/simple-carousel/'));
 });
 
+// App
+
 gulp.task('copy:app-route', ['clean'], function () {
   return gulp.src('bower_components/app-route/**/*')
     .pipe(gulp.dest('build/bower_components/app-route/'));
 });
+
+
+// Iron
 
 gulp.task('copy:iron-pages', ['clean'], function () {
   return gulp.src('bower_components/iron-pages/**/*')
@@ -100,6 +105,14 @@ gulp.task('copy:iron-overlay-behavior', ['clean'], function () {
     .pipe(gulp.dest('build/bower_components/iron-overlay-behavior/'));
 });
 
+gulp.task('copy:iron-fit-behavior', ['clean'], function () {
+  return gulp.src('bower_components/iron-fit-behavior/**/*')
+    .pipe(gulp.dest('build/bower_components/iron-fit-behavior/'));
+});
+
+
+// Paper
+
 gulp.task('copy:paper-dialog', ['clean'], function () {
   return gulp.src('bower_components/paper-dialog/**/*')
     .pipe(gulp.dest('build/bower_components/paper-dialog/'));
@@ -135,10 +148,16 @@ gulp.task('copy:paper-styles', ['clean'], function () {
     .pipe(gulp.dest('build/bower_components/paper-styles/'));
 });
 
+
+// Neon
+
 gulp.task('copy:neon-animation', ['clean'], function () {
   return gulp.src('bower_components/neon-animation/**/*')
     .pipe(gulp.dest('build/bower_components/neon-animation/'));
 });
+
+
+// Misc.
 
 gulp.task('copy:web-animations-js', ['clean'], function () {
   return gulp.src('bower_components/web-animations-js/**/*')
@@ -174,6 +193,7 @@ gulp.task('copy', [
   'copy:iron-behaviors',
   'copy:iron-meta',
   'copy:iron-overlay-behavior',
+  'copy:iron-fit-behavior',
   'copy:paper-dialog',
   'copy:paper-button',
   'copy:paper-behaviors',
