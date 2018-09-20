@@ -75,6 +75,11 @@ gulp.task('copy:iron-flex-layout', ['clean'], function () {
     .pipe(gulp.dest('build/bower_components/iron-flex-layout/'));
 });
 
+gulp.task('copy:iron-a11y-keys-behavior', ['clean'], function () {
+  return gulp.src('bower_components/iron-a11y-keys-behavior/**/*')
+    .pipe(gulp.dest('build/bower_components/iron-a11y-keys-behavior/'));
+});
+
 gulp.task('copy:iron-selector', ['clean'], function () {
   return gulp.src('bower_components/iron-selector/**/*')
     .pipe(gulp.dest('build/bower_components/iron-selector/'));
@@ -138,6 +143,8 @@ gulp.task('copy', [
   'copy:iron-pages',
   'copy:iron-location',
   'copy:iron-resizable-behavior',
+  'copy:iron-flex-layout',
+  'copy:iron-a11y-keys-behavior',
   'copy:iron-selector',
   'copy:paper-dialog',
   'copy:paper-button',
