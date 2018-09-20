@@ -100,6 +100,16 @@ gulp.task('copy:paper-material', ['clean'], function () {
     .pipe(gulp.dest('build/bower_components/paper-material/'));
 });
 
+gulp.task('copy:paper-dialog-behavior', ['clean'], function () {
+  return gulp.src('bower_components/paper-dialog-behavior/**/*')
+    .pipe(gulp.dest('build/bower_components/paper-dialog-behavior/'));
+});
+
+gulp.task('copy:paper-ripple', ['clean'], function () {
+  return gulp.src('bower_components/paper-ripple/**/*')
+    .pipe(gulp.dest('build/bower_components/paper-ripple/'));
+});
+
 gulp.task('copy:neon-animation', ['clean'], function () {
   return gulp.src('bower_components/neon-animation/**/*')
     .pipe(gulp.dest('build/bower_components/neon-animation/'));
@@ -133,6 +143,8 @@ gulp.task('copy', [
   'copy:paper-button',
   'copy:paper-behaviors',
   'copy:paper-material',
+  'copy:paper-dialog-behavior',
+  'copy:paper-ripple',
   'copy:neon-animation',
   'copy:clipboard-polyfill',
   'copy:server',
