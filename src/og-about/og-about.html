@@ -43,6 +43,27 @@
         margin-top: 0;
         margin-top: .5rem;
       }
+
+      .top-link-container {
+        text-align: center;
+        margin: 4rem auto 0;
+      }
+
+      .top-link {
+        /* font-size: 0.9em; */
+        text-decoration: none;
+        opacity: 0.5;
+        transition: 0.25s opacity linear;
+      }
+
+      .top-link:hover,
+      .top-link:focus {
+        opacity: 1;
+      }
+
+      .top-link__arrow {
+        font-size: 0.9em;
+      }
     </style>
     <img
       src="/src/images/avatars/headshot@0%2C5x.jpg"
@@ -58,6 +79,7 @@
     <p>My name is Oliver Guiney. I’m a concept artist with a specialty in environment design. My services also include matte painting and promotial art.</p>
     <p>Most recently I worked in-house at Treyarch on <a title="Wacth trailer on YouTube" href="https://www.youtube.com/watch?v=BjiaMBk6rHk"><cite>Call of Duty: Black Ops 4</cite></a>. More specifically I helped to create the look of the new <a title="Watch trailer on YouTube" href="https://www.youtube.com/watch?v=BjiaMBk6rHk">Blackout: Battle Royale</a> mode.</p>
     <p>Clients also include: <a href="http://www.studiotranscendent.com/">Studio Transcendent</a> and <a href="https://www.ironkladstudios.com/">Ironklad Studios</a>.</p>
+    <p class="top-link-container"><a id="top-link" class="top-link" href="#">Top <span class="top-link__arrow">⬆</span></a></p>
   </template>
 
   <script>
@@ -72,8 +94,13 @@
 
       properties: {},
 
-      attached: function ogAboutAttached() {}
-
+      attached: function ogAboutAttached() {
+        var $topLink = document.getElementById( 'top-link' );
+        $topLink.addEventListener( 'click', function ( event ) {
+          window.scrollTo( 0, 0 );
+          // event.preventDefault();
+        } )
+      }
     });
   </script>
 </dom-module>

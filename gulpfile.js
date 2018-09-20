@@ -75,6 +75,21 @@ gulp.task('copy:iron-selector', ['clean'], function () {
     .pipe(gulp.dest('build/bower_components/iron-selector/'));
 });
 
+gulp.task('copy:paper-dialog', ['clean'], function () {
+  return gulp.src('bower_components/paper-dialog/**/*')
+    .pipe(gulp.dest('build/bower_components/paper-dialog/'));
+});
+
+gulp.task('copy:paper-button', ['clean'], function () {
+  return gulp.src('bower_components/paper-button/**/*')
+    .pipe(gulp.dest('build/bower_components/paper-button/'));
+});
+
+gulp.task('copy:neon-animation', ['clean'], function () {
+  return gulp.src('bower_components/neon-animation/**/*')
+    .pipe(gulp.dest('build/bower_components/neon-animation/'));
+});
+
 gulp.task('copy:fragments', ['clean'], function () {
   return gulp.src(['src/og-portfolio__slide/**/*'])
     .pipe(gulp.dest('build/og-portfolio__slide/'));
@@ -94,6 +109,9 @@ gulp.task('copy', [
   'copy:iron-location',
   'copy:iron-resizable-behavior',
   'copy:iron-selector',
+  'copy:paper-dialog',
+  'copy:paper-button',
+  'copy:neon-animation',
   'copy:server',
   'copy:images',
   'copy:fonts',

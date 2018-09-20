@@ -50,6 +50,8 @@
     <meta property="os:issue" content="https://github.com/hguiney/oliverguiney.com/issues" />
     <meta property="os:branch" content="master" />
 
+    <script src="/node_modules/clipboard-polyfill/build/clipboard-polyfill.js"></script>
+
     <script>
       /* this script must run before Polymer is imported */
       window.Polymer = {
@@ -66,21 +68,21 @@
         /**
          * @license
          * MyFonts Webfont Build ID 3339030, 2017-01-31T21:38:50-0500
-         * 
+         *
          * The fonts listed in this notice are subject to the End User License
-         * Agreement(s) entered into by the website owner. All other parties are 
+         * Agreement(s) entered into by the website owner. All other parties are
          * explicitly restricted from using the Licensed /fonts(s).
-         * 
+         *
          * You may obtain a valid license at the URLs below.
-         * 
+         *
          * Webfont: TTLakes-Medium by TypeType
          * URL: http://www.myfonts.com/fonts/type-type/tt-lakes/medium/
          * Copyright: Copyright (c) 2016 by Typetype. Designer Ivan Gladkikh, technical designers Olga Yumartova, Olexa Volochay. All rights reserved.
          * Licensed pageviews: Unlimited
-         * 
-         * 
+         *
+         *
          * License: http://www.myfonts.com/viewlicense?type=web&buildid=3339030
-         * 
+         *
          * © 2017 MyFonts Inc
         */
         font-family: 'TT Lakes';
@@ -137,7 +139,7 @@
 
       @media ( -webkit-min-device-pixel-ratio: 2 ), ( min-resolution: 192dpi ) {
         body {
-          background-image: url('src/images/patterns/noisy_net_@2X.png'); 
+          background-image: url('src/images/patterns/noisy_net_@2X.png');
         }
       }
 
@@ -151,6 +153,11 @@
         overflow: hidden;
         position: relative;
       }
+
+      .email-address {
+        text-transform: uppercase;
+        font-family: monospace;
+      }
     </style>
 
     <link rel="import" href="src/shared-styles/shared-styles.html" />
@@ -159,6 +166,27 @@
   </head>
   <body unresolved>
     <og-site></og-site>
+
+    <paper-dialog id="contact" entry-animation="scale-up-animation" exit-animation="scale-down-animation">
+      <h2>Contact</h2>
+      <p><a id="email-address" class="email-address" title="Open in mail application" href="mailto:oliver.guiney@gmail.com" target="_blank">oliver.guiney@gmail.com</a></p>
+      <div class="buttons">
+        <paper-button dialog-dismiss>Close</paper-button>
+        <paper-button id="copy-email-address" dialog-confirm autofocus hidden>Copy to Clipboard</paper-button>
+      </div>
+      <script>
+        var emailAddress = document.getElementById( 'email-address' ).getAttribute( 'href' ).replace( /^mailto:\s*/i, '' );
+        var $copyEmailAddress = document.getElementById( 'copy-email-address' );
+
+        if ( ( typeof Promise !== "undefined" ) && ( Promise.toString().indexOf( "[native code]" ) !== -1 ) ) {
+          $copyEmailAddress.addEventListener( 'click', function ( event ) {
+            clipboard.writeText( emailAddress );
+            // event.preventDefault();
+          } );
+          $copyEmailAddress.removeAttribute( 'hidden' );
+        }
+      </script>
+    </paper-dialog>
 
     <script id="webcomponents">
       (function() {
@@ -175,7 +203,7 @@
           // do nothing
         } else {
           var webcomponentsjs = document.createElement( 'script' );
-    
+
           webcomponentsjs.setAttribute( 'defer', 'defer' );
           webcomponentsjs.src = 'bower_components/webcomponentsjs/webcomponents-lite.min.js';
 
@@ -226,7 +254,7 @@
       })();
     </script>
 
-    <script id="google-analytics">
+    <!-- <script id="google-analytics">
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -234,6 +262,6 @@
 
       ga('create', 'UA-97009720-1', 'auto');
       ga('send', 'pageview');
-    </script>
+    </script> -->
   </body>
 </html>

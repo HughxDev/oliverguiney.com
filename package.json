@@ -32,5 +32,8 @@
     "gulp-replace": "^0.5.4",
     "gulp-vulcanize": "^6.1.0",
     "sw-precache": "^5.1.0"
+  },
+  "dependencies": {
+    "clipboard-polyfill": "^2.5.4"
   }
 }

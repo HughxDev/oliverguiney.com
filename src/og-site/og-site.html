@@ -2,12 +2,17 @@
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../../bower_components/app-route/app-route.html" />
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html" />
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html" />
+<link rel="import" href="../../bower_components/paper-button/paper-button.html" />
+<link rel="import" href="../../bower_components/neon-animation/animations/scale-up-animation.html" />
+<link rel="import" href="../../bower_components/neon-animation/animations/scale-down-animation.html" />
 <link rel="import" href="../shared-styles/shared-styles.html" />
 <link rel="import" href="../og-behaviors/og-behaviors.html" />
 <link rel="import" href="../og-header/og-header.html" />
 <link rel="import" href="../og-portfolio/og-portfolio.html" />
 <link rel="import" href="../og-blog/og-blog.html" />
 <link rel="import" href="../og-about/og-about.html" />
+<link rel="import" href="../og-contact/og-contact.html" />
 <link rel="import" href="../og-footer/og-footer.html" />
 <link rel="import" href="../og-error-404/og-error-404.html" />
 
@@ -48,18 +53,24 @@
       properties: {},
 
       observers: [
-        '_routeChanged(route.*,subroute)',
-        '_viewChanged(routeData.view)',
-        '_pathChanged()'
+        // '_routeChanged(route.*)',
+        '_viewChanged(routeData.view)'
       ],
 
-      _routeChanged: function( route, subroute ) {
-        console.log( 'route', route );
-      },
+      // _routeChanged: function( route, subroute ) {
+      //   console.log( 'route', route );
+      // },
 
       _viewChanged: function( view ) {
-        // load data for view
-        console.log( 'view changed', view );
+        var $navLinks = document.querySelectorAll( 'og-header > nav > a' );
+        $navLinks.forEach( function ( element ) {
+          var route = element.getAttribute( 'href' ).substring(1);
+          if ( route === view ) {
+            element.classList.add( 'active' );
+          } else {
+            element.classList.remove( 'active' );
+          }
+        } );
       }
     });
   </script>

@@ -38,8 +38,10 @@
         margin-right: 0;
       }
 
-      .email-address {
-        text-transform: uppercase;
+      a.active {
+        color: whitesmoke;
+        text-decoration: none;
+        /* font-weight: bold; */
       }
 
       .__social {
@@ -48,12 +50,12 @@
     </style>
     <h1 class="__name __child">Oliver Guiney</h1>
     <p class="__title __child">Concept Artist</p>
-    <p class="__child"><a class="email-address" href="mailto:oliver.guiney@gmail.com">oliver.guiney@gmail.com</a></p>
     <nav class="__nav __child">
       <!-- <a href="#work">Work</a> -->
       <a href="#about">About</a>
-      <a href="/">Work</a>
+      <a href="/" class="active">Work</a>
       <a href="/process-slides">Process Slides</a>
+      <a href="#contact">Contact</a>
     </nav>
     <og-social class="__social"></og-social>
   </template>
@@ -81,8 +83,15 @@
         $aboutLink.addEventListener( 'click', function aboutClicked() {
           $about.scrollIntoView();
         } );
-      }
 
+        var $contactLink = document.querySelector( '[href="#contact"]' );
+        var $modal = document.getElementById( 'contact' );
+
+        $contactLink.addEventListener( 'click', function contactClicked( event ) {
+          $modal.open();
+          event.preventDefault();
+        } );
+      }
     });
   </script>
 </dom-module>
