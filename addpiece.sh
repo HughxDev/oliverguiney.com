@@ -10,8 +10,7 @@ usage()
   --width 1920 \\
   --height 1080 \\
   --short-description 'Lorem ipsum' \\
-  --source-image ./src-assets/some-asshole.png \\
-  --generate-jpegs"
+  --source-image ./src-assets/some-asshole.png"
 }
 
 # https://stackoverflow.com/a/14203146/214325
@@ -60,10 +59,6 @@ case $key in
     SOURCE_IMAGE="$2"
     shift # past argument
     shift # past value
-    ;;
-    -g|--generate-jpegs)
-    GENERATE_JPEGS=true
-    shift # past argument
     ;;
     *)    # unknown option
     echo -e "Unrecognized option: $1"
@@ -116,7 +111,3 @@ COMPONENT=$(cat <<EOF
 EOF)
 
 echo "$COMPONENT" > $FILE_PATH
-
-if [[ "$GENERATE_JPEGS" = true ]]; then
-  find "$IMAGE_DIR" -name "*.png" -exec guetzli --quality 84 --verbose {} {}.jpg \; && rename "s/png.jpg/jpg/" "$IMAGE_DIR/*.png.jpg"
-fi
