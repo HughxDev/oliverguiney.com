@@ -1,0 +1,27 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../shared-styles/shared-styles.html" />
+
+<dom-module id="og-blog__post">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+    <h3 class="visuallyhidden">[Title]</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum repudiandae qui impedit quaerat porro voluptatum dolorum, aliquam. Iste, minima! Sequi numquam, omnis maiores quam incidunt. In quis fuga consequatur soluta.</p>
+  </template>
+  <script>
+    Polymer({
+      is: 'og-blog__post',
+
+      hostAttributes: {
+        role: 'article'
+      },
+
+      connected: function () {}
+    });
+  </script>
+</dom-module>

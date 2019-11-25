@@ -1,0 +1,151 @@
+<script>
+  window.OG = window.OG || {};
+
+  OG.String = {
+    dasherize: function ogDasherize( string ) {
+      return string.toLowerCase().replace( /\s/g, '-' );
+    }
+  };
+
+  OG.DOM = {
+    /**
+     * Get the closest matching element up the DOM tree.
+     * @private
+     * @param  {Element} elem     Starting element
+     * @param  {String}  selector Selector to match against
+     * @return {Boolean|Element}  Returns null if not match found
+    */
+    getClosest: function ogGetClosest( elem, selector ) {
+    // Element.matches() polyfill
+    if ( !Element.prototype.matches ) {
+      Element.prototype.matches =
+        Element.prototype.matchesSelector ||
+        Element.prototype.mozMatchesSelector ||
+        Element.prototype.msMatchesSelector ||
+        Element.prototype.oMatchesSelector ||
+        Element.prototype.webkitMatchesSelector ||
+        function( s ) {
+          var matches = ( this.document || this.ownerDocument ).querySelectorAll( s ),
+          
+          i = matches.length;
+          
+          while ( --i >= 0 && matches.item( i ) !== this ) {}
+
+          return i > -1;
+        }
+      ;
+    }
+
+    // Get closest match
+    for ( ; elem && elem !== document && elem.nodeName !== '#document-fragment'; elem = Polymer.dom(elem).parentNode ) {
+      if ( elem.matches( selector ) ) {
+        return elem;
+      }
+    }
+
+    return null;
+    }
+  };
+
+  OG.Image = {
+    getFilenameParts: function ogImageGetFilenameParts( container ) {
+      var image = this;
+      
+      var parts = {
+        "subdirectory": "",
+        "filenameAppend": "",
+        "referenceObject": null,
+        "groupFilenameId": null
+      };
+
+      if ( container ) {
+        parts.referenceObject = container;
+        parts.groupFilenameId = container.filenameId;
+        // parts.resolutions = container.resolutions;
+      } else {
+        parts.referenceObject = image;
+        parts.groupFilenameId = image.filenameId;
+        // parts.resolutions = image.resolutions;
+      }
+
+      if ( 'subdirectory' in image ) {
+        parts.subdirectory = image.subdirectory;
+
+        if ( 'filenameId' in image ) {
+          parts.filenameAppend = '%20-%20' + image.filenameId.replace( /\s/g, '%20' );
+        }
+      }
+
+      return parts;
+    },
+    getSrc: function ogImageGetSrc( filenameParts ) {
+      // filenameParts = ( filenameParts || image.getFilenameParts() );
+
+      var image = this;
+
+      // console.log( 'filenameParts.referenceObject.__proto__', filenameParts.referenceObject.__proto__ );
+
+      // [ { "width": "1912", "height": "1072", "zoomLevel": "", "types": [ "jpg" ] }, ... ]
+      // Smallest-width image first
+      var sorted = filenameParts.referenceObject.resolutions.sort(function ( a, b ) {
+        if ( b.width < a.width ) {
+          return -1;
+        }
+
+        if ( b.width > a.width ) {
+          return 1;
+        }
+
+        return 0;
+      });
+
+      // Everything before the srcset descriptor
+      return image.getUrl( filenameParts, sorted[0] );
+    },
+    getUrl: function ogImageGetUrl( filenameParts, resolutionObject, srcsetMode ) {
+      srcsetMode = ( srcsetMode || false );
+
+      var url = filenameParts.referenceObject.directory // "/" included
+        + filenameParts.groupFilenameId
+        + '/'
+        + filenameParts.subdirectory
+        + '“' // '%E2%80%9C' // “
+        + filenameParts.referenceObject.titleOfWork.replace( /\s/g, '%20' )
+        + '”' // '%E2%80%9D' // ”
+        + '%20'
+        + filenameParts.referenceObject.filenameSuffix.replace( /\s/g, '%20' )
+        + filenameParts.filenameAppend
+        + resolutionObject.zoomLevel.replace( ',', '%2C' )
+        + '.'
+        + resolutionObject.types[0]
+      ;
+
+      if ( srcsetMode ) {
+        url += ' ' + resolutionObject.width + 'w';
+      }
+
+      return url;
+    },
+    getSrcset: function ogImageGetSrcset( filenameParts ) {
+      // filenameParts = ( filenameParts || image.getFilenameParts() );
+
+      var image = this;
+      var srcset = '';
+      var i;
+
+      if ( filenameParts.referenceObject.resolutions ) {
+        i = filenameParts.referenceObject.resolutions.length - 1;
+
+        for ( ; i >= 0; i--) {
+          srcset += image.getUrl( filenameParts, filenameParts.referenceObject.resolutions[i], true );
+        
+          if ( i !== 0 ) {
+            srcset += ', ';
+          }
+        }
+      }
+
+      return srcset;
+    }
+  };
+</script>
