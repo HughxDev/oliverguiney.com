@@ -183,7 +183,7 @@
         height: 100%;
       }
     </style>
-    <div id="front" class="card__front" role="button" tabindex="0" title="Reveal Process slides" aria-label="Reveal Process slides">
+    <div id="front" class="card__front">
       <h3 class="visuallyhidden">[[titleOfWork]]</h3>
       <!-- <content select="img, .piece__image"></content> -->
       <img
@@ -348,12 +348,20 @@
 
       attached: function ogPortfolioPieceAttached() {
         var portfolioPiece = this;
+        var front = this.$.front;
+        var back = this.$.back;
         var hasProcessSlide = ( ( portfolioPiece.children[1].children[1] || {"nodeName":""} ).nodeName.toLowerCase() === 'og-portfolio__process' );
 
         if ( hasProcessSlide ) {
-          portfolioPiece.setAttribute( 'has-process-slide', '' );
+          front.setAttribute( "role", "button" );
+          front.setAttribute( "tabindex", "0" );
+          front.setAttribute( "title", "Reveal Process slides" );
+          front.setAttribute( "aria-label", "Reveal Process slides" );
+          portfolioPiece.setAttribute( "has-process-slide", "" );
           portfolioPiece.addEventListener( "click", portfolioPiece._handleFlipActivate );
           portfolioPiece.addEventListener( "keydown", portfolioPiece._handleFlipActivate );
+        } else {
+          portfolioPiece.removeChild( back );
         }
       },
 
