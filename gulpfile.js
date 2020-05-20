@@ -16,7 +16,7 @@ gulp.task('clean', function () {
 
 /* Copy */
 gulp.task('copy:server', ['clean'], function () {
-  return gulp.src(['.htaccess', 'favicon.*', '*touch-icon*', 'index.html', 'CNAME', '_redirects'])
+  return gulp.src(['.htaccess', 'favicon.*', '*touch-icon*', 'index.html', 'CNAME', '_redirects', 'manifest.json'])
     .pipe(gulp.dest('build/'));
 });
 
