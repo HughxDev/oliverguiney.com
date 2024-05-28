@@ -1,1 +1,2 @@
-find . -name "*.png" -exec guetzli --quality 84 {} {}.jpg \;
+find ./src/images/ -name \"*.png\" -exec guetzli --verbose --quality 84 {} {}.jpg \\; && rename \"s/png.jpg/jpg/\" ./src/images/*.png.jpg
+find . -name "*.png" -exec guetzli --verbose --quality 84 {} {}.jpg \; && rename "s/png.jpg/jpg/" ./*.png.jpg

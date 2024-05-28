@@ -14,7 +14,7 @@
         /* margin-top: 6rem; */
       }
 
-      img {
+      img, iframe {
         /*float: left;*/
         /*width: 200px;*/
         /*border-radius: 25px;*/
@@ -30,7 +30,7 @@
       }
 
       @media (min-width: 40em) {
-        img {
+        img, iframe {
           margin-bottom: 1.75rem;
         }
       }
@@ -70,16 +70,44 @@
       srcset="
         /src/images/avatars/headshot@0%2C5x.jpg 270w,
         /src/images/avatars/headshot.jpg 540w,
-        /src/images/avatars/headshot@2x.jpg 1080w"
+        /src/images/avatars/headshot@2x.jpg 1080w,
+        /src/images/avatars/headshot@3x.jpg 1620w"
       width="270"
       height="270"
     />
     <h2>About</h2>
-    <!-- <p>I’m Oliver Guiney,  a concept designer with 3 years of freelance experience. Specializing in environment design, I love exploring different workflows and technologies to get faster results with my work.</p> -->
-    <p>My name is Oliver Guiney. I’m a concept artist with a specialty in environment design. My services also include matte painting and promotial art.</p>
-    <p>Most recently I worked in-house at Treyarch on <a title="Wacth trailer on YouTube" href="https://www.youtube.com/watch?v=BjiaMBk6rHk"><cite>Call of Duty: Black Ops 4</cite></a>. More specifically I helped to create the look of the new <a title="Watch trailer on YouTube" href="https://www.youtube.com/watch?v=BjiaMBk6rHk">Blackout: Battle Royale</a> mode.</p>
-    <p>Clients also include: <a href="http://www.studiotranscendent.com/">Studio Transcendent</a> and <a href="https://www.ironkladstudios.com/">Ironklad Studios</a>.</p>
-    <!-- <p class="top-link-container"><a id="top-link" class="top-link" href="#">Top <span class="top-link__arrow">⬆</span></a></p> -->
+    <p>My name is Oliver Guiney. I’m a concept artist with a specialty in developing cinematic environments for games. I love exploring different genres and learning new workflows in my personal art.</p>
+    <div>
+      <p>I’m currently working in-house at <a href="https://www.theinitiative.com/">The Initiative</a> on the new <cite>Perfect Dark</cite>.</p>
+      <iframe
+        width="853"
+        height="480"
+        src="https://www.youtube.com/embed/S--lFTxAVs8?si=HebDhTPKYVvp0Lc1&amp;start=2"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen="allowfullscreen"
+      ></iframe>
+    </div>
+    <div>
+      <p>Previously I worked at <a href="https://www.treyarch.com/">Treyarch</a> on <cite>Call of Duty: Black Ops 4</cite>.</p>
+      <iframe
+        width="853"
+        height="480"
+        src="https://www.youtube.com/embed/BjiaMBk6rHk?si=UgeJotimqF8ABXW2&amp;start=2"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen="allowfullscreen"
+      ></iframe>
+    </div>
+    <div>
+      <p>Before that I did some freelance work with clients such as Studio Transcendent and Ironklad.</p>
+    </div>
+    <p>With a varied background ranging from VR to IP development, I bring my curiosity and creative spirit to every project, no matter if it’s a rough sketch or a finished illustration.</p>
+    <p>In my free time I enjoy film, photography, video games, and exploring nature.</p>
   </template>
 
   <script>

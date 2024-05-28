@@ -1,0 +1,24 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../shared-styles/shared-styles.html" />
+
+<dom-module id="og-the-long-drive">
+  <template>
+    <style include="shared-styles"></style>
+    <og-portfolio__piece
+      id="the-long-drive"
+      filename-id="the-long-drive"
+      title-of-work="The Long Drive"
+      short-description="An aerial drone perspective shot of a car driving on a remote Cape Cod road. There are a row of houses to the left, and a small pond to the right. The horizon is filled with pine trees against a twilight sky with oncoming rain."
+      resolutions='[
+        { "width": "4140", "height": "2360", "zoomLevel": "", "types": [ "jpg" ] },
+        { "width": "2070", "height": "1180", "zoomLevel": "@0,5x", "types": [ "jpg" ] },
+        { "width": "1035", "height": "590", "zoomLevel": "@0,25x", "types": [ "jpg" ] }
+      ]'>
+    </og-portfolio__piece>
+  </template>
+  <script>
+    Polymer({
+      is: 'og-the-long-drive'
+    });
+  </script>
+</dom-module>

@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html" />
 <link rel="import" href="../shared-styles/shared-styles.html" />
+<link rel="import" href="../og-behaviors/og-behaviors.html" />
 
 <dom-module id="og-portfolio__piece">
   <template>
@@ -26,11 +27,13 @@
 
       /* Widths*/
       :host([x="720"])  { --w: 720;  } /* 480p */
+      :host([x="1035"]) { --w: 1035; }
       :host([x="1280"]) { --w: 1280; } /* 720p */
       :host([x="1912"]) { --w: 1912; }
       :host([x="1920"]) { --w: 1920; } /* 1080p */
       :host([x="2000"]) { --w: 2000; }
       :host([x="2042"]) { --w: 2042; }
+      :host([x="2070"]) { --w: 2070; }
       :host([x="2100"]) { --w: 2100; }
       :host([x="2153"]) { --w: 2153; }
       :host([x="2350"]) { --w: 2350; }
@@ -47,6 +50,7 @@
 
       /* Heights */
       :host([y="480"])  { --h: 480;  } /* 480p */
+      :host([y="590"])  { --h: 590;  }
       :host([y="720"])  { --h: 720;  } /* 720p */
       :host([y="1072"]) { --h: 1072; }
       :host([y="1080"]) { --h: 1080; } /* 1080p */
@@ -57,6 +61,7 @@
       :host([y="1527"]) { --h: 1527; }
       :host([y="2160"]) { --h: 2160; } /* 4K (UHD, DCI) */
       :host([y="2314"]) { --h: 2314; }
+      :host([y="2360"]) { --h: 2360; }
       :host([y="2534"]) { --h: 2534; }
       :host([y="2983"]) { --h: 2983; }
       /* /Heights */

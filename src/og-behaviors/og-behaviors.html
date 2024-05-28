@@ -1,12 +1,18 @@
 <script>
   window.OG = window.OG || {};
 
+  /**
+   * @polymerBehavior
+   */
   OG.String = {
     dasherize: function ogDasherize( string ) {
       return string.toLowerCase().replace( /\s/g, '-' );
     }
   };
 
+  /**
+   * @polymerBehavior
+   */
   OG.DOM = {
     /**
      * Get the closest matching element up the DOM tree.
@@ -47,6 +53,11 @@
     }
   };
 
+  /**
+   * OG.Image
+   * 
+   * @polymerBehavior
+   */
   OG.Image = {
     getFilenameParts: function ogImageGetFilenameParts( container ) {
       var image = this;
