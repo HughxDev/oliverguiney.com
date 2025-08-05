@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/hguiney/oliverguiney.com#readme",
   "devDependencies": {
+    "bower": "^1.8.14",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-cli": "^3.0.0",
